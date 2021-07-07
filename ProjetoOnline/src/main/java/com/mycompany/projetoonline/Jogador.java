@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.projeto;
+package com.mycompany.projetoonline;
 
 /**
  *
  * @author mathe
  */
 public class Jogador {
-    private 
 }
