@@ -58,6 +58,6 @@ public class Jogador {
          this.SelecionarDeus();
      }
      private boolean VerificarLogin(String nomeDigitado,String senhaDigitada){
-         
+         return false;
      }
 }
