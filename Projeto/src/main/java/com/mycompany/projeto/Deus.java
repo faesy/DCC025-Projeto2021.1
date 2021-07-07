@@ -18,7 +18,6 @@ public class Deus {
     private int poderBase;
     private int poder;
     private Habilidade habilidades[] = new Habilidade[4];
-    private static int qtdDeuses;
     private String nome;
     private boolean morto=false;
     private int carga[]=new int[4];
@@ -32,7 +31,6 @@ public class Deus {
         this.FuncaoVidaMax();
         this.vidaAtual=this.vidaMax;
         this.FuncaoPoder();
-        qtdDeuses++;
         
 }
     public void descansar(){
@@ -125,6 +123,7 @@ public class Deus {
             this.nivel=10;
         }
         if(i!=this.nivel){
+            //parabens agora vc é lvl this.nivel//
             this.FuncaoVidaMax();
             this.FuncaoPoder();
         }
