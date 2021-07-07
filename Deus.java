@@ -21,6 +21,7 @@ public class Deus {
     private static int qtdDeuses;
     private String nome;
     private boolean morto=false;
+    private int carga[]=new int[4];
 
     public Deus(int vidaBase_,int poderBase_,int nivel_,String nome_) {
         this.vidaBase=vidaBase_;
@@ -30,12 +31,44 @@ public class Deus {
         
         this.FuncaoVidaMax();
         this.vidaAtual=this.vidaMax;
+        this.FuncaoPoder();
         qtdDeuses++;
         
 }
+    public void descansar(){
+        this.vidaAtual=this.vidaMax;
+        this.FuncaoLvlUP();
+        int i;
+        for(i=0;i<4;i++){
+           this.carga[i]=this.habilidades[i].carga; 
+        }
+        
+    }
+    
+    private void FuncaoPoder(){
+        this.poder=(int) (this.poderBase * (Math.pow(1.1,this.nivel)));
+    }
+  
+    public int UsarHabilidade(int resposta){
+        if(resposta<=0 || resposta>4){
+            //habilidade invalida escolha um numero entre 1 e 4//
+            return -1;
+        }
+        if(this.carga[resposta-1]==0){
+            //essa habilidade não possui cargas escolha outra//
+            return -1;
+        }
+        Habilidade h=habilidades[resposta-1];
+        this.carga[resposta-1]=this.carga[resposta-1]-1;
+        return h.dano(this.poder);
+    }
+    
     public void AlocarHabilidades(Habilidade[] habilidades_){
+    int x[]=new int[4];
     for (int i=0;i<4;i++){
         this.habilidades[i]=habilidades_[i];
+        x[i]=habilidades_[i].carga;
+        carga[i]=x[i];
     }
 }
     
@@ -45,10 +78,12 @@ public class Deus {
     }
     
     private void FuncaoVidaMax(){
-        vidaMax=(int) (vidaBase * (Math.pow(1.2,nivel)));
+        this.vidaMax=(int) (this.vidaBase * (Math.pow(1.2,this.nivel)));
     }
     
     private void FuncaoLvlUP(){
+        int i=0;
+        i=this.nivel;
         if(xp>=300)
         {
             this.nivel=1;
@@ -88,6 +123,10 @@ public class Deus {
         if(xp>=85000)
         {
             this.nivel=10;
+        }
+        if(i!=this.nivel){
+            this.FuncaoVidaMax();
+            this.FuncaoPoder();
         }
     }
     public void ReduzirVida(int dano){
