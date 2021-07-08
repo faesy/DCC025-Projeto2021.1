@@ -33,6 +33,7 @@ public class TelaDeLogin extends javax.swing.JFrame {
         jPasswordField1 = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -51,12 +52,14 @@ public class TelaDeLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, 190, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\mathe\\OneDrive\\Área de Trabalho\\Projeto OO\\DCC025-Projeto2021.1\\ProjetoOnline\\src\\main\\java\\com\\mycompany\\projetoonline\\Login.jpg")); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 370));
 
         jButton1.setText("Entrar");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 380, 170, 30));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projetoonline/Login.jpg"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 680, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -105,6 +108,7 @@ public class TelaDeLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables

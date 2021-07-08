@@ -90,7 +90,7 @@ public class MenudeEscolhas extends javax.swing.JFrame {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("Historia pipipi popopo...\n");
+        jTextArea1.setText("Historia ...");
         jScrollPane1.setViewportView(jTextArea1);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 663, 141));
