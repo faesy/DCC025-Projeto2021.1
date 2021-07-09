@@ -40,6 +40,7 @@ public class Deus {
         for(i=0;i<4;i++){
            this.carga[i]=this.habilidades[i].carga; 
         }
+        // tem q botar pra recuperar as cargas das poçoes aqui
         
     }
     
@@ -141,5 +142,11 @@ public class Deus {
         if (this.vidaAtual>this.vidaMax){
             this.vidaAtual=this.vidaMax;
         }
+    }
+    public int getVidaBaseDeus(){
+        return this.vidaBase;
+    }
+    public int getPoderBaseDeus(){
+        return this.poderBase;
     }
 }
