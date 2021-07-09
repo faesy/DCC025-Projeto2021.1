@@ -28,14 +28,14 @@ public class Deus {
         this.nivel=nivel_;
         this.nome=nome_;
         
-        this.FuncaoVidaMax();
+        this.funcaoVidaMax();
         this.vidaAtual=this.vidaMax;
-        this.FuncaoPoder();
+        this.funcaoPoder();
         
 }
     public void descansar(){
         this.vidaAtual=this.vidaMax;
-        this.FuncaoLvlUP();
+        this.funcaoLvlUP();
         int i;
         for(i=0;i<4;i++){
            this.carga[i]=this.habilidades[i].carga; 
@@ -44,25 +44,26 @@ public class Deus {
         
     }
     
-    private void FuncaoPoder(){
+    private void funcaoPoder(){
         this.poder=(int) (this.poderBase * (Math.pow(1.1,this.nivel)));
     }
   
-    public int UsarHabilidade(int resposta){
-        if(resposta<=0 || resposta>4){
-            //habilidade invalida escolha um numero entre 1 e 4//
-            return -1;
-        }
-        if(this.carga[resposta-1]==0){
-            //essa habilidade não possui cargas escolha outra//
-            return -1;
-        }
-        Habilidade h=habilidades[resposta-1];
-        this.carga[resposta-1]=this.carga[resposta-1]-1;
+    public int usarHabilidade(int resposta) {
+        Habilidade h = habilidades[resposta - 1];
+        this.carga[resposta - 1] = this.carga[resposta - 1] - 1;
         return h.dano(this.poder);
     }
+
+    protected boolean verificaSeTemCarga(int slot) {
+        if(this.carga[slot-1]==0){
+            //essa habilidade não possui cargas escolha outra//
+            return false;
+        }else{
+            return true;
+        }
+    }
     
-    public void AlocarHabilidades(Habilidade[] habilidades_){
+    public void alocarHabilidades(Habilidade[] habilidades_){
     int x[]=new int[4];
     for (int i=0;i<4;i++){
         this.habilidades[i]=habilidades_[i];
@@ -71,16 +72,16 @@ public class Deus {
     }
 }
     
-    public void GanharXp(int ganho){
+    public void ganharXp(int ganho){
         this.xp=this.xp+ganho;
-        FuncaoLvlUP();
+        funcaoLvlUP();
     }
     
-    private void FuncaoVidaMax(){
+    private void funcaoVidaMax(){
         this.vidaMax=(int) (this.vidaBase * (Math.pow(1.2,this.nivel)));
     }
     
-    private void FuncaoLvlUP(){
+    private void funcaoLvlUP(){
         int i=0;
         i=this.nivel;
         if(xp>=300)
@@ -125,11 +126,11 @@ public class Deus {
         }
         if(i!=this.nivel){
             //parabens agora vc é lvl this.nivel//
-            this.FuncaoVidaMax();
-            this.FuncaoPoder();
+            this.funcaoVidaMax();
+            this.funcaoPoder();
         }
     }
-    public void ReduzirVida(int dano){
+    protected void reduzirVida(int dano){
         this.vidaAtual=this.vidaAtual-dano;
         if (this.vidaAtual<=0)
         {
@@ -137,16 +138,20 @@ public class Deus {
         }
     }
     
-    public void RecuperarVida(int recuperacao){
+    protected void recuperarVida(int recuperacao){
         this.vidaAtual=this.vidaAtual+recuperacao;
         if (this.vidaAtual>this.vidaMax){
             this.vidaAtual=this.vidaMax;
         }
     }
-    public int getVidaBaseDeus(){
+    protected int getVidaBaseDeus(){
         return this.vidaBase;
     }
-    public int getPoderBaseDeus(){
+    protected int getPoderBaseDeus(){
         return this.poderBase;
+    }
+    
+    protected int usaConsumivel(){
+        
     }
 }

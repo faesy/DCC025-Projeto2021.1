@@ -24,27 +24,27 @@ public class Consumivel {
         }
     }
 
-    protected int RecuperarVida(int intensidade) {
-
+    protected int RecuperarVida(int intensidade, Deus c) {
+        
         if (intensidade == 1) {
-            return (int) (vidaBase * 0.15);
+            return (int) (c.getVidaBaseDeus() * 0.15);
         } else if (intensidade == 2) {
-            return (int) (vidaBase * 0.30);
+            return (int) (c.getVidaBaseDeus() * 0.30);
         } else {
-            return (int) (vidaBase * 0.45);
+            return (int) (c.getVidaBaseDeus() * 0.45);
         }
 
     }
 
     //implementar o aumento de poder é mais dificil pois precisaria de um "rélogio" interno no Deus que conte por quanto tempo esse aumento de poder vale
-    protected int AumentarPoder(int intensidade) {
+    protected int AumentarPoder(int intensidade, Deus c) {
         
         if (intensidade == 1) {
-            return (int) (poderBase * 0.10);
+            return (int) (c.getPoderBaseDeus() * 0.10);
         } else if (intensidade == 2) {
-            return (int) (poderBase * 0.20);
+            return (int) (c.getPoderBaseDeus() * 0.20);
         } else {
-            return (int) (poderBase * 0.30);
+            return (int) (c.getPoderBaseDeus() * 0.30);
         }
     }
 

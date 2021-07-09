@@ -65,7 +65,7 @@ public class Inimigo {
 
     }
 
-    private void manejaVida(int dano) {
+    protected void manejaVida(int dano) {
 
         this.vidaAtual = this.vidaAtual - dano;
         if (this.vidaAtual <= 0) {
@@ -93,6 +93,28 @@ public class Inimigo {
             this.habilidades[i] = habilidades_[i];
             x[i] = habilidades_[i].carga;
             carga[i] = x[i];
+        }
+    }
+
+    public int usarHabilidade(int resposta) {
+        Habilidade h = habilidades[resposta - 1];
+        this.carga[resposta - 1] = this.carga[resposta - 1] - 1;
+        return h.dano(this.poder);
+    }
+
+    protected boolean verificaSeTemCarga(int slot) {
+        if(this.carga[slot-1]==0){
+            //essa habilidade não possui cargas escolha outra//
+            return false;
+        }else{
+            return true;
+        }
+    }
+    protected boolean verificaSeTaMorto(){
+        if(this.morto){
+            return false;
+        }else{
+            return true;
         }
     }
 }
