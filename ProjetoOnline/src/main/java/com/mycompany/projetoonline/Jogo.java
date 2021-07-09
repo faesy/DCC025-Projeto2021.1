@@ -10,5 +10,7 @@ package com.mycompany.projetoonline;
  * @author Usuario
  */
 public class Jogo {
-    
+    public static void main(String[] args) {
+       
+    }
 }

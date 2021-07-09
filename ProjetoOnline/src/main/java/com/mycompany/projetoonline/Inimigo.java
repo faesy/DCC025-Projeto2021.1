@@ -35,6 +35,8 @@ public class Inimigo {
         estabelecePoder();
         categorizaXP(modo);
         this.nome = nomeGenerico;
+        // acho q ainda ta faltano algo aqui no construtor pfv dps deem uma olhada.
+        // sinto q tinha q botar o aloca habilidade aqui direto.
     }
 
     private void estabeleceVida() {

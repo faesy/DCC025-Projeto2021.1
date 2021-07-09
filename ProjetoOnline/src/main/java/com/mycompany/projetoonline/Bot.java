@@ -10,10 +10,10 @@ package com.mycompany.projetoonline;
  * @author Usuario
  */
 public class Bot {
-     
+     private Inimigo name;
      public void modoDeJogo(int modo){
          if(modo==1){
-             Inimigo c(1);
+           ;
          }else if(modo==2){
              Inimigo c(2);
          }else{
