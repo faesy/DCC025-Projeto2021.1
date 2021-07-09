@@ -152,6 +152,6 @@ public class Deus {
     }
     
     protected int usaConsumivel(){
-        
+        return 0;
     }
 }

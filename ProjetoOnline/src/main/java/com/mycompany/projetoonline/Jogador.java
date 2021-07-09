@@ -40,7 +40,7 @@ public class Jogador {
          }else{
              return 0;
          }*/
-         
+         return 0;
      }
 
      private void EscolherConsumivel(){

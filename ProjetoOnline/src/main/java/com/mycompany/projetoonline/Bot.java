@@ -11,7 +11,9 @@ package com.mycompany.projetoonline;
  */
 public class Bot {
      private Inimigo inimigo;
+     private Inimigo boss;
      private int modoDeJogo; // dificuldade: facil =1 // dificil =2 // pesadelo=3
+     
      public Bot(){
          this.modoDeJogo = 1;
          novoInimigo();

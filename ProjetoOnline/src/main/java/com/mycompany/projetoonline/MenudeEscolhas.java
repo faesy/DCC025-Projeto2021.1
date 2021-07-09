@@ -93,7 +93,7 @@ public class MenudeEscolhas extends javax.swing.JFrame {
         jTextArea1.setText("Historia ...");
         jScrollPane1.setViewportView(jTextArea1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 663, 141));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 663, 141));
         getContentPane().add(jProgressBar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, -1, -1));
         getContentPane().add(jProgressBar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, -1, -1));
         getContentPane().add(jProgressBar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, -1, -1));
