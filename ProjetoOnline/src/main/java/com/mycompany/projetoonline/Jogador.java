@@ -17,6 +17,8 @@ public class Jogador {
 
     protected Deus deusEscolhido;
     private String nome;
+    private int Final;
+    private int Chave_Progresso;
     private String senha;
     private boolean cadastrado;
     private boolean logado;
