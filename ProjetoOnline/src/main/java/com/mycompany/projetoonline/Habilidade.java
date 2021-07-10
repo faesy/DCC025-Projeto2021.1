@@ -18,7 +18,7 @@ public class Habilidade {
     private String descricao;
     private String nome;
     
-    public Habilidade(int carga_,int dano_,String nome_,String descricao_){
+    public Habilidade(String nome_,String descricao_, int dano_, int carga_){
         this.carga=carga_;
         this.dano=dano_;
         this.nome=nome_;

@@ -10,25 +10,29 @@ package com.mycompany.projetoonline;
  * @author mathe
  */
 public class Jogador {
+
     protected Deus deusEscolhido;
     private String nome;
     private String senha;
     private boolean cadastrado;
     private boolean logado;
     private Consumivel[] consumiveisEquipados = new Consumivel[3];
-     
-     public void MenuDeEscolhas(){
-         
-     }
-     public void MenuDeCombate(){
-         
-     }
-     private void EscolherHablidade(){
-         
-     }
-     private int usaHabilidade(){
-         // só um começo, tem q botar ainda se vai ter parametro ou se vai ocorrer alguma coisa dentro da propria classe
-         /* ta comentado pq ainda n conseguimos fazer o arquivo com os bagulho.
+
+    public void menuEscolhas() {
+
+    }
+
+    public void menuCombate() {
+
+    }
+
+    private void escolherHablidade() {
+
+    }
+
+    private int usaHabilidade() {
+        // só um começo, tem q botar ainda se vai ter parametro ou se vai ocorrer alguma coisa dentro da propria classe
+        /* ta comentado pq ainda n conseguimos fazer o arquivo com os bagulho.
          if(Deus.verificaSeTemCarga(1)){
              return Deus.usarHabilidade(1);
          }else if(Deus.verificaSeTemCarga(2)){
@@ -40,50 +44,57 @@ public class Jogador {
          }else{
              return 0;
          }*/
-         return 0;
-     }
+        return 0;
+    }
 
-     private void EscolherConsumivel(){
-         
-     }
-     private void SelecionarDeus(){
-       /*  if("nome do deus" == "botao igual nome do deus"){
+    private void escolherConsumivel() {
+
+    }
+
+    private void selecionarDeus() {
+        /*  if("nome do deus" == "botao igual nome do deus"){
              this.deusEscolhido = new Deus("vem do arquivo");
          }else{
              this.deusEscolhido = new Deus("vem do arquivo");
          }*/
-         
-         
-     }
-     public Jogador(){
-        if (this.cadastrado==true){
-                 //Realize o Cadastro
-                 this.Cadastrar();
-         }
-        else{
-            Cadastrar();
+
+    }
+
+    public Jogador(String nome, String senha,Deus deusEscolhido, boolean cadastrado, boolean logado) {
+        this.deusEscolhido = deusEscolhido;
+        this.nome = nome;
+        this.senha = senha;
+        this.cadastrado = cadastrado;
+        this.logado = logado;
+    }
+
+    
+    public Jogador() {
+        if (this.cadastrado == false) {
+            //Realize o Cadastro
+            this.cadastrar();
+        } else {
+            //cadastrar();
             // bota um bagui pra voltar pra tela inicial. ou só transforma o if em um while e dps continua.
             //Realize o Login
-            String nomeDigitado="0";
-            String senhaDigitada="0";
-            if(this.VerificarLogin(nomeDigitado, senhaDigitada)){
-                this.logado=true;
+            String nomeDigitado = "0";
+            String senhaDigitada = "0";
+            if (this.verificarLogin(nomeDigitado, senhaDigitada)) {
+                this.logado = true;
             }
         }
-        
-     }
-     
-     private void Deslogar(){
-         this.logado=false;
-     }
-             
-     private void Cadastrar(){
-         
-         
-         
-         this.SelecionarDeus();
-     }
-     private boolean VerificarLogin(String nomeDigitado,String senhaDigitada){
-         return false;
-     }
+    }
+
+    private void deslogar() {
+        this.logado = false;
+    }
+
+    private void cadastrar() {
+
+        this.selecionarDeus();
+    }
+
+    private boolean verificarLogin(String nomeDigitado, String senhaDigitada) {
+        return false;
+    }
 }
