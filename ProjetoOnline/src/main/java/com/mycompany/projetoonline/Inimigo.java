@@ -80,10 +80,6 @@ public class Inimigo {
 
     //assume-se que a funcao verifica carga foi chamada antes
     public int usarHabilidade(int resposta) {
-        if (resposta <= 0 || resposta > 4) {
-            //habilidade invalida escolha um numero entre 1 e 4//
-            return -1;
-        }
         Habilidade h = habilidades[resposta - 1];
         this.carga[resposta - 1] = this.carga[resposta - 1] - 1;
         return h.dano(this.poder);
