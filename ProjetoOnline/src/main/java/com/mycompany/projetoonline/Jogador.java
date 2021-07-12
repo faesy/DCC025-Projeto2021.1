@@ -20,8 +20,8 @@ public class Jogador {
     //Atributos da classe Jogador
     protected Deus deusEscolhido;
     private String nome;
-    private int final_;
-    private int chave_Progresso;
+    private int ehOFinal;
+    private int chaveProgresso;
     private String senha;
     private boolean cadastrado;
     private boolean logado;
