@@ -6,23 +6,29 @@
 package com.mycompany.projetoonline;
 
 /**
- *
- * @author mathe
+ * Hiero Henrique Barcelos Costa -202065136A 
+ * Matheus Cardoso Faesy - 202065065A
+ * Thaís de Jesus Soares - 202065511B 
+*
  */
 public class Habilidade {
+
+    //Atributos da classe Habilidade
     protected int carga;
     private int dano;
-    protected int dano(int poder){
-        return this.dano*poder;
-    }
     private String descricao;
     private String nome;
-    
-    public Habilidade(String nome_,String descricao_, int dano_, int carga_){
-        this.carga=carga_;
-        this.dano=dano_;
-        this.nome=nome_;
-        this.descricao=descricao_;
-        
+
+    //Métodos da classe Habilidade
+    protected int dano(int poder) {
+        return this.dano * poder;
+    }
+
+    public Habilidade(String nome_, String descricao_, int dano_, int carga_) {
+        this.carga = carga_;
+        this.dano = dano_;
+        this.nome = nome_;
+        this.descricao = descricao_;
+
     }
 }

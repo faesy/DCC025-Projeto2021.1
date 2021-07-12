@@ -6,11 +6,15 @@
 package com.mycompany.projetoonline;
 
 /**
- *
- * @author Usuario
+ * Hiero Henrique Barcelos Costa -202065136A 
+ * Matheus Cardoso Faesy - 202065065A
+ * Thaís de Jesus Soares - 202065511B 
+*
  */
+//Classe que irá coordenar, posteriomente, o jogo (classe principal)
 public class Jogo {
+
     public static void main(String[] args) {
-       
+
     }
 }

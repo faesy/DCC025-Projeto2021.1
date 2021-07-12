@@ -10,20 +10,24 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 /**
- *
- * @author mathe
+ * Hiero Henrique Barcelos Costa -202065136A 
+ * Matheus Cardoso Faesy - 202065065A
+ * Thaís de Jesus Soares - 202065511B 
+*
  */
 public class Jogador {
 
+    //Atributos da classe Jogador
     protected Deus deusEscolhido;
     private String nome;
-    private int Final;
-    private int Chave_Progresso;
+    private int final_;
+    private int chave_Progresso;
     private String senha;
     private boolean cadastrado;
     private boolean logado;
-    private Consumivel[] consumiveisEquipados = new Consumivel[3];
+    private Consumivel[] consumiveisEquipados = new Consumivel[2];
 
+    //Funções a serem implementadas por interface gráfica
     public void menuEscolhas() {
 
     }
@@ -36,38 +40,45 @@ public class Jogador {
 
     }
 
-    private int usaHabilidade() {
-        // só um começo, tem q botar ainda se vai ter parametro ou se vai ocorrer alguma coisa dentro da propria classe
-        /* ta comentado pq ainda n conseguimos fazer o arquivo com os bagulho.
-         if(Deus.verificaSeTemCarga(1)){
-             return Deus.usarHabilidade(1);
-         }else if(Deus.verificaSeTemCarga(2)){
-             return Deus.usarHabilidade(2);
-         }else if(Deus.verificaSeTemCarga(3)){
-            return  Deus.usarHabilidade(3);
-         }else if(Deus.verificaSeTemCarga(4)){
-            return  Deus.usarHabilidade(4);
-         }else{
-             return 0;
-         }*/
-        return 0;
-    }
-
     private void escolherConsumivel() {
 
     }
 
     private void selecionarDeus() {
-        /*  if("nome do deus" == "botao igual nome do deus"){
+        /*  
+        if("nome do deus" == "botao igual nome do deus"){
              this.deusEscolhido = new Deus("vem do arquivo");
          }else{
+             //deus invalido, é quipado um deus padrão
              this.deusEscolhido = new Deus("vem do arquivo");
-         }*/
+        }
+         */
 
     }
 
+    // só um começo, tem q botar ainda se vai ter parametro ou se vai ocorrer alguma coisa dentro da propria classe
+    // encontra-se comentado porque os arquivos ainda não foram feitos
+    private int usaHabilidade() {
+        /*
+         if(Deus.verificaCarga(1)){
+             return Deus.usarHabilidade(1);
+         }else if(Deus.verificaCarga(2)){
+             return Deus.usarHabilidade(2);
+         }else if(Deus.verificaCarga(3)){
+            return  Deus.usarHabilidade(3);
+         }else if(Deus.verificaCarga(4)){
+            return  Deus.usarHabilidade(4);
+         }else{
+             return 0;
+         }
+         */
+        return 0;
+    }
+
+    //contrutor utilizado para ler dados do arquivo, o deus não está sendo lido pois
+    //essa parte ainda não foi implementada
     protected Jogador(String nome, String senha, boolean cadastrado, boolean logado) {
-        this.deusEscolhido = deusEscolhido;
+        //this.deusEscolhido = deusEscolhido;
         this.nome = nome;
         this.senha = senha;
         this.cadastrado = cadastrado;
@@ -77,7 +88,7 @@ public class Jogador {
     //o aperto do botão cadastrar retorna false para cadastrado e 
     //o do login retorna true, hipoteticamente
     //System.out.println foi usado para testar a implementação
-    //a variavel deusEscolhido nao esta seno coniderada ainda
+    //a variavel deusEscolhido nao esta sendo coniderada ainda
     public Jogador(boolean cadastrado_) {
         if (cadastrado_ == false) {
             System.out.println("Cadastrar");
@@ -97,10 +108,11 @@ public class Jogador {
         System.out.println("Digite a senha: ");
         senha_ = teclado.nextLine();
 
+        //a esrrutura Map, jogadores, vai receber os dados dos jogadores já existentes
         Map<String, Jogador> jogadores = Armazem.getJogadores();
-        
+        //verifica se o jogador já esta cadastrado no jogo
         Jogador jogador = jogadores.get(nome_);
-
+        //se não estiver é pedido que esse se cadastre
         if (jogador == null) {
             //usuario inexistente, faça o cadastro
             System.out.println("Cadastre-se");
@@ -108,45 +120,58 @@ public class Jogador {
         } else {
             this.logado = false;
             while (this.logado == false) {
+                //verifica se a senha informada é válida, se o for, atualiza nos dados do jogador
+                //que este está logado e interrompe-se o laço
                 if (jogador.getSenha().equals(senha_)) {
                     this.logado = true;
                     this.nome = nome_;
                     this.senha = senha_;
                     this.cadastrado = true;
                     break;
+                } //se a senha for inválida, é pedido que o jogador tente novamente
+                else {
+                    //armazena os dados digitados pelo usuario
+                    System.out.println("Digite seu nome: ");
+                    nome_ = teclado.nextLine();
+                    System.out.println("Digite a senha: ");
+                    senha_ = teclado.nextLine();
+                    //verifica se o novo nome informado é válido
+                    jogador = jogadores.get(nome_);
+                    //se não for é pedido que esse se cadastre
+                    if (jogador == null) {
+                        //usuario inexistente, faça o cadastro
+                        System.out.println("Cadastre-se");
+                        this.cadastrar();
+                    }
                 }
-                else{
-                //dados inválidos, tente novamente
-                //armazena os dados digitados pelo usuario
-                System.out.println("Digite seu nome: ");
-                nome_ = teclado.nextLine();
-                System.out.println("Digite a senha: ");
-                senha_ = teclado.nextLine();
-                jogador = jogadores.get(nome_);
-                }
-                
-     
             }
+            //remove o jogador com o nome informado pelo usuário da estrutura jogadores
             jogadores.remove(nome_);
-            jogadores.put(this.nome,this);
+            //adiciona-o novamente, agora com this.logado == true
+            jogadores.put(this.nome, this);
+            //atualiza os dados no arquivo
             Armazem.atualizaJogadores(jogadores);
         }
     }
-    
-
-    public String getSenha() {
-        return senha;
-    }
 
     private void deslogar() {
-        if(this.logado == true){
-        Map<String, Jogador> jogadores = Armazem.getJogadores();
-        
-        Jogador jogador = jogadores.get(this.nome);
-        jogadores.remove(this.nome);
-        this.logado = false;
-            jogadores.put(this.nome,this);
-            Armazem.atualizaJogadores(jogadores);
+        //verifica se o jogador esta logado
+        if (this.logado == true) {
+            //recupera os dados dos jogadores do arquivo
+            Map<String, Jogador> jogadores = Armazem.getJogadores();
+            //procura o jogador no sistema
+            Jogador jogador = jogadores.get(this.nome);
+            //se este não estiver no sistema é dado como usuário inválido
+            if (jogador == null) {
+                //usuario inexistente, faça o cadastro
+            } else {
+                //o jogador é removido do arquivo
+                jogadores.remove(this.nome);
+                //seu valor para logado é atualizado
+                this.logado = false;
+                jogadores.put(this.nome, this);
+                Armazem.atualizaJogadores(jogadores);
+            }
         }
     }
 
@@ -158,16 +183,19 @@ public class Jogador {
         nome_ = teclado.nextLine();
         System.out.println("Digite a senha: ");
         senha_ = teclado.nextLine();
-
+        //a esrrutura Map, jogadores, vai receber os dados dos jogadores já existentes
         Map<String, Jogador> jogadores = Armazem.getJogadores();
+        //verifica se o jogador já esta cadastrado no jogo, se não estiver o cadastro é feito 
+        //com sucesso
         Jogador jogador = jogadores.get(nome_);
-
         if (jogador == null) {
             this.nome = nome_;
             this.senha = senha_;
             this.cadastrado = true;
             selecionarDeus();
         }
+        //se já existir um usuário com o mesmo nome, pede que o usuário informe
+        //novos dados
         while (jogador != null) {
             //armazena os novos valores digitados pelo usuário
             System.out.println("Digite seu nome: ");
@@ -176,7 +204,8 @@ public class Jogador {
             senha_ = teclado.nextLine();
 
             jogador = jogadores.get(nome_);
-
+            //verifica se o jogador já esta cadastrado no jogo, se não estiver o cadastro é feito 
+            //com sucesso
             if (jogador == null) {
                 //não existe nenhum outro usuario com o mesmo nome
                 this.nome = nome_;
@@ -186,12 +215,14 @@ public class Jogador {
                 break;
             }
         }
+        //se o cadastro foi feito com sucesso, acrescenta-se os dados do jogador ao arquivo
         if (cadastrado == true) {
             Armazem.escreveJogadores(this);
             jogadores = Armazem.getJogadores();
         }
     }
 
+    //funcoes get -> retornam os atributos do jogador
     public boolean isCadastrado() {
         return cadastrado;
     }
@@ -199,19 +230,27 @@ public class Jogador {
     public boolean isLogado() {
         return logado;
     }
-    
+
     public String getNome() {
         return nome;
     }
 
+    public String getSenha() {
+        return senha;
+    }
+
+    //impressão padrão de um objeto Jogador
     @Override
     public String toString() {
         return "Jogador{" + "nome=" + nome + ", senha=" + senha + ", cadastrado=" + cadastrado + ", logado=" + logado + '}';
     }
 
+    //main utilizada para testar a implementacao das funcoes cadastrar, logar e deslogar
+    //é preciso adiciona a classe Jogador no pom como a classe principal para esse teste, visto que a atualmente configurada é 
+    //a Jogo
     public static void main(String[] args) {
         Jogador j = new Jogador(true);
         j.deslogar();
     }
-    
+
 }

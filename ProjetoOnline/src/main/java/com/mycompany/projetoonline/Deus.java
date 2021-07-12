@@ -6,11 +6,14 @@
 package com.mycompany.projetoonline;
 
 /**
- *
- * @author mathe
+ * Hiero Henrique Barcelos Costa -202065136A 
+ * Matheus Cardoso Faesy - 202065065A
+ * Thaís de Jesus Soares - 202065511B 
+*
  */
 public class Deus {
 
+    //Atributos da classe Deus
     private int vidaBase;
     private int vidaAtual;
     private int vidaMax;
@@ -25,10 +28,12 @@ public class Deus {
     private int carga[] = new int[4];
     private static int qtddDeuses;
 
+    //Bloco estático para inicializar a variável qtddDeuses
     static {
         qtddDeuses = 0;
     }
 
+    //Métodos da classe Deus
     public Deus(String nome_, String descricao_, int vidaBase_, int poderBase_, int nivel_) {
         this.vidaBase = vidaBase_;
         this.poderBase = poderBase_;
@@ -50,7 +55,7 @@ public class Deus {
         for (i = 0; i < 4; i++) {
             this.carga[i] = this.habilidades[i].carga;
         }
-        // tem q botar pra recuperar as cargas das poçoes aqui
+        // tem que colocar para recuperar as cargas das poçoes aqui ainda
 
     }
 
@@ -59,12 +64,19 @@ public class Deus {
     }
 
     public int usarHabilidade(int resposta) {
+        if (resposta <= 0 || resposta > 4) {
+            //habilidade invalida escolha um numero entre 1 e 4//
+            return -1;
+        }
+        if (verificaCarga(resposta)) {
+            return -1;
+        }
         Habilidade h = habilidades[resposta - 1];
         this.carga[resposta - 1] = this.carga[resposta - 1] - 1;
         return h.dano(this.poder);
     }
 
-    protected boolean verificaSeTemCarga(int slot) {
+    protected boolean verificaCarga(int slot) {
         if (this.carga[slot - 1] == 0) {
             //essa habilidade não possui cargas escolha outra//
             return false;
@@ -161,18 +173,19 @@ public class Deus {
         }
     }
 
-    protected int getVidaBaseDeus() {
+    protected int getVidaBase() {
         return this.vidaBase;
     }
 
-    protected int getPoderBaseDeus() {
+    protected int getPoderBase() {
         return this.poderBase;
     }
 
+    //não foi implementada ainda
     protected int usaConsumivel() {
         return 0;
     }
-    
+
     @Override
     public String toString() {
         return "Deus{" + "nome=" + nome + ", descricao=" + descricao + ", vidaBase=" + vidaBase + ", nivel=" + nivel + ", poderBase=" + poderBase + '}';
