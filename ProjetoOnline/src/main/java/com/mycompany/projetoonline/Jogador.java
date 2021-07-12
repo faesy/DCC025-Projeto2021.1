@@ -89,8 +89,8 @@ public class Jogador {
     //o do login retorna true, hipoteticamente
     //System.out.println foi usado para testar a implementação
     //a variavel deusEscolhido nao esta sendo coniderada ainda
-    public Jogador(boolean cadastrado_) {
-        if (cadastrado_ == false) {
+    public Jogador(boolean cadastrado) {
+        if (cadastrado == false) {
             System.out.println("Cadastrar");
             this.cadastrar();
         } else {
@@ -101,17 +101,17 @@ public class Jogador {
 
     public void logar() {
         //armazena os valores digitados pelo usuário
-        String nome_, senha_;
+        String nome, senha;
         System.out.println("Digite seu nome: ");
         Scanner teclado = new Scanner(System.in);
-        nome_ = teclado.nextLine();
+        nome = teclado.nextLine();
         System.out.println("Digite a senha: ");
-        senha_ = teclado.nextLine();
+        senha = teclado.nextLine();
 
         //a esrrutura Map, jogadores, vai receber os dados dos jogadores já existentes
         Map<String, Jogador> jogadores = Armazem.getJogadores();
         //verifica se o jogador já esta cadastrado no jogo
-        Jogador jogador = jogadores.get(nome_);
+        Jogador jogador = jogadores.get(nome);
         //se não estiver é pedido que esse se cadastre
         if (jogador == null) {
             //usuario inexistente, faça o cadastro
@@ -122,21 +122,21 @@ public class Jogador {
             while (this.logado == false) {
                 //verifica se a senha informada é válida, se o for, atualiza nos dados do jogador
                 //que este está logado e interrompe-se o laço
-                if (jogador.getSenha().equals(senha_)) {
+                if (jogador.getSenha().equals(senha)) {
                     this.logado = true;
-                    this.nome = nome_;
-                    this.senha = senha_;
+                    this.nome = nome;
+                    this.senha = senha;
                     this.cadastrado = true;
                     break;
                 } //se a senha for inválida, é pedido que o jogador tente novamente
                 else {
                     //armazena os dados digitados pelo usuario
                     System.out.println("Digite seu nome: ");
-                    nome_ = teclado.nextLine();
+                    nome = teclado.nextLine();
                     System.out.println("Digite a senha: ");
-                    senha_ = teclado.nextLine();
+                    senha = teclado.nextLine();
                     //verifica se o novo nome informado é válido
-                    jogador = jogadores.get(nome_);
+                    jogador = jogadores.get(nome);
                     //se não for é pedido que esse se cadastre
                     if (jogador == null) {
                         //usuario inexistente, faça o cadastro
@@ -146,7 +146,7 @@ public class Jogador {
                 }
             }
             //remove o jogador com o nome informado pelo usuário da estrutura jogadores
-            jogadores.remove(nome_);
+            jogadores.remove(nome);
             //adiciona-o novamente, agora com this.logado == true
             jogadores.put(this.nome, this);
             //atualiza os dados no arquivo
@@ -177,20 +177,20 @@ public class Jogador {
 
     private void cadastrar() {
         //armazena os valores digitados pelo usuário
-        String nome_, senha_;
+        String nome, senha;
         System.out.println("Digite seu nome: ");
         Scanner teclado = new Scanner(System.in);
-        nome_ = teclado.nextLine();
+        nome = teclado.nextLine();
         System.out.println("Digite a senha: ");
-        senha_ = teclado.nextLine();
+        senha = teclado.nextLine();
         //a esrrutura Map, jogadores, vai receber os dados dos jogadores já existentes
         Map<String, Jogador> jogadores = Armazem.getJogadores();
         //verifica se o jogador já esta cadastrado no jogo, se não estiver o cadastro é feito 
         //com sucesso
-        Jogador jogador = jogadores.get(nome_);
+        Jogador jogador = jogadores.get(nome);
         if (jogador == null) {
-            this.nome = nome_;
-            this.senha = senha_;
+            this.nome = nome;
+            this.senha = senha;
             this.cadastrado = true;
             selecionarDeus();
         }
@@ -199,17 +199,17 @@ public class Jogador {
         while (jogador != null) {
             //armazena os novos valores digitados pelo usuário
             System.out.println("Digite seu nome: ");
-            nome_ = teclado.nextLine();
+            nome = teclado.nextLine();
             System.out.println("Digite a senha: ");
-            senha_ = teclado.nextLine();
+            senha = teclado.nextLine();
 
-            jogador = jogadores.get(nome_);
+            jogador = jogadores.get(nome);
             //verifica se o jogador já esta cadastrado no jogo, se não estiver o cadastro é feito 
             //com sucesso
             if (jogador == null) {
                 //não existe nenhum outro usuario com o mesmo nome
-                this.nome = nome_;
-                this.senha = senha_;
+                this.nome = nome;
+                this.senha = senha;
                 this.cadastrado = true;
                 this.selecionarDeus();
                 break;

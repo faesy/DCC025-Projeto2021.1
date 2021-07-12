@@ -34,12 +34,12 @@ public class Deus {
     }
 
     //Métodos da classe Deus
-    public Deus(String nome_, String descricao_, int vidaBase_, int poderBase_, int nivel_) {
-        this.vidaBase = vidaBase_;
-        this.poderBase = poderBase_;
-        this.nivel = nivel_;
-        this.nome = nome_;
-        this.descricao = descricao_;
+    public Deus(String nome, String descricao, int vidaBase, int poderBase, int nivel) {
+        this.vidaBase = vidaBase;
+        this.poderBase = poderBase;
+        this.nivel = nivel;
+        this.nome = nome;
+        this.descricao = descricao;
 
         this.funcaoVidaMax();
         this.vidaAtual = this.vidaMax;
@@ -85,11 +85,11 @@ public class Deus {
         }
     }
 
-    public void alocarHabilidades(Habilidade[] habilidades_) {
+    public void alocarHabilidades(Habilidade[] habilidades) {
         int x[] = new int[4];
         for (int i = 0; i < 4; i++) {
-            this.habilidades[i] = habilidades_[i];
-            x[i] = habilidades_[i].carga;
+            this.habilidades[i] = habilidades[i];
+            x[i] = habilidades[i].carga;
             carga[i] = x[i];
         }
     }
