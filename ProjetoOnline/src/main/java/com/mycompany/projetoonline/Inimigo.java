@@ -1,4 +1,10 @@
 /*
+Hiero Henrique Barcelos Costa -202065136A
+Matheus Cardoso Faesy - 202065065A
+Thaís de Jesus Soares - 202065511B
+*/
+
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -80,10 +86,6 @@ public class Inimigo {
 
     //assume-se que a funcao verifica carga foi chamada antes
     public int usarHabilidade(int resposta) {
-        if (resposta <= 0 || resposta > 4) {
-            //habilidade invalida escolha um numero entre 1 e 4//
-            return -1;
-        }
         Habilidade h = habilidades[resposta - 1];
         this.carga[resposta - 1] = this.carga[resposta - 1] - 1;
         return h.dano(this.poder);

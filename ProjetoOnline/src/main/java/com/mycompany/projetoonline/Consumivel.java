@@ -1,4 +1,10 @@
 /*
+Hiero Henrique Barcelos Costa -202065136A
+Matheus Cardoso Faesy - 202065065A
+Thaís de Jesus Soares - 202065511B
+*/
+
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -20,10 +26,10 @@ public class Consumivel {
     protected String descricao;
 
     //Metodos da classe
-    protected Consumivel(int tipo_) {
-        if (tipo_ != 1 && tipo_ != 2) {
+    protected Consumivel(int tipo) {
+        if (tipo != 1 && tipo != 2) {
             //Tipo de Consumível Inválido!
-        } else if (tipo_ == 1) {
+        } else if (tipo == 1) {
             this.carga = 3;
             this.nome = "Poção de cura";
             this.descricao = "Recupera Vida";

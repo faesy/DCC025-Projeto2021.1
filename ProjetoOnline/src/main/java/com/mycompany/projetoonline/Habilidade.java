@@ -1,4 +1,10 @@
 /*
+Hiero Henrique Barcelos Costa -202065136A
+Matheus Cardoso Faesy - 202065065A
+Thaís de Jesus Soares - 202065511B
+*/
+
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -24,11 +30,11 @@ public class Habilidade {
         return this.dano * poder;
     }
 
-    public Habilidade(String nome_, String descricao_, int dano_, int carga_) {
-        this.carga = carga_;
-        this.dano = dano_;
-        this.nome = nome_;
-        this.descricao = descricao_;
+    public Habilidade(String nomer, String descricao, int dano, int carga) {
+        this.carga = carga;
+        this.dano = dano;
+        this.nome = nomer;
+        this.descricao = descricao;
 
     }
 }
