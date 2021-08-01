@@ -3,16 +3,18 @@ package interfaces.graficas;
 import java.awt.*;
 import javax.swing.*;
 import tratamento.eventos.CadastraJogador;
+import tratamento.eventos.ChecaAcesso;
 import tratamento.eventos.LogaJogador;
 
 public class Login {
 
     final private ImageIcon imagem = new ImageIcon("./src/main/java/imagens/Login.jpg");
+    final private ImageIcon imagemConfiguracoes = new ImageIcon("./src/main/java/imagens/IconeConfiguracoes.jpg");
     final private JLabel login, senha;
     final private JTextField tfLogin;
     final private JPasswordField tfSenha;
-    final private JButton logar, cadastrar;
-    public JFrame janela;
+    final private JButton logar, cadastrar, configuracoes;
+    private JFrame janela;
 
     private ImagemFundo posicionaComponentes() {
 
@@ -20,6 +22,10 @@ public class Login {
 
         GridBagLayout layout = new GridBagLayout();
         painel.setLayout(layout);
+
+        GridBagConstraints posBotaoConfiguracoes = new GridBagConstraints();
+        posBotaoConfiguracoes.insets = new Insets(-360, -700, 0, 0);
+        painel.add(configuracoes, posBotaoConfiguracoes);
 
         GridBagConstraints posLogin = new GridBagConstraints();
         posLogin.insets = new Insets(280, 5, 5, 5);
@@ -80,20 +86,31 @@ public class Login {
         cadastrar = new JButton("Cadastrar");
         cadastrar.addActionListener(new CadastraJogador(this));
 
+        configuracoes = new JButton();
+        configuracoes.setIcon(imagemConfiguracoes);
+        configuracoes.setBackground(Color.BLACK);
+        configuracoes.setPreferredSize(new Dimension(30, 30));
+        configuracoes.setToolTipText("Acesso restrito à administradores.");
+        configuracoes.addActionListener(new ChecaAcesso());
+
+    }
+
+    public void criaJanela() {
         ImagemFundo painel = posicionaComponentes();
 
         janela = new JFrame();
         janela.setSize(940, 520);
         janela.setResizable(false);
 
-        //implementar -> ao fechar salvar alterações
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //pesquisar 
         janela.setLocationRelativeTo(null);
 
         janela.add(painel);
         janela.setVisible(true);
+    }
 
+    public ImageIcon getImagemConfiguracoes() {
+        return imagemConfiguracoes;
     }
 
     private class ImagemFundo extends JPanel {
@@ -114,4 +131,5 @@ public class Login {
     public JPasswordField getTfSenha() {
         return tfSenha;
     }
-} 
+
+}

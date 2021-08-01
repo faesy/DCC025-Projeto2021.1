@@ -15,7 +15,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class LogaJogador extends BancoDados implements ActionListener { 
+public class LogaJogador implements ActionListener, BancoDados {
 
     Login login;
     Jogador jogador;
@@ -29,10 +29,16 @@ public class LogaJogador extends BancoDados implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (this.login.getTfLogin().getText().equals("") || this.login.getTfSenha().getPassword().equals("")) {
+            JOptionPane.showMessageDialog(null, "O preenchimento de todos os campos é obrigatório", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         jogador = new Jogador();
         jogador.setNome(this.login.getTfLogin().getText());
         jogador.setSenha(new String(this.login.getTfSenha().getPassword()));
         manipulaJSON();
+        this.login.getTfLogin().setText("");
+        this.login.getTfSenha().setText("");
     }
 
     @Override
@@ -45,14 +51,13 @@ public class LogaJogador extends BancoDados implements ActionListener {
             boolean existe = false;
             for (int i = 0; i < jogadoresArray.size(); i++) {
                 JSONObject jogadorAux = (JSONObject) jogadoresArray.get(i);
-                if(jogadorAux.get("Nome").equals(jogador.getNome()) && jogadorAux.get("Senha").equals(jogador.getSenha())) {
+                if (jogadorAux.get("Nome").equals(jogador.getNome()) && jogadorAux.get("Senha").equals(jogador.getSenha())) {
                     existe = true;
-                    JOptionPane.showMessageDialog(null, "Login realizado com sucesso.");
+                    JOptionPane.showMessageDialog(null, "Login realizado com sucesso.", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
-            if(existe == false)
-            {
-                JOptionPane.showMessageDialog(null, "Nome e/ou senha digitados inválidos");
+            if (existe == false) {
+                JOptionPane.showMessageDialog(null, "Nome e/ou senha digitados inválidos", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (IOException ex) {
             Logger.getLogger(LogaJogador.class.getName()).log(Level.SEVERE, null, ex);

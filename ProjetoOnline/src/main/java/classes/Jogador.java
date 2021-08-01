@@ -1,11 +1,14 @@
 package classes;
 
 public class Jogador {
-    
+
     private String nome;
     private String senha;
+    private Deus deus;
+    private Consumivel[] consumiveis;
 
     public Jogador() {
+        consumiveis = new Consumivel[2];
     }
 
     public void setNome(String nome) {

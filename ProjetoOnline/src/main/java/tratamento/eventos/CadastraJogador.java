@@ -10,14 +10,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import classes.BancoDados;
-import static classes.BancoDados.CAMINHO_BANCO_DADOS;
 import classes.Jogador;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class CadastraJogador extends BancoDados implements ActionListener{
+public class CadastraJogador implements ActionListener, BancoDados {
+
     Login cadastro;
     Jogador jogador;
     JSONObject bancoDados;
@@ -38,15 +38,14 @@ public class CadastraJogador extends BancoDados implements ActionListener{
             boolean existe = false;
             for (int i = 0; i < jogadoresArray.size(); i++) {
                 JSONObject jogadorAux = (JSONObject) jogadoresArray.get(i);
-                if(jogadorAux.get("Nome").equals(jogador.getNome())) {
+                if (jogadorAux.get("Nome").equals(jogador.getNome())) {
                     JOptionPane.showMessageDialog(null, "O nome de usuário digitado já existe.");
                     existe = true;
                 }
             }
-            if(existe == false)
-            {
+            if (existe == false) {
                 JSONObject jogadorAux = new JSONObject();
-                jogadorAux.put("Nome",jogador.getNome());
+                jogadorAux.put("Nome", jogador.getNome());
                 jogadorAux.put("Senha", jogador.getSenha());
                 jogadoresArray.add(jogadorAux);
                 FileWriter fw = null;
@@ -55,7 +54,7 @@ public class CadastraJogador extends BancoDados implements ActionListener{
                 fw.close();
                 JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso.");
             }
-            
+
         } catch (IOException ex) {
             Logger.getLogger(LogaJogador.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {
@@ -65,10 +64,16 @@ public class CadastraJogador extends BancoDados implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (this.cadastro.getTfLogin().getText().equals("") || this.cadastro.getTfSenha().getPassword().equals("")) {
+            JOptionPane.showMessageDialog(null, "O preenchimento de todos os campos é obrigatório", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         jogador = new Jogador();
         jogador.setNome(this.cadastro.getTfLogin().getText());
         jogador.setSenha(new String(this.cadastro.getTfSenha().getPassword()));
         manipulaJSON();
+        this.cadastro.getTfLogin().setText("");
+        this.cadastro.getTfSenha().setText("");
     }
-    
+
 }
