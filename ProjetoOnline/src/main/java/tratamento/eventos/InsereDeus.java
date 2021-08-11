@@ -39,7 +39,8 @@ public class InsereDeus implements ActionListener, BancoDados {
                 || this.objeto.getTfDH1Nome().getText().equals("")
                 || this.objeto.getTfDH2Nome().getText().equals("")
                 || this.objeto.getTfDH3Nome().getText().equals("")
-                || this.objeto.getTfDH4Nome().getText().equals("")) {
+                || this.objeto.getTfDH4Nome().getText().equals("")
+                || this.objeto.getTfDCaminhoIcone().getText().equals("")) {
             JOptionPane.showMessageDialog(null, "O preenchimento de todos os campos é obrigatório", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
@@ -54,18 +55,18 @@ public class InsereDeus implements ActionListener, BancoDados {
         nomeHabilidades[1] = this.objeto.getTfDH2Nome().getText();
         nomeHabilidades[2] = this.objeto.getTfDH3Nome().getText();
         nomeHabilidades[3] = this.objeto.getTfDH4Nome().getText();
+        deus.setCaminhoIcone(this.objeto.getTfDCaminhoIcone().getText());
         manipulaJSON();
-        /*
+
         this.objeto.getTfDNome().setText("");
         this.objeto.getTfDDescricao().setText("");
         this.objeto.getTfDPoderBase().setText("");
-        this.objeto.getTfDVidaBase().setText(""); 
+        this.objeto.getTfDVidaBase().setText("");
         this.objeto.getTfDNivel().setText("");
         this.objeto.getTfDH1Nome().setText("");
         this.objeto.getTfDH2Nome().setText("");
         this.objeto.getTfDH3Nome().setText("");
-        this.objeto.getTfDH4Nome().setText(""); 
-         */
+        this.objeto.getTfDH4Nome().setText("");
     }
 
     @Override
@@ -90,6 +91,7 @@ public class InsereDeus implements ActionListener, BancoDados {
                 deusAux.put("Poder Base", deus.getPoderBase());
                 deusAux.put("Vida Base", deus.getVidaBase());
                 deusAux.put("Nivel", deus.getNivel());
+                deusAux.put("Diretorio", deus.getCaminhoIcone());
                 JSONObject habilidades = (JSONObject) bancoDadosArray.get(2);
                 JSONArray habilidadesArray = (JSONArray) habilidades.get("Habilidades");
                 JSONArray dHabilidadeArray = new JSONArray();
@@ -97,21 +99,19 @@ public class InsereDeus implements ActionListener, BancoDados {
                 int[] hExiste = {0, 0, 0, 0};
                 for (int i = 0; i < habilidadesArray.size(); i++) {
                     JSONObject habilidadeAux = (JSONObject) habilidadesArray.get(i);
-                    System.out.println(habilidadeAux.get("Nome"));
-                    System.out.println(nomeHabilidades[0]);
-                    System.out.println(nomeHabilidades[1]);
-                    System.out.println(nomeHabilidades[2]);
-                    System.out.println(nomeHabilidades[3]);
                     if (habilidadeAux.get("Nome").equals(nomeHabilidades[0])) {
                         dHabilidadeArray.add(habilidadeAux);
                         hExiste[0] = 1;
-                    } else if (habilidadeAux.get("Nome").equals(nomeHabilidades[1])) {
+                    }
+                    if (habilidadeAux.get("Nome").equals(nomeHabilidades[1])) {
                         dHabilidadeArray.add(habilidadeAux);
                         hExiste[1] = 1;
-                    } else if (habilidadeAux.get("Nome").equals(nomeHabilidades[2])) {
+                    }
+                    if (habilidadeAux.get("Nome").equals(nomeHabilidades[2])) {
                         dHabilidadeArray.add(habilidadeAux);
                         hExiste[2] = 1;
-                    } else if (habilidadeAux.get("Nome").equals(nomeHabilidades[3])) {
+                    }
+                    if (habilidadeAux.get("Nome").equals(nomeHabilidades[3])) {
                         dHabilidadeArray.add(habilidadeAux);
                         hExiste[3] = 1;
                     }

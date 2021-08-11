@@ -5,6 +5,7 @@ public class Deus {
     private String nome, descricao;
     private int vidaBase, nivel, poderBase;
     private Habilidade[] habilidades;
+    private String caminhoIcone;
 
     public Deus() {
     }
@@ -57,4 +58,11 @@ public class Deus {
         this.habilidades = habilidades;
     }
 
+    public String getCaminhoIcone() {
+        return caminhoIcone;
+    }
+
+    public void setCaminhoIcone(String caminhoIcone) {
+        this.caminhoIcone = caminhoIcone;
+    }
 }

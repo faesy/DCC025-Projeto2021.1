@@ -33,8 +33,8 @@ public class InsereRemoveObjetos extends ConfiguracoesInternas implements Action
     private JTextField tfHNome, tfHDescricao, tfHCarga, tfHDano;
     private JButton hInserir, hRemover;
 
-    private JLabel dNome, dDescricao, dVidaBase, dNivel, dPoderBase, dH1Nome, dH2Nome, dH3Nome, dH4Nome;
-    private JTextField tfDNome, tfDDescricao, tfDVidaBase, tfDNivel, tfDPoderBase, tfDH1Nome, tfDH2Nome, tfDH3Nome, tfDH4Nome;
+    private JLabel dNome, dDescricao, dVidaBase, dNivel, dPoderBase, dH1Nome, dH2Nome, dH3Nome, dH4Nome, dCaminhoIcone;
+    private JTextField tfDNome, tfDDescricao, tfDVidaBase, tfDNivel, tfDPoderBase, tfDH1Nome, tfDH2Nome, tfDH3Nome, tfDH4Nome, tfDCaminhoIcone;
     private JButton dInserir, dRemover;
     private ConfiguracoesInternas ci;
     private JMenuItem inserirRemover;
@@ -99,11 +99,14 @@ public class InsereRemoveObjetos extends ConfiguracoesInternas implements Action
         dH3Nome.setFont(new Font("Arial", Font.BOLD, 10));
         dH4Nome = new JLabel("Habilidade 4");
         dH4Nome.setFont(new Font("Arial", Font.BOLD, 10));
+        dCaminhoIcone = new JLabel("Diretório");
+        dCaminhoIcone.setFont(new Font("Arial", Font.BOLD, 10));
         this.tfDNome = new JTextField(15);
         this.tfDDescricao = new JTextField(15);
         this.tfDVidaBase = new JTextField(15);
         this.tfDNivel = new JTextField(15);
         this.tfDPoderBase = new JTextField(15);
+        this.tfDCaminhoIcone = new JTextField(15);
         tfDH1Nome = new JTextField(15);
         tfDH2Nome = new JTextField(15);
         tfDH3Nome = new JTextField(15);
@@ -275,10 +278,17 @@ public class InsereRemoveObjetos extends ConfiguracoesInternas implements Action
         painel.add(tfDH4Nome, pos);
 
         pos = posicao(0, 9);
-        pos.insets = new Insets(0, 5, -50, -10);
-        painel.add(dInserir, pos);
+        pos.insets = new Insets(0, 5, -30, 5);
+        painel.add(dCaminhoIcone, pos);
         pos = posicao(1, 9);
-        pos.insets = new Insets(0, 0, -50, -55);
+        pos.insets = new Insets(0, 0, -30, 0);
+        painel.add(tfDCaminhoIcone, pos);
+
+        pos = posicao(0, 10);
+        pos.insets = new Insets(0, 5, -100, -10);
+        painel.add(dInserir, pos);
+        pos = posicao(1, 10);
+        pos.insets = new Insets(0, 0, -100, -55);
         painel.add(dRemover, pos);
 
         JScrollPane painelRolante = new JScrollPane(painel);
@@ -419,6 +429,14 @@ public class InsereRemoveObjetos extends ConfiguracoesInternas implements Action
 
     public void setTfDH4Nome(JTextField tfDH4Nome) {
         this.tfDH4Nome = tfDH4Nome;
+    }
+
+    public JTextField getTfDCaminhoIcone() {
+        return tfDCaminhoIcone;
+    }
+
+    public void setTfDCaminhoIcone(JTextField tfDCaminhoIcone) {
+        this.tfDCaminhoIcone = tfDCaminhoIcone;
     }
 
     @Override
