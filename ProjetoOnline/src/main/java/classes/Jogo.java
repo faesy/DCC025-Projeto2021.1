@@ -4,6 +4,7 @@ import interfaces.graficas.Historia;
 import interfaces.graficas.Login;
 import interfaces.graficas.MenuHabilidades;
 import interfaces.graficas.EscolhadePersonagens;
+import interfaces.graficas.InterfaceBatalha;
 
 public class Jogo {
 
@@ -15,6 +16,7 @@ public class Jogo {
         //Deus deus = new Deus();
         //new MenuHabilidades(deus).criaJanela();
         //new Historia("Ola").criaJanela();
-        new EscolhadePersonagens().criaJanela();
+        //new EscolhadePersonagens().criaJanela();
+        new InterfaceBatalha().criaJanela();
     }
 }
