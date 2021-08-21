@@ -1,5 +1,6 @@
 package interfaces.graficas;
 
+import classes.Jogador;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -20,7 +21,7 @@ public class Historia {
     String caminhoIcone;
     JPanel painel;
 
-    public Historia(String mensagem) {
+    public Historia(String mensagem,Jogador jogador) {
         this.mensagem = mensagem;
         this.caminhoIcone = "./src/main/java/imagens/Floresta.png";
     }

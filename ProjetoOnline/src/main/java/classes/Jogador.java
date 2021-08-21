@@ -7,6 +7,12 @@ public class Jogador {
     private Deus deus;
     private Consumivel[] consumiveis;
 
+    public void setDeus(Deus deus) {
+        this.deus = deus;
+    }
+    
+    
+
     public Jogador() {
         consumiveis = new Consumivel[2];
     }
