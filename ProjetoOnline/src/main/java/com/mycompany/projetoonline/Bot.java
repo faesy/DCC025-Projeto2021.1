@@ -52,7 +52,7 @@ public class Bot {
     }
 
     private void novoInimigo() {
-        this.inimigo = new Inimigo(this.modoDeJogo, "Inimigo");
+        //this.inimigo = new Inimigo(); falta preencher de acordo com o que ja ta no json
     }
 
     private void retiraInimigo() {
@@ -60,7 +60,7 @@ public class Bot {
     }
 
     private void recebeAtaque(int danoRecebido) {
-        this.inimigo.manejaVida(danoRecebido);
+        this.inimigo.reduzirVida(danoRecebido);
         if (this.inimigo.verificaMorto()) {
             retiraInimigo();
         }

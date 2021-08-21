@@ -54,6 +54,7 @@ public class LogaJogador implements ActionListener, BancoDados {
                 if (jogadorAux.get("Nome").equals(jogador.getNome()) && jogadorAux.get("Senha").equals(jogador.getSenha())) {
                     existe = true;
                     JOptionPane.showMessageDialog(null, "Login realizado com sucesso.", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
+                    
                 }
             }
             if (existe == false) {
