@@ -23,7 +23,7 @@ public class Inimigo {
 
     //atributos da classe Inimigo
     private int vidaBase;
-    private int vidaAtual;
+    protected int vidaAtual;
     private int vidaMax;
     private int xpDada;
     private int nivelDesafio;
@@ -34,6 +34,11 @@ public class Inimigo {
     private boolean morto = false;
     private int carga[] = new int[4];
 
+    public int getVidaBase() {
+        return vidaBase;
+    }
+
+    
     //Métodos da classe Habilidade
     public Inimigo(int modo, String nomeGenerico) {
         //modo simboliza a dificuldade do jogo

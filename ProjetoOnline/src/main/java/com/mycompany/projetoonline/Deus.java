@@ -21,7 +21,7 @@ public class Deus {
 
     //Atributos da classe Deus
     private int vidaBase;
-    private int vidaAtual;
+    protected int vidaAtual;
     private int vidaMax;
     private int xp;
     private int nivel;
