@@ -11,10 +11,6 @@ public class Jogador {
         consumiveis = new Consumivel[2];
     }
 
-    public void setDeus(Deus deus) {
-        this.deus = deus;
-    }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
