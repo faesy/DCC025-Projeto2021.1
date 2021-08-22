@@ -25,16 +25,16 @@ import tratamento.eventos.RemoveHabilidade;
 
 public class InsereRemoveObjetos extends ConfiguracoesInternas implements ActionListener {
 
-    private JLabel cNome, cDescricao, cCarga;
-    private JTextField tfCNome, tfCDescricao, tfCCarga, tfCTipo;
+    private JLabel cNome, cDescricao, cCarga, cEfeito;
+    private JTextField tfCNome, tfCDescricao, tfCCarga, tfCTipo, tfCEfeito;
     private JButton cInserir, cRemover;
 
     private JLabel hNome, hDescricao, hCarga, hDano;
     private JTextField tfHNome, tfHDescricao, tfHCarga, tfHDano;
     private JButton hInserir, hRemover;
 
-    private JLabel dNome, dDescricao, dVidaBase, dNivel, dPoderBase, dH1Nome, dH2Nome, dH3Nome, dH4Nome, dCaminhoIcone;
-    private JTextField tfDNome, tfDDescricao, tfDVidaBase, tfDNivel, tfDPoderBase, tfDH1Nome, tfDH2Nome, tfDH3Nome, tfDH4Nome, tfDCaminhoIcone;
+    private JLabel dNome, dDescricao, dVidaBase, dNivel, dPoderBase, dH1Nome, dH2Nome, dH3Nome, dH4Nome, dCaminhoIcone, dTipo;
+    private JTextField tfDNome, tfDDescricao, tfDVidaBase, tfDNivel, tfDPoderBase, tfDH1Nome, tfDH2Nome, tfDH3Nome, tfDH4Nome, tfDCaminhoIcone, tfDTipo;
     private JButton dInserir, dRemover;
     private ConfiguracoesInternas ci;
     private JMenuItem inserirRemover;
@@ -48,10 +48,13 @@ public class InsereRemoveObjetos extends ConfiguracoesInternas implements Action
         cDescricao.setFont(new Font("Arial", Font.BOLD, 10));
         this.cCarga = new JLabel("Carga");
         cCarga.setFont(new Font("Arial", Font.BOLD, 10));
+        this.cEfeito = new JLabel("Efeito");
+        cEfeito.setFont(new Font("Arial", Font.BOLD, 10));
 
         this.tfCNome = new JTextField(15);
         this.tfCDescricao = new JTextField(15);
         this.tfCCarga = new JTextField(15);
+        this.tfCEfeito = new JTextField(15);
 
         this.cInserir = new JButton("Inserir");
         cInserir.addActionListener(new InsereConsumivel(this));
@@ -101,12 +104,15 @@ public class InsereRemoveObjetos extends ConfiguracoesInternas implements Action
         dH4Nome.setFont(new Font("Arial", Font.BOLD, 10));
         dCaminhoIcone = new JLabel("Diretório");
         dCaminhoIcone.setFont(new Font("Arial", Font.BOLD, 10));
+        dTipo = new JLabel("Tipo");
+        dTipo.setFont(new Font("Arial", Font.BOLD, 10));
         this.tfDNome = new JTextField(15);
         this.tfDDescricao = new JTextField(15);
         this.tfDVidaBase = new JTextField(15);
         this.tfDNivel = new JTextField(15);
         this.tfDPoderBase = new JTextField(15);
         this.tfDCaminhoIcone = new JTextField(15);
+        this.tfDTipo = new JTextField(15);
         tfDH1Nome = new JTextField(15);
         tfDH2Nome = new JTextField(15);
         tfDH3Nome = new JTextField(15);
@@ -146,19 +152,27 @@ public class InsereRemoveObjetos extends ConfiguracoesInternas implements Action
         pos = posicao(1, 1);
         pos.insets = new Insets(-350, 0, 0, 0);
         painel.add(tfCDescricao, pos);
+//        pos = posicao(0, 2);
+//        pos.insets = new Insets(-300, 0, 0, 0);
         pos = posicao(0, 2);
         pos.insets = new Insets(-300, 0, 0, 0);
-        pos = posicao(0, 3);
-        pos.insets = new Insets(-300, 0, 0, 0);
         painel.add(cCarga, pos);
-        pos = posicao(1, 3);
+        pos = posicao(1, 2);
         pos.insets = new Insets(-300, 0, 0, 0);
         painel.add(tfCCarga, pos);
+        
+        pos = posicao(0, 3);
+        pos.insets = new Insets(-250, 0, 0, 0);
+        painel.add(cEfeito, pos);
+        pos = posicao(1, 3);
+        pos.insets = new Insets(-250, 0, 0, 0);
+        painel.add(tfCEfeito, pos);
+        
         pos = posicao(0, 4);
-        pos.insets = new Insets(-230, 5, 0, -10);
+        pos.insets = new Insets(-180, 5, 0, -10);
         painel.add(cInserir, pos);
         pos = posicao(1, 4);
-        pos.insets = new Insets(-230, 0, 0, -55);
+        pos.insets = new Insets(-180, 0, 0, -55);
         painel.add(cRemover, pos);
 
         JScrollPane painelRolante = new JScrollPane(painel);
@@ -283,12 +297,19 @@ public class InsereRemoveObjetos extends ConfiguracoesInternas implements Action
         pos = posicao(1, 9);
         pos.insets = new Insets(0, 0, -30, 0);
         painel.add(tfDCaminhoIcone, pos);
-
+        
         pos = posicao(0, 10);
-        pos.insets = new Insets(0, 5, -100, -10);
-        painel.add(dInserir, pos);
+        pos.insets = new Insets(0, 5, -80, 5);
+        painel.add(dTipo, pos);
         pos = posicao(1, 10);
-        pos.insets = new Insets(0, 0, -100, -55);
+        pos.insets = new Insets(0, 0, -80, 0);
+        painel.add(tfDTipo, pos);
+
+        pos = posicao(0, 11);
+        pos.insets = new Insets(0, 5, -150, -10);
+        painel.add(dInserir, pos);
+        pos = posicao(1, 11);
+        pos.insets = new Insets(0, 0, -150, -55);
         painel.add(dRemover, pos);
 
         JScrollPane painelRolante = new JScrollPane(painel);
@@ -451,4 +472,22 @@ public class InsereRemoveObjetos extends ConfiguracoesInternas implements Action
         this.ci.getJanela().repaint();
         this.ci.getJanela().validate();
     }
+
+    public JTextField getTfCEfeito() {
+        return tfCEfeito;
+    }
+
+    public void setTfCEfeito(JTextField tfCEfeito) {
+        this.tfCEfeito = tfCEfeito;
+    }
+
+    public JTextField getTfDTipo() {
+        return tfDTipo;
+    }
+
+    public void setTfDTipo(JTextField tfDTipo) {
+        this.tfDTipo = tfDTipo;
+    }
+    
+    
 }

@@ -1,1 +1,80 @@
-{"Banco de Dados":[{"Jogadores":[{"Senha":"a","Nome":"a"}]},{"Deuses":[{"Descricao":"Zeus","Vida Base":1,"Habilidades":[{"Descricao":"raio","Carga":4,"Nome":"raio","Dano":2},{"Descricao":"raio","Carga":4,"Nome":"raio","Dano":2},{"Descricao":"raio","Carga":4,"Nome":"raio","Dano":2},{"Descricao":"raio","Carga":4,"Nome":"raio","Dano":2}],"Poder Base":1,"Diretorio":".\/src\/main\/java\/imagens\/zeus.png","Nome":"Zeus","Nivel":1},{"Descricao":"ra","Vida Base":1,"Habilidades":[{"Descricao":"raio","Carga":4,"Nome":"raio","Dano":2},{"Descricao":"raio","Carga":4,"Nome":"raio","Dano":2},{"Descricao":"raio","Carga":4,"Nome":"raio","Dano":2},{"Descricao":"raio","Carga":4,"Nome":"raio","Dano":2}],"Poder Base":1,"Diretorio":".\/src\/main\/java\/imagens\/rá.png","Nome":"Ra","Nivel":1}]},{"Habilidades":[{"Descricao":"raio","Carga":4,"Nome":"raio","Dano":2}]},{"Consumiveis":[]},{"Chave de Seguranca":"123456789**"}]}
+{
+    "Banco de Dados": [{
+            "Jogadores": [{
+                    "Senha": "a",
+                    "Nome": "a",
+                    "Chave de Progresso": "0"
+                }]
+        }, {
+            "Deuses": [{
+                    "Descricao": "Zeus",
+                    "Vida Base": 1,
+                    "Habilidades": [{
+                            "Descricao": "raio",
+                            "Carga": 4,
+                            "Nome": "raio",
+                            "Dano": 2
+                        }, {
+                            "Descricao": "raio",
+                            "Carga": 4,
+                            "Nome": "raio",
+                            "Dano": 2
+                        }, {
+                            "Descricao": "raio",
+                            "Carga": 4,
+                            "Nome": "raio",
+                            "Dano": 2
+                        }, {
+                            "Descricao": "raio",
+                            "Carga": 4,
+                            "Nome": "raio",
+                            "Dano": 2
+                        }],
+                    "Poder Base": 1,
+                    "Diretorio": ".\/src\/main\/java\/imagens\/zeus.png",
+                    "Nome": "Zeus",
+                    "Nivel": 1,
+                    "Tipo": "Eletricidade"
+                }, {
+                    "Descricao": "ra",
+                    "Vida Base": 1,
+                    "Habilidades": [{
+                            "Descricao": "raio",
+                            "Carga": 4,
+                            "Nome": "raio",
+                            "Dano": 2
+                        }, {
+                            "Descricao": "raio",
+                            "Carga": 4,
+                            "Nome": "raio",
+                            "Dano": 2
+                        }, {
+                            "Descricao": "raio",
+                            "Carga": 4,
+                            "Nome": "raio",
+                            "Dano": 2
+                        }, {
+                            "Descricao": "raio",
+                            "Carga": 4,
+                            "Nome": "raio",
+                            "Dano": 2
+                        }],
+                    "Poder Base": 1,
+                    "Diretorio": ".\/src\/main\/java\/imagens\/rï¿½.png",
+                    "Nome": "Ra",
+                    "Nivel": 1,
+                    "Tipo": "Fogo"
+                }]
+        }, {
+            "Habilidades": [{
+                    "Descricao": "raio",
+                    "Carga": 4,
+                    "Nome": "raio",
+                    "Dano": 2
+                }]
+        }, {
+            "Consumiveis": []
+        }, {
+            "Chave de Seguranca": "123456789**"
+        }]
+}

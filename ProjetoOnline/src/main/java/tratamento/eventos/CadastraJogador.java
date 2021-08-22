@@ -14,7 +14,7 @@ import classes.Jogador;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import org.json.simple.parser.ParseException; 
 
 public class CadastraJogador implements ActionListener, BancoDados {
 
@@ -47,6 +47,7 @@ public class CadastraJogador implements ActionListener, BancoDados {
                 JSONObject jogadorAux = new JSONObject();
                 jogadorAux.put("Nome", jogador.getNome());
                 jogadorAux.put("Senha", jogador.getSenha());
+                jogadorAux.put("Chave de Progresso", jogador.getChaveProgresso());
                 jogadoresArray.add(jogadorAux);
                 FileWriter fw = null;
                 fw = new FileWriter(CAMINHO_BANCO_DADOS);
@@ -71,6 +72,8 @@ public class CadastraJogador implements ActionListener, BancoDados {
         jogador = new Jogador();
         jogador.setNome(this.cadastro.getTfLogin().getText());
         jogador.setSenha(new String(this.cadastro.getTfSenha().getPassword()));
+        jogador.setChaveProgresso(0);
+        
         manipulaJSON();
         this.cadastro.getTfLogin().setText("");
         this.cadastro.getTfSenha().setText("");

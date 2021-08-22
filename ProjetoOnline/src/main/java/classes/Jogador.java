@@ -3,7 +3,7 @@ package classes;
 public class Jogador {
 
     private String nome;
-    private int ChaveDeProgresso = 0;
+    private int chaveProgresso;
     private String senha;
     private Deus deus;
     private Consumivel consumivel;
@@ -13,20 +13,19 @@ public class Jogador {
         this.deus = deus;
     }
 
-    public int getChaveDeProgresso() {
-        return ChaveDeProgresso;
+    public int getChaveProgresso() {
+        return chaveProgresso;
     }
 
-    public void setChaveDeProgresso(int ChaveDeProgresso) {
-        this.ChaveDeProgresso = ChaveDeProgresso;
+    public void setChaveProgresso(int chaveProgresso) {
+        this.chaveProgresso = chaveProgresso;
     }
 
     public void aumentaChaveDeProgresso() {
-        ChaveDeProgresso = ChaveDeProgresso + 1;
+        chaveProgresso = chaveProgresso + 1;
     }
 
     public Jogador() {
-
     }
 
     public void setConsumivel(Consumivel consumivel) {
@@ -49,10 +48,6 @@ public class Jogador {
     public String getSenha() {
         return senha;
     }
-
-
-
-
 
     public double usaConsumivel() {
         double efeito = Consumivel.efeitoPot(this.consumivel.getNome());
@@ -97,6 +92,5 @@ public class Jogador {
         return deus;
     }
 
-    //deus.funcaoPoder(efeito);
 }
 

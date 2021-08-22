@@ -19,7 +19,7 @@ public class Progressao {
     
     public Progressao(Jogador jogador) {
         
-        int chave=jogador.getChaveDeProgresso();
+        int chave=jogador.getChaveProgresso();
         
         switch (chave){
             case -1:

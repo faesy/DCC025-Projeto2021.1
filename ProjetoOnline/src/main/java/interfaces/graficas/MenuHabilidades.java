@@ -43,7 +43,7 @@ public class MenuHabilidades implements BancoDados {
     private JFrame janela;
 
     public MenuHabilidades(Jogador jogador) {
-        this.jogador=jogador;
+        this.jogador = jogador;
         this.deus = jogador.getDeus();
         parser = new JSONParser();
         manipulaJSON();

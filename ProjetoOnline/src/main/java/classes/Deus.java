@@ -2,7 +2,7 @@ package classes;
 
 public class Deus {
 
-    private String nome, descricao;
+    private String nome, descricao, tipo;
     private int vidaBase, nivel, poderBase, vidaMax, vidaAtual, poder, xp;
     private int[] carga = new int[4];
     private Habilidade[] habilidades;
@@ -152,5 +152,13 @@ public class Deus {
 
     protected void poderMomentaneo(double efeito){
         this.poder = (int) (this.poder*(1+efeito));
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 }

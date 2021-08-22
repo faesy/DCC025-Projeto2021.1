@@ -80,6 +80,7 @@ public class InterfaceBatalha implements BancoDados{
                     inimigo.setVidaBase(Integer.parseInt(deusAux.get("Vida Base").toString()));
                     inimigo.setNivel(jogador.getDeus().getNivel());
                     inimigo.setCaminhoIcone(deusAux.get("Diretorio").toString());
+                    inimigo.setTipo(deusAux.get("Tipo").toString());
                     
                     JSONArray habilidades = (JSONArray) deusAux.get("Habilidades");
                     
@@ -319,7 +320,7 @@ public class InterfaceBatalha implements BancoDados{
                  jogador.getDeus().reduzirVida(bot.usaHabilidade());
                  
                  if(jogador.getDeus().verificaMorto()){
-                     jogador.setChaveDeProgresso(-1);//GameOver
+                     jogador.setChaveProgresso(-1);//GameOver
                      new Progressao(jogador);
                  }else{
                      if(bot.getInimigo().verificaMorto()){

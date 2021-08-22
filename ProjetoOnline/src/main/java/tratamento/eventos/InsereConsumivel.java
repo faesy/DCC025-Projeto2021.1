@@ -32,7 +32,8 @@ public class InsereConsumivel implements ActionListener, BancoDados {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (this.objeto.getTfCNome().getText().equals("") || this.objeto.getTfCDescricao().getText().equals("")
-                || this.objeto.getTfCCarga().getText().equals("")) {
+                || this.objeto.getTfCCarga().getText().equals("")
+                || this.objeto.getTfCEfeito().getText().equals("")) {
             JOptionPane.showMessageDialog(null, "O preenchimento de todos os campos e obrigatorio", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
@@ -40,10 +41,12 @@ public class InsereConsumivel implements ActionListener, BancoDados {
         consumivel.setNome(this.objeto.getTfCNome().getText());
         consumivel.setDescricao(this.objeto.getTfCDescricao().getText());
         consumivel.setCarga(Integer.parseInt(this.objeto.getTfCCarga().getText()));
+        consumivel.setEfeito(this.objeto.getTfCEfeito().getText());
         manipulaJSON();
         this.objeto.getTfCNome().setText("");
         this.objeto.getTfCDescricao().setText("");
         this.objeto.getTfCCarga().setText("");
+        this.objeto.getTfCEfeito().setText("");
     }
 
     @Override
@@ -66,6 +69,7 @@ public class InsereConsumivel implements ActionListener, BancoDados {
                 consumivelAux.put("Nome", consumivel.getNome());
                 consumivelAux.put("Descricao", consumivel.getDescricao());
                 consumivelAux.put("Carga", consumivel.getCarga());
+                consumivelAux.put("Efeito", consumivel.getEfeito());
                 System.out.println(consumivelAux.toString());
                 consumiveisArray.add(consumivelAux);
                 FileWriter fw = null;

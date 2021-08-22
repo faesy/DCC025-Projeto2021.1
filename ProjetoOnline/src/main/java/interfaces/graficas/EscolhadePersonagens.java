@@ -66,6 +66,7 @@ public class EscolhadePersonagens implements BancoDados{
                     deus.setVidaBase(Integer.parseInt(deusAux.get("Vida Base").toString()));
                     deus.setNivel(Integer.parseInt(deusAux.get("Nivel").toString()));
                     deus.setCaminhoIcone(deusAux.get("Diretorio").toString());
+                    deus.setTipo(deusAux.get("Tipo").toString());
                     
                     JSONArray habilidades = (JSONArray) deusAux.get("Habilidades");
                     
@@ -119,7 +120,7 @@ public class EscolhadePersonagens implements BancoDados{
                 deus.setNome("Zeus");
                 manipulaJSON();
                 jogador.setDeus(deus);
-                jl4.setText("<html><body>Tipo: Eletricidade<br>Vida Inicial: "+deus.getVidaBase()+"<br>Poder Inicial: "+deus.getPoderBase()+"<br>Habilidade 1: "+deus.getHabilidades()[0].getNome()+"<br>Habilidade 2: "+deus.getHabilidades()[1].getNome()+"<br>Habilidade 3: "+deus.getHabilidades()[2].getNome()+"<br>Habilidade 4: "+deus.getHabilidades()[3].getNome()+"<br&gtcom HTML!</body></html>");
+                jl4.setText("<html><body>Tipo: " + deus.getTipo() + "<br>Vida Inicial: "+deus.getVidaBase()+"<br>Poder Inicial: "+deus.getPoderBase()+"<br>Habilidade 1: "+deus.getHabilidades()[0].getNome()+"<br>Habilidade 2: "+deus.getHabilidades()[1].getNome()+"<br>Habilidade 3: "+deus.getHabilidades()[2].getNome()+"<br>Habilidade 4: "+deus.getHabilidades()[3].getNome()+"<br&gtcom HTML!</body></html>");
             }
         }); 
         
@@ -134,10 +135,10 @@ public class EscolhadePersonagens implements BancoDados{
                 confirmarskadi.setVisible(false);
                 jl4.setFont(new Font("Georgia", Font.BOLD, 10));
                 
-                deus.setNome("Rá");
+                deus.setNome("Ra");
                 manipulaJSON();
                 jogador.setDeus(deus);
-                jl4.setText("<html><body>Tipo: Fogo<br>Vida Inicial: "+deus.getVidaBase()+"<br>Poder Inicial: "+deus.getPoderBase()+"<br>Habilidade 1: "+deus.getHabilidades()[0].getNome()+"<br>Habilidade 2: "+deus.getHabilidades()[1].getNome()+"<br>Habilidade 3: "+deus.getHabilidades()[2].getNome()+"<br>Habilidade 4: "+deus.getHabilidades()[3].getNome()+"<br&gtcom HTML!</body></html>");
+                jl4.setText("<html><body>Tipo: " + deus.getTipo() +"<br>Vida Inicial: "+deus.getVidaBase()+"<br>Poder Inicial: "+deus.getPoderBase()+"<br>Habilidade 1: "+deus.getHabilidades()[0].getNome()+"<br>Habilidade 2: "+deus.getHabilidades()[1].getNome()+"<br>Habilidade 3: "+deus.getHabilidades()[2].getNome()+"<br>Habilidade 4: "+deus.getHabilidades()[3].getNome()+"<br&gtcom HTML!</body></html>");
             }
         });
          
@@ -155,7 +156,7 @@ public class EscolhadePersonagens implements BancoDados{
                 deus.setNome("Skadi");
                 manipulaJSON();
                 jogador.setDeus(deus);
-                jl4.setText("<html><body>Tipo: Gelo<br>Vida Inicial: "+deus.getVidaBase()+"<br>Poder Inicial: "+deus.getPoderBase()+"<br>Habilidade 1: "+deus.getHabilidades()[0].getNome()+"<br>Habilidade 2: "+deus.getHabilidades()[1].getNome()+"<br>Habilidade 3: "+deus.getHabilidades()[2].getNome()+"<br>Habilidade 4: "+deus.getHabilidades()[3].getNome()+"<br&gtcom HTML!</body></html>");
+                jl4.setText("<html><body>Tipo: " + deus.getTipo() + "<br>Vida Inicial: "+deus.getVidaBase()+"<br>Poder Inicial: "+deus.getPoderBase()+"<br>Habilidade 1: "+deus.getHabilidades()[0].getNome()+"<br>Habilidade 2: "+deus.getHabilidades()[1].getNome()+"<br>Habilidade 3: "+deus.getHabilidades()[2].getNome()+"<br>Habilidade 4: "+deus.getHabilidades()[3].getNome()+"<br&gtcom HTML!</body></html>");
             }
         });
          

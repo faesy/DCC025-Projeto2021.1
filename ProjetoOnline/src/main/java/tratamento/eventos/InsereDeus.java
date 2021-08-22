@@ -40,7 +40,8 @@ public class InsereDeus implements ActionListener, BancoDados {
                 || this.objeto.getTfDH2Nome().getText().equals("")
                 || this.objeto.getTfDH3Nome().getText().equals("")
                 || this.objeto.getTfDH4Nome().getText().equals("")
-                || this.objeto.getTfDCaminhoIcone().getText().equals("")) {
+                || this.objeto.getTfDCaminhoIcone().getText().equals("")
+                || this.objeto.getTfDTipo().getText().equals("")) {
             JOptionPane.showMessageDialog(null, "O preenchimento de todos os campos é obrigatório", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
@@ -56,6 +57,8 @@ public class InsereDeus implements ActionListener, BancoDados {
         nomeHabilidades[2] = this.objeto.getTfDH3Nome().getText();
         nomeHabilidades[3] = this.objeto.getTfDH4Nome().getText();
         deus.setCaminhoIcone(this.objeto.getTfDCaminhoIcone().getText());
+        deus.setTipo(this.objeto.getTfDTipo().getText());
+        
         manipulaJSON();
 
         this.objeto.getTfDNome().setText("");
@@ -67,6 +70,8 @@ public class InsereDeus implements ActionListener, BancoDados {
         this.objeto.getTfDH2Nome().setText("");
         this.objeto.getTfDH3Nome().setText("");
         this.objeto.getTfDH4Nome().setText("");
+        this.objeto.getTfDCaminhoIcone().setText("");
+        this.objeto.getTfDTipo().setText("");
     }
 
     @Override
@@ -92,6 +97,7 @@ public class InsereDeus implements ActionListener, BancoDados {
                 deusAux.put("Vida Base", deus.getVidaBase());
                 deusAux.put("Nivel", deus.getNivel());
                 deusAux.put("Diretorio", deus.getCaminhoIcone());
+                deusAux.put("Tipo", deus.getTipo());
                 JSONObject habilidades = (JSONObject) bancoDadosArray.get(2);
                 JSONArray habilidadesArray = (JSONArray) habilidades.get("Habilidades");
                 JSONArray dHabilidadeArray = new JSONArray();
