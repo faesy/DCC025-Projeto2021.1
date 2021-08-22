@@ -48,6 +48,11 @@ public class InicializaBancoDados implements ActionListener, BancoDados {
             JSONObject chaveSeguranca = new JSONObject();
             chaveSeguranca.put("Chave de Seguranca", "123456789**");
             bancoDadosArray.add(chaveSeguranca);
+            
+            JSONObject historia = new JSONObject();
+            JSONArray historiaArray = new JSONArray();
+            historia.put("Historia", historiaArray);
+            bancoDadosArray.add(historia);
 
             JSONObject bancoDados = new JSONObject();
             bancoDados.put("Banco de Dados", bancoDadosArray);

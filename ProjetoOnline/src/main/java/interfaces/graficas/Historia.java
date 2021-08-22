@@ -31,7 +31,6 @@ public class Historia {
         this.jogador=jogador;
         this.mensagem = mensagem;
         this.caminhoIcone = "./src/main/java/imagens/Floresta.png";
-        
         this.criaJanela();
     }
 
@@ -68,7 +67,7 @@ public class Historia {
         texto.setText("  " + mensagem);
         texto.setFont(new Font("Arial", Font.BOLD, 12));
         texto.setEditable(false);
-        texto.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        texto.setBorder(BorderFactory.createLineBorder(Color.BLACK)); 
         JPanel painelAux = new JPanel();
         GridBagLayout layout = new GridBagLayout();
         painelAux.setLayout(layout);
