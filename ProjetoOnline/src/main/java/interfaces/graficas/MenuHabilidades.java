@@ -4,6 +4,7 @@ import classes.BancoDados;
 import static classes.BancoDados.CAMINHO_BANCO_DADOS;
 import classes.Deus;
 import java.awt.BorderLayout;
+import classes.Jogador;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -30,6 +31,7 @@ import tratamento.eventos.SalvaHabilidadeEscolhida;
 public class MenuHabilidades implements BancoDados {
 
     private Deus deus;
+    private Jogador jogador;
     private JPanel painel;
     private JSONObject bancoDados;
     private JSONParser parser;
@@ -40,8 +42,9 @@ public class MenuHabilidades implements BancoDados {
     private JLabel habilidadesInfo;
     private JFrame janela;
 
-    public MenuHabilidades(Deus deus) {
-        this.deus = deus;
+    public MenuHabilidades(Jogador jogador) {
+        this.jogador=jogador;
+        this.deus = jogador.getDeus();
         parser = new JSONParser();
         manipulaJSON();
         listaHabilidades = new JComboBox[4];
@@ -55,7 +58,7 @@ public class MenuHabilidades implements BancoDados {
         titulo = new JLabel("Selecione as Habilidades Desejadas", JLabel.CENTER);
         titulo.setFont(new Font("Georgia", Font.BOLD, 20));
         proximo = new JButton("Próximo");
-        proximo.addActionListener(new Proximo());
+        //proximo.addActionListener(new Proximo());
         
     }
 
@@ -126,8 +129,7 @@ public class MenuHabilidades implements BancoDados {
         painelAux2.setLayout(layoutInfo);
         painelAux2.setBackground(Color.WHITE);
         painelAux2.setPreferredSize(new Dimension(200, 200));
-
-     
+ 
         pos.insets = new Insets(-10, 20, 25, 0);
         painelAux2.add(habilidadesInfo, pos);
         painel.add(painelAux2, BorderLayout.WEST);

@@ -1,9 +1,28 @@
 package interfaces.graficas;
 
+import classes.Jogador;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import tratamento.eventos.CadastraJogador;
+import tratamento.eventos.ChecaAcesso;
+import tratamento.eventos.LogaJogador;
+import classes.BancoDados;
+import static classes.BancoDados.CAMINHO_BANCO_DADOS;
+import classes.Deus;
+import classes.Habilidade;
+import classes.Progressao;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,7 +34,7 @@ import javax.swing.*;
  *
  * @author mathe
  */
-public class EscolhadePersonagens {
+public class EscolhadePersonagens implements BancoDados{
     
     final private ImageIcon zeus = new ImageIcon("./src/main/java/imagens/zeus.png");
     final private ImageIcon ra = new ImageIcon("./src/main/java/imagens/rá.png");
@@ -24,6 +43,53 @@ public class EscolhadePersonagens {
     final private JButton selzeus, selra, selskadi, confirmarzeus,confirmarra,confirmarskadi;
     private JFrame janela;
     private JPanel painel;
+    private Jogador jogador;
+    JSONObject bancoDados;
+    JSONParser parser;
+    private Deus deus=new Deus();
+    
+    @Override
+    public void manipulaJSON() {
+        try {
+            bancoDados = (JSONObject) parser.parse(new FileReader(CAMINHO_BANCO_DADOS));
+            JSONArray bancoDadosArray = (JSONArray) bancoDados.get("Banco de Dados");
+            JSONObject deuses = (JSONObject) bancoDadosArray.get(1);
+            JSONArray deusesArray = (JSONArray) deuses.get("Deuses");
+            boolean existe = false;
+            for (int i = 0; i < deusesArray.size(); i++) {
+                JSONObject deusAux = (JSONObject) deusesArray.get(i);
+                if (deusAux.get("Nome").equals(deus.getNome())) {
+                    existe = true;
+                    deus.setNome(deusAux.get("Nome").toString());
+                    deus.setDescricao(deusAux.get("Descricao").toString());
+                    deus.setPoderBase(Integer.parseInt(deusAux.get("Poder Base").toString()));
+                    deus.setVidaBase(Integer.parseInt(deusAux.get("Vida Base").toString()));
+                    deus.setNivel(Integer.parseInt(deusAux.get("Nivel").toString()));
+                    deus.setCaminhoIcone(deusAux.get("Diretorio").toString());
+                    
+                    JSONArray habilidades = (JSONArray) deusAux.get("Habilidades");
+                    
+                    Habilidade[] habilidade0 = new Habilidade[4];
+                    for(i = 0; i < habilidades.size(); i++){
+                        JSONObject habilidadeAux= (JSONObject) habilidades.get(i);
+                        habilidade0[i] = new Habilidade();
+                        habilidade0[i].setNome(habilidadeAux.get("Nome").toString());
+                        habilidade0[i].setCarga(Integer.parseInt(habilidadeAux.get("Carga").toString()));
+                        habilidade0[i].setDescricao(habilidadeAux.get("Descricao").toString());
+                        habilidade0[i].setDano(Integer.parseInt(habilidadeAux.get("Dano").toString()));
+                    }
+
+                    deus.setHabilidades(habilidade0);
+                }
+            }    
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(EscolhadePersonagens.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(EscolhadePersonagens.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(EscolhadePersonagens.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
        public void criaJanela() {
         janela = new JFrame();
@@ -48,7 +114,12 @@ public class EscolhadePersonagens {
                 confirmarzeus.setVisible(true);
                 confirmarra.setVisible(false);
                 confirmarskadi.setVisible(false);
-                jl4.setText("<html><body>Tipo: Eletricidade<br>Vida Inicial: ---<br>Poder Inicial: ---<br>Habilidade 1: ---<br>Habilidade 2: ---<br>Habilidade 3: ---<br>Habilidade 4: ---<br&gtcom HTML!</body></html>");
+                
+                
+                deus.setNome("Zeus");
+                manipulaJSON();
+                jogador.setDeus(deus);
+                jl4.setText("<html><body>Tipo: Eletricidade<br>Vida Inicial: "+deus.getVidaBase()+"<br>Poder Inicial: "+deus.getPoderBase()+"<br>Habilidade 1: "+deus.getHabilidades()[0].getNome()+"<br>Habilidade 2: "+deus.getHabilidades()[1].getNome()+"<br>Habilidade 3: "+deus.getHabilidades()[2].getNome()+"<br>Habilidade 4: "+deus.getHabilidades()[3].getNome()+"<br&gtcom HTML!</body></html>");
             }
         }); 
         
@@ -62,7 +133,11 @@ public class EscolhadePersonagens {
                 confirmarra.setVisible(true);
                 confirmarskadi.setVisible(false);
                 jl4.setFont(new Font("Georgia", Font.BOLD, 10));
-                jl4.setText("<html><body>Tipo: Fogo<br>Vida Inicial: ---<br>Poder Inicial: ---<br>Habilidade 1: ---<br>Habilidade 2: ---<br>Habilidade 3: ---<br>Habilidade 4: ---<br&gtcom HTML!</body></html>");
+                
+                deus.setNome("Rá");
+                manipulaJSON();
+                jogador.setDeus(deus);
+                jl4.setText("<html><body>Tipo: Fogo<br>Vida Inicial: "+deus.getVidaBase()+"<br>Poder Inicial: "+deus.getPoderBase()+"<br>Habilidade 1: "+deus.getHabilidades()[0].getNome()+"<br>Habilidade 2: "+deus.getHabilidades()[1].getNome()+"<br>Habilidade 3: "+deus.getHabilidades()[2].getNome()+"<br>Habilidade 4: "+deus.getHabilidades()[3].getNome()+"<br&gtcom HTML!</body></html>");
             }
         });
          
@@ -76,14 +151,49 @@ public class EscolhadePersonagens {
                 confirmarra.setVisible(false);
                 confirmarskadi.setVisible(true);;
                 jl4.setFont(new Font("Georgia", Font.BOLD, 10));
-                jl4.setText("<html><body>Tipo: Gelo<br>Vida Inicial: ---<br>Poder Inicial: ---<br>Habilidade 1: ---<br>Habilidade 2: ---<br>Habilidade 3: ---<br>Habilidade 4: ---<br&gtcom HTML!</body></html>");
+                
+                deus.setNome("Skadi");
+                manipulaJSON();
+                jogador.setDeus(deus);
+                jl4.setText("<html><body>Tipo: Gelo<br>Vida Inicial: "+deus.getVidaBase()+"<br>Poder Inicial: "+deus.getPoderBase()+"<br>Habilidade 1: "+deus.getHabilidades()[0].getNome()+"<br>Habilidade 2: "+deus.getHabilidades()[1].getNome()+"<br>Habilidade 3: "+deus.getHabilidades()[2].getNome()+"<br>Habilidade 4: "+deus.getHabilidades()[3].getNome()+"<br&gtcom HTML!</body></html>");
+            }
+        });
+         
+         confirmarzeus.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jogador.aumentaChaveDeProgresso();
+                new Progressao(jogador);
+                janela.setVisible(false);
+            }
+        });
+         
+         confirmarra.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jogador.aumentaChaveDeProgresso();
+                new Progressao(jogador);
+                janela.setVisible(false);
+            }
+        });
+         
+         confirmarskadi.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jogador.aumentaChaveDeProgresso();
+                new Progressao(jogador);
+                janela.setVisible(false);
             }
         });
         
     }
     
-    public EscolhadePersonagens() {
-
+    public EscolhadePersonagens(Jogador JogadorAtual) {
+        
+        jogador=JogadorAtual;
+        
+        parser=new JSONParser();
+       
         jl1 = new JLabel("");
         jl1.setIcon(zeus);
 
@@ -110,6 +220,8 @@ public class EscolhadePersonagens {
         confirmarzeus.setVisible(false);
         confirmarra.setVisible(false);
         confirmarskadi.setVisible(false);
+        
+        this.criaJanela();
 
     }
     

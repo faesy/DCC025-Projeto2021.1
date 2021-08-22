@@ -14,8 +14,8 @@ public class Login {
     private JTextField tfLogin;
     private JPasswordField tfSenha;
     private JButton logar, cadastrar, configuracoes;
-    private JFrame janela;
-    
+    public JFrame janela;
+
     private ImagemFundo posicionaComponentes() {
 
         ImagemFundo painel = new ImagemFundo();
@@ -67,6 +67,7 @@ public class Login {
 
         return painel;
     }
+    
 
     public Login() {
 

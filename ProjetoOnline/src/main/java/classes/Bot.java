@@ -1,40 +1,40 @@
 /*
-Hiero Henrique Barcelos Costa -202065136A
-Matheus Cardoso Faesy - 202065065A
-Thaís de Jesus Soares - 202065511B
-*/
-
-/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.projetoonline;
+package classes;
 
 /**
- * Hiero Henrique Barcelos Costa -202065136A Matheus Cardoso Faesy - 202065065A
- * Thaís de Jesus Soares - 202065511B
  *
+ * @author Usuario
  */
 public class Bot {
 
     //Atributos da classe Bot
     private Inimigo inimigo;
-    private Inimigo boss;
-    private int modoDeJogo; // dificuldade: facil =1 // dificil =2 // pesadelo=3
+    //private int modoDeJogo; // dificuldade: facil =1 // dificil =2 // pesadelo=3
 
     //Métodos da classe Bot
     public Bot() {
-        this.modoDeJogo = 1;
-        novoInimigo();
-        //ainda não foi implementado
-        //inimigo.AlocarHabilidades(" vetor habilidade "); 
-
+         
     }
 
-    private int usaHabilidade(int escolha) {
+    public void setInimigo(Inimigo inimigo) {
+        this.inimigo = inimigo;
+       this.inimigo.funcaoPoder();
+       this.inimigo.funcaoVidaMax();
+       
+    }
+
+    public Inimigo getInimigo() {
+        return inimigo;
+    }
+
+    public int usaHabilidade() {
         //só uma base de começo, tem muitas modificações que talvez sejam implementadas no futuro.
         //while esta sendo utilizado para manter o bot utilizando suas habilidades até que elas acabem.
+        int escolha = (int) (1 + Math.random() * 4);
         while (escolha <= 4 & escolha >= 1) {
             if (inimigo.verificaCarga(escolha)) {
                 return inimigo.usarHabilidade(escolha);
@@ -45,14 +45,9 @@ public class Bot {
             } else if (inimigo.verificaCarga(escolha)) {
                 return inimigo.usarHabilidade(escolha);
             } else {
-                escolha = (int) (1 + Math.random()*4);
             }
         }
         return 0;//exite para considerar a situação que todas cargas acabaram, assim mostra que ele não faz nada nesse caso.
-    }
-
-    private void novoInimigo() {
-        //this.inimigo = new Inimigo(); falta preencher de acordo com o que ja ta no json
     }
 
     private void retiraInimigo() {
@@ -67,3 +62,4 @@ public class Bot {
     }
 
 }
+

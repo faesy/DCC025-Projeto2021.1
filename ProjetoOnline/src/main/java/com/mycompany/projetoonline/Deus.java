@@ -2,9 +2,9 @@
 Hiero Henrique Barcelos Costa -202065136A
 Matheus Cardoso Faesy - 202065065A
 Thaís de Jesus Soares - 202065511B
-*/
+ */
 
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -12,27 +12,27 @@ Thaís de Jesus Soares - 202065511B
 package com.mycompany.projetoonline;
 
 /**
- * Hiero Henrique Barcelos Costa -202065136A 
- * Matheus Cardoso Faesy - 202065065A
- * Thaís de Jesus Soares - 202065511B 
-*
+ * Hiero Henrique Barcelos Costa -202065136A Matheus Cardoso Faesy - 202065065A
+ * Thaís de Jesus Soares - 202065511B
+ *
  */
 public class Deus {
 
-    //Atributos da classe Deus
-    private int vidaBase;
-    private int vidaAtual;
-    private int vidaMax;
-    private int xp;
-    private int nivel;
-    private int poderBase;
-    private int poder;
-    private Habilidade habilidades[] = new Habilidade[4];
-    private String nome;
-    private String descricao;
-    private boolean morto = false;
-    private int carga[] = new int[4];
-    private static int qtddDeuses;
+
+    protected int vidaBase;
+    protected int vidaAtual;
+    protected int vidaMax;
+    protected int xp;
+    protected int nivel;
+    protected int poderBase;
+    protected int poder;
+    protected Habilidade habilidades[] = new Habilidade[4];
+    protected String nome;
+    protected String descricao;
+    protected boolean morto = false;
+    protected int carga[] = new int[4];
+    protected static int qtddDeuses;
+
 
     //Bloco estático para inicializar a variável qtddDeuses
     static {
@@ -190,6 +190,14 @@ public class Deus {
     //não foi implementada ainda
     protected int usaConsumivel() {
         return 0;
+    }
+
+    protected boolean verificaMorto() {
+        if (this.morto) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     @Override
