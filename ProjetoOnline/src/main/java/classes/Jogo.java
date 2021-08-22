@@ -14,8 +14,11 @@ public class Jogo {
         //o menu de escolhas do deus retornaria o deus escolhido e esse seria passado como
         //parametro para o menuHabilidades ou algo do tipo
         //teste
-        //Deus deus = new Deus();
-        //new MenuHabilidades(deus).criaJanela();
+//        Deus deus = new Deus();
+//        deus.setNome("Zeus");
+//        Jogador jogador = new Jogador();
+//        jogador.setDeus(deus);
+//        new MenuHabilidades(jogador).criaJanela();
         // new Historia("Ola").criaJanela();
         //new EscolhadePersonagens().criaJanela();
     }
