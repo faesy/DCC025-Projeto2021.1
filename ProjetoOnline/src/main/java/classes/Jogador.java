@@ -5,10 +5,16 @@ public class Jogador {
     private String nome;
     private String senha;
     private Deus deus;
-    private Consumivel[] consumiveis;
+    private Consumivel consumivel;
+    private int carga;
 
     public Jogador() {
-        consumiveis = new Consumivel[2];
+
+    }
+
+    public void setConsumivel(Consumivel consumivel) {
+        this.consumivel = consumivel;
+        carga = this.consumivel.getCarga();
     }
 
     public void setNome(String nome) {
@@ -26,6 +32,21 @@ public class Jogador {
     public String getSenha() {
         return senha;
     }
+
+    public void usaConsumivel() {
+        double efeito = Consumivel.efeitoPot(this.consumivel.getNome());
+        if (this.consumivel.getEfeito().equals("Cura")) {
+            //deus.recuperarVida(deus.);
+        }
+        if (this.consumivel.getEfeito().equals("Poder")) {
     
-    
+            //deus.funcaoPoder(efeito);
+        }
+        if (this.consumivel.getEfeito().equals("Veneno")) {
+
+        }
+        
+
+    }
+
 }

@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import classes.BancoDados;
 import classes.Jogador;
+import classes.Jogo;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -55,6 +56,7 @@ public class LogaJogador implements ActionListener, BancoDados {
                     existe = true;
                     JOptionPane.showMessageDialog(null, "Login realizado com sucesso.", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
                     
+                    login.janela.setVisible(false);
                 }
             }
             if (existe == false) {

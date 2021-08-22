@@ -4,7 +4,7 @@ public class Habilidade {
 
     private String nome;
     private String descricao;
-    private int carga;
+    protected int carga;
     private int dano;
 
     public Habilidade() {
@@ -40,6 +40,10 @@ public class Habilidade {
 
     public void setDano(int dano) {
         this.dano = dano;
+    }
+
+    protected int causaDano(int poder) {
+        return this.dano + poder;
     }
 
 }

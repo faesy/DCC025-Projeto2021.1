@@ -14,7 +14,7 @@ public class Login {
     final private JTextField tfLogin;
     final private JPasswordField tfSenha;
     final private JButton logar, cadastrar, configuracoes;
-    private JFrame janela;
+    public JFrame janela;
 
     private ImagemFundo posicionaComponentes() {
 

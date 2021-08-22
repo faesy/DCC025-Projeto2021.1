@@ -3,6 +3,7 @@ package classes;
 public class Consumivel {
 
     private String nome;
+    private String efeito;
     private String descricao;
     private int carga;
 
@@ -15,6 +16,14 @@ public class Consumivel {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getEfeito() {
+        return efeito;
+    }
+
+    public void setEfeito(String efeito) {
+        this.efeito = efeito;
     }
 
     public String getDescricao() {
@@ -33,4 +42,15 @@ public class Consumivel {
         this.carga = carga;
     }
 
+    public static double efeitoPot(String nome) {
+        double ocorrencia;
+        if (nome.contains("Menor")) {
+            ocorrencia = 0.10;
+        } else if (nome.contains("Maior")) {
+            ocorrencia = 0.30;
+        } else {
+            ocorrencia = 0.20;
+        }
+        return ocorrencia;
+    }
 }

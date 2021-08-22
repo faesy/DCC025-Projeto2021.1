@@ -19,19 +19,19 @@ package com.mycompany.projetoonline;
 public class Deus {
 
     //Atributos da classe Deus
-    private int vidaBase;
-    private int vidaAtual;
-    private int vidaMax;
-    private int xp;
-    private int nivel;
-    private int poderBase;
-    private int poder;
-    private Habilidade habilidades[] = new Habilidade[4];
-    private String nome;
-    private String descricao;
-    private boolean morto = false;
-    private int carga[] = new int[4];
-    private static int qtddDeuses;
+    protected int vidaBase;
+    protected int vidaAtual;
+    protected int vidaMax;
+    protected int xp;
+    protected int nivel;
+    protected int poderBase;
+    protected int poder;
+    protected Habilidade habilidades[] = new Habilidade[4];
+    protected String nome;
+    protected String descricao;
+    protected boolean morto = false;
+    protected int carga[] = new int[4];
+    protected static int qtddDeuses;
 
     //Bloco estático para inicializar a variável qtddDeuses
     static {

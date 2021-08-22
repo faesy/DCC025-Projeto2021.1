@@ -17,6 +17,6 @@ public class Jogo {
         //new MenuHabilidades(deus).criaJanela();
         //new Historia("Ola").criaJanela();
         //new EscolhadePersonagens().criaJanela();
-        new InterfaceBatalha().criaJanela();
+//        new InterfaceBatalha().criaJanela();
     }
 }
