@@ -3,6 +3,7 @@ package interfaces.graficas;
 import classes.BancoDados;
 import static classes.BancoDados.CAMINHO_BANCO_DADOS;
 import classes.Deus;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -13,7 +14,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -35,6 +36,9 @@ public class MenuHabilidades implements BancoDados {
     private String[] nomeHabilidades;
     private JComboBox[] listaHabilidades;
     private JButton proximo;
+    private JLabel titulo;
+    private JLabel habilidadesInfo;
+    private JFrame janela;
 
     public MenuHabilidades(Deus deus) {
         this.deus = deus;
@@ -44,11 +48,20 @@ public class MenuHabilidades implements BancoDados {
         for (int i = 0; i < 4; i++) {
             listaHabilidades[i] = new JComboBox(nomeHabilidades);
         }
+        habilidadesInfo = new JLabel("");
+        habilidadesInfo.setFont(new Font("Georgia", Font.BOLD, 12));
+        habilidadesInfo.setBorder(BorderFactory.createLineBorder(Color.black));
+        habilidadesInfo.setPreferredSize(new Dimension(180, 150));
+        titulo = new JLabel("Selecione as Habilidades Desejadas", JLabel.CENTER);
+        titulo.setFont(new Font("Georgia", Font.BOLD, 20));
+        proximo = new JButton("Próximo");
+        proximo.addActionListener(new Proximo());
+        
     }
 
     public void criaJanela() {
-        JFrame janela = new JFrame();
-        janela.setSize(940, 520);
+        janela = new JFrame();
+        janela.setSize(500, 296);
         janela.setResizable(false);
         janela.setLocationRelativeTo(null);
         posicionaComponentes();
@@ -58,54 +71,66 @@ public class MenuHabilidades implements BancoDados {
     }
 
     private void posicionaComponentes() {
+
         painel = new JPanel();
         painel.setBackground(Color.WHITE);
-        GridBagLayout layout = new GridBagLayout();
-        painel.setLayout(layout);
-        GridBagConstraints pos = new GridBagConstraints();
+        painel.setLayout(new BorderLayout());
+    
+        painel.add(titulo, BorderLayout.NORTH);
 
-        JLabel iconeDeus = new JLabel();
-        iconeDeus.setIcon(new ImageIcon(deus.getCaminhoIcone()));
-        //iconeDeus.setIcon(new ImageIcon("./src/main/java/imagens/zeus.jpg"));
-        iconeDeus.setPreferredSize(new Dimension(200, 200));
+        listaHabilidades[0].setPreferredSize(new Dimension(230, 30));
+        listaHabilidades[1].setPreferredSize(new Dimension(230, 30));
+        listaHabilidades[2].setPreferredSize(new Dimension(230, 30));
+        listaHabilidades[3].setPreferredSize(new Dimension(230, 30));
+
+        GridBagLayout layout = new GridBagLayout();
+        JPanel painelAux = new JPanel();
+        painelAux.setBackground(Color.WHITE);
+        painelAux.setPreferredSize(new Dimension(250, 250));
+        painelAux.setLayout(layout);
+
+        GridBagConstraints pos = new GridBagConstraints();
         pos.gridx = 0;
         pos.gridy = 0;
-        pos.insets = new Insets(-100, -50, 0, 0);
-        painel.add(iconeDeus, pos);
-
-        JLabel nomeDeus = new JLabel(deus.getNome());
-        nomeDeus.setForeground(Color.BLACK);
-        nomeDeus.setFont(new Font("Georgia", Font.BOLD, 30));
-        pos.gridx = 1;
-        pos.gridy = 0;
-        pos.insets = new Insets(150, -700, 0, 0);
-        painel.add(nomeDeus, pos);
-
-        listaHabilidades[0].setPreferredSize(new Dimension(300, 30));
-        listaHabilidades[1].setPreferredSize(new Dimension(300, 30));
-        listaHabilidades[2].setPreferredSize(new Dimension(300, 30));
-        listaHabilidades[3].setPreferredSize(new Dimension(300, 30));
-
-        pos.insets = new Insets(-250, 200, 0, 0);
+        pos.insets = new Insets(5, 5, 5, 10);
         listaHabilidades[0].addItemListener(new SalvaHabilidadeEscolhida(this, 0));
-        painel.add(listaHabilidades[0], pos);
+        painelAux.add(listaHabilidades[0], pos);
 
-        pos.insets = new Insets(-150, 200, 0, 0);
+        pos.gridx = 0;
+        pos.gridy = 1;
+        pos.insets = new Insets(5, 5, 5, 10);
         listaHabilidades[1].addItemListener(new SalvaHabilidadeEscolhida(this, 1));
-        painel.add(listaHabilidades[1], pos);
+        painelAux.add(listaHabilidades[1], pos);
 
-        pos.insets = new Insets(-50, 200, 0, 0);
+        pos.gridx = 0;
+        pos.gridy = 2;
+        pos.insets = new Insets(5, 5, 5, 10);
         listaHabilidades[2].addItemListener(new SalvaHabilidadeEscolhida(this, 2));
-        painel.add(listaHabilidades[2], pos);
+        painelAux.add(listaHabilidades[2], pos);
 
-        pos.insets = new Insets(50, 200, 0, 0);
+        pos.gridx = 0;
+        pos.gridy = 3;
+        pos.insets = new Insets(5, 5, 5, 10);
         listaHabilidades[3].addItemListener(new SalvaHabilidadeEscolhida(this, 3));
-        painel.add(listaHabilidades[3], pos);
+        painelAux.add(listaHabilidades[3], pos);
 
-        proximo = new JButton("Próximo");
-        proximo.addActionListener(new Proximo());
-        pos.insets = new Insets(400, 0, 0, -650);
-        painel.add(proximo, pos);
+        pos.gridx = 0;
+        pos.gridy = 4;
+        pos.insets = new Insets(5, 5, 5, 5);
+        painelAux.add(proximo, pos);
+
+        painel.add(painelAux, BorderLayout.EAST);
+
+        GridBagLayout layoutInfo = new GridBagLayout();
+        JPanel painelAux2 = new JPanel();
+        painelAux2.setLayout(layoutInfo);
+        painelAux2.setBackground(Color.WHITE);
+        painelAux2.setPreferredSize(new Dimension(200, 200));
+
+     
+        pos.insets = new Insets(-10, 20, 25, 0);
+        painelAux2.add(habilidadesInfo, pos);
+        painel.add(painelAux2, BorderLayout.WEST);
 
     }
 
@@ -134,5 +159,19 @@ public class MenuHabilidades implements BancoDados {
 
     public Deus getDeus() {
         return deus;
+    }
+    
+    public JButton getProximo()
+    {
+        return proximo;
+    }
+    
+    public JLabel getHabilidadeInfo()
+    {
+        return habilidadesInfo;
+    }
+    
+    public JFrame getJanela(){
+        return janela;
     }
 }

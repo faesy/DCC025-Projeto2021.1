@@ -51,7 +51,13 @@ public class SalvaHabilidadeEscolhida implements ItemListener, BancoDados {
                         JSONArray habilidadesArray = (JSONArray) habilidades.get("Habilidades");
                         for (int j = 0; j < habilidadesArray.size(); j++) {
                             JSONObject habilidadeAux = (JSONObject) habilidadesArray.get(j);
-                            if (habilidadeAux.get("Nome").equals(menuHabilidade.getListaHabilidades(indiceHabilidade).getSelectedItem())) {
+                            if (habilidadeAux.get("Nome").equals(menuHabilidade.getListaHabilidades(indiceHabilidade).getSelectedItem())){ 
+                                menuHabilidade.getHabilidadeInfo().setText("<html><body>Nome: " + habilidadeAux.get("Nome").toString() + "<br>Descrição: "
+                                        + habilidadeAux.get("Descricao").toString()
+                                        + "<br>Carga: " + Integer.parseInt(habilidadeAux.get("Carga").toString())
+                                        + "<br>Dano: " + Integer.parseInt(habilidadeAux.get("Dano").toString()) + "<br&gtcom HTML!</body></html>"); 
+                                this.menuHabilidade.getJanela().repaint();
+                                this.menuHabilidade.getJanela().validate();
                                 dHabilidadesArray.set(indiceHabilidade, habilidadeAux);
                                 FileWriter fw = null;
                                 fw = new FileWriter(CAMINHO_BANCO_DADOS);

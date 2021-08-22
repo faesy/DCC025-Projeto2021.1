@@ -8,14 +8,14 @@ import tratamento.eventos.LogaJogador;
 
 public class Login {
 
-    final private ImageIcon imagem = new ImageIcon("./src/main/java/imagens/Login.jpg");
-    final private ImageIcon imagemConfiguracoes = new ImageIcon("./src/main/java/imagens/IconeConfiguracoes.jpg");
-    final private JLabel login, senha;
-    final private JTextField tfLogin;
-    final private JPasswordField tfSenha;
-    final private JButton logar, cadastrar, configuracoes;
+    private ImageIcon imagem = new ImageIcon("./src/main/java/imagens/Login.jpg");
+    private ImageIcon imagemConfiguracoes = new ImageIcon("./src/main/java/imagens/IconeConfiguracoes.jpg");
+    private JLabel login, senha;
+    private JTextField tfLogin;
+    private JPasswordField tfSenha;
+    private JButton logar, cadastrar, configuracoes;
     private JFrame janela;
-
+    
     private ImagemFundo posicionaComponentes() {
 
         ImagemFundo painel = new ImagemFundo();

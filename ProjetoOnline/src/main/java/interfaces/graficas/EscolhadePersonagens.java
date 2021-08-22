@@ -4,9 +4,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import tratamento.eventos.CadastraJogador;
-import tratamento.eventos.ChecaAcesso;
-import tratamento.eventos.LogaJogador;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -29,7 +26,7 @@ public class EscolhadePersonagens {
     private JPanel painel;
     
        public void criaJanela() {
-        JFrame janela = new JFrame();
+        janela = new JFrame();
         janela.setSize(348, 288);
         janela.setResizable(false);
         janela.setLocationRelativeTo(null);
@@ -99,7 +96,6 @@ public class EscolhadePersonagens {
         jl4 =new JLabel("");
         jl4.setBorder(BorderFactory.createLineBorder(Color.black));
         jl4.setPreferredSize(new Dimension(60, 100)); 
-        jl4.setText("<html><body><br&gtcom HTML!</body></html>");
         
         titulo =new JLabel("Selecione o deus Inicial",JLabel.CENTER);
         titulo.setFont(new Font("Georgia", Font.BOLD, 20));
@@ -118,14 +114,11 @@ public class EscolhadePersonagens {
     }
     
  private void posicionaComponentes() {
-     
-     
+
         selzeus.setPreferredSize(new Dimension(84,24));
         selra.setPreferredSize(new Dimension(84,24));
         selskadi.setPreferredSize(new Dimension(84,24));
-  
-       
-     
+ 
         painel = new JPanel();
         painel.setBackground(Color.white);
         GridBagLayout layout = new GridBagLayout();
@@ -204,17 +197,7 @@ public class EscolhadePersonagens {
         informacoes.gridy = 3;
         informacoes.gridx = 0;
         informacoes.insets = new Insets(0,0,-130,0);
-        painel.add(jl4, informacoes);
+        painel.add(jl4, informacoes);   
         
-        
-        
-        
-        
-    }
-        
- 
-
-    
-  
-    
+    }  
 }
