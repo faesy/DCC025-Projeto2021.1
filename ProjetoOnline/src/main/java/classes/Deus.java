@@ -12,11 +12,16 @@ public class Deus {
     public Deus() {
     }
 
+
     public int getVidaAtual() {
         return vidaAtual;
     }
     
-    
+
+    public int getVidaMax() {
+        return vidaMax;
+    }
+
     
     public String getNome() {
         return nome;
@@ -147,7 +152,8 @@ public class Deus {
             return true;
         }
     }
-    protected void poderMomentaneo(int efeito){
-        this.poder = this.poder*(1+efeito);
+
+    protected void poderMomentaneo(double efeito){
+        this.poder = (int) (this.poder*(1+efeito));
     }
 }

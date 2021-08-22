@@ -9,6 +9,7 @@ import interfaces.graficas.EscolhadePersonagens;
 import interfaces.graficas.Historia;
 import interfaces.graficas.InterfaceBatalha;
 import java.io.IOException;
+import interfaces.graficas.TelaDeDescanso;
 
 /**
  *
@@ -34,7 +35,25 @@ public class Progressao {
                 InterfaceBatalha c = new InterfaceBatalha(jogador, "Rá");
                 break;
             case 4:
-                
+                TelaDeDescanso d = new TelaDeDescanso();
+                break;
+            case 5:
+                Historia e = new Historia("Tudo começou quando ...",jogador);
+                break;
+            case 6:
+                //InterfaceBatalha f = new InterfaceBatalha();
+                break;
+            case 7:
+                TelaDeDescanso g = new TelaDeDescanso();
+                break;
+            case 8:
+                Historia h = new Historia("Tudo começou quando ...",jogador);
+                break;
+            case 9:
+                //InterfaceBatalha i = new InterfaceBatalha();
+                break;
+            case 10:
+                TelaDeDescanso j = new TelaDeDescanso();
                 break;
 
     }

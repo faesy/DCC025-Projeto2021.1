@@ -52,16 +52,45 @@ public class Jogador {
 
 
 
-    public void usaConsumivel() {
+
+
+    public double usaConsumivel() {
         double efeito = Consumivel.efeitoPot(this.consumivel.getNome());
         if (this.consumivel.getEfeito().equals("Cura")) {
-            //deus.recuperarVida(deus.);
+            deus.recuperarVida((int) (deus.getVidaMax() * efeito));
+            return 0;
         }
         if (this.consumivel.getEfeito().equals("Poder")) {
-        }
-        if (this.consumivel.getEfeito().equals("Veneno")) {
+            deus.poderMomentaneo(efeito);
+            return 0;
 
         }
+        if (this.consumivel.getEfeito().equals("Veneno")) {
+            return efeito;
+        }
+        return 0;
+    }
+
+    public double acao(int action) {
+        double acontecimento = 0;
+        if (action == 1) {
+            acontecimento = deus.usarHabilidade(action);
+            return acontecimento;
+        } else if (action == 2) {
+            acontecimento = deus.usarHabilidade(action);
+            return acontecimento;
+        } else if (action == 3) {
+            acontecimento = deus.usarHabilidade(action);
+            return acontecimento;
+        } else if (action == 4) {
+            acontecimento = deus.usarHabilidade(action);
+            return acontecimento;
+        } else if (action == 5) {
+            acontecimento = usaConsumivel();
+            return acontecimento;
+        }
+        return -1;
+
     }
 
     public Deus getDeus() {
@@ -70,5 +99,4 @@ public class Jogador {
 
     //deus.funcaoPoder(efeito);
 }
-
 
