@@ -165,6 +165,22 @@ public class EscolhadePersonagens implements BancoDados{
                 janela.setVisible(false);
             }
         });
+         
+         confirmarra.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Historia("Ola",jogador).criaJanela();
+                janela.setVisible(false);
+            }
+        });
+         
+         confirmarskadi.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new Historia("Ola",jogador).criaJanela();
+                janela.setVisible(false);
+            }
+        });
         
     }
     
@@ -187,7 +203,6 @@ public class EscolhadePersonagens implements BancoDados{
         jl4 =new JLabel("");
         jl4.setBorder(BorderFactory.createLineBorder(Color.black));
         jl4.setPreferredSize(new Dimension(60, 100)); 
-        jl4.setText("<html><body><br&gtcom HTML!</body></html>");
         
         titulo =new JLabel("Selecione o deus Inicial",JLabel.CENTER);
         titulo.setFont(new Font("Georgia", Font.BOLD, 20));
