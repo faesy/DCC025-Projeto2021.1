@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import classes.BancoDados;
 import classes.Jogador;
+import classes.Jogo;
 import classes.Progressao;
 import interfaces.graficas.EscolhadePersonagens;
 import org.json.simple.JSONArray;
@@ -60,6 +61,7 @@ public class LogaJogador implements ActionListener, BancoDados {
                     jogador.aumentaChaveDeProgresso();
                     new Progressao(jogador);
                     
+                    login.janela.setVisible(false);
                 }
             }
             if (existe == false) {

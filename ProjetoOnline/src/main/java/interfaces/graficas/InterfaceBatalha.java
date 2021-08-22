@@ -5,12 +5,26 @@
  */
 package interfaces.graficas;
 
-import com.mycompany.projetoonline.Deus;
-import com.mycompany.projetoonline.Inimigo;
+import classes.BancoDados;
+import static classes.BancoDados.CAMINHO_BANCO_DADOS;
+import classes.Bot;
+import classes.Deus;
+import classes.Habilidade;
+import classes.Inimigo;
+import classes.Jogador;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import tratamento.eventos.CadastraJogador;
 import tratamento.eventos.ChecaAcesso;
 import tratamento.eventos.LogaJogador;
@@ -20,42 +34,131 @@ import tratamento.eventos.LogaJogador;
  *
  * @author mathe
  */
-public class InterfaceBatalha {
+public class InterfaceBatalha implements BancoDados{
    
+    final private ImageIcon imagem = new ImageIcon("./src/main/java/imagens/fundobatalha.jpg");
     final private JLabel jl1, jl2,imagemInimigo,imagemPersonagem,separacao;
     final private JButton H1inimigo,H2inimigo,H3inimigo,H4inimigo,H1personagem,H2personagem,H3personagem,H4personagem,Consumivel,ConfirmarTurno;
     private JFrame janela;
     private JPanel painel;
+    private Jogador jogador;
     
-    public InterfaceBatalha(/*Deus personagem, Inimigo oponente*/) {
+    JSONObject bancoDados;
+    JSONParser parser;
+    
+    private Bot bot;
+    private Inimigo inimigo;
+    
+    private class ImagemFundo extends JPanel {
+
+        @Override
+        public void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            Image imagemFundo = imagem.getImage();
+            g.drawImage(imagemFundo, 0, 0, getWidth(), getHeight(), this);
+
+        }
+    }
+    
+    
+     @Override
+     public void manipulaJSON() {
+        try {
+            bancoDados = (JSONObject) parser.parse(new FileReader(CAMINHO_BANCO_DADOS));
+            JSONArray bancoDadosArray = (JSONArray) bancoDados.get("Banco de Dados");
+            JSONObject deuses = (JSONObject) bancoDadosArray.get(1);
+            JSONArray deusesArray = (JSONArray) deuses.get("Deuses");
+            boolean existe = false;
+            for (int i = 0; i < deusesArray.size(); i++) {
+                JSONObject deusAux = (JSONObject) deusesArray.get(i);
+                if (deusAux.get("Nome").equals(inimigo.getNome())) {
+                    existe = true;
+                    inimigo.setDescricao(deusAux.get("Descricao").toString());
+                    inimigo.setPoderBase(Integer.parseInt(deusAux.get("Poder Base").toString()));
+                    inimigo.setVidaBase(Integer.parseInt(deusAux.get("Vida Base").toString()));
+                    inimigo.setNivel(jogador.getDeus().getNivel());
+                    inimigo.setCaminhoIcone(deusAux.get("Diretorio").toString());
+                    
+                    JSONArray habilidades = (JSONArray) deusAux.get("Habilidades");
+                    
+                    Habilidade[] habilidade0 = new Habilidade[4];
+                    for(i = 0; i < habilidades.size(); i++){
+                        JSONObject habilidadeAux= (JSONObject) habilidades.get(i);
+                        habilidade0[i] = new Habilidade();
+                        habilidade0[i].setNome(habilidadeAux.get("Nome").toString());
+                        habilidade0[i].setCarga(Integer.parseInt(habilidadeAux.get("Carga").toString()));
+                        habilidade0[i].setDescricao(habilidadeAux.get("Descricao").toString());
+                        habilidade0[i].setDano(Integer.parseInt(habilidadeAux.get("Dano").toString()));
+                    }
+                    inimigo.setHabilidades(habilidade0);
+                }
+                
+            }    
+        }    catch (FileNotFoundException ex) {
+                 Logger.getLogger(InterfaceBatalha.class.getName()).log(Level.SEVERE, null, ex);
+             } catch (IOException ex) {
+            Logger.getLogger(InterfaceBatalha.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(InterfaceBatalha.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public InterfaceBatalha(Jogador jogador, String nomeAdversario){
         
-        ImageIcon inimigo = new ImageIcon("./src/main/java/imagens/Odin.png");
+        UIManager.put("Button.background", Color.black);
+        UIManager.put("Button.foreground", Color.white);
+
+        bot=new Bot();
         
-        ImageIcon heroi = new ImageIcon("./src/main/java/imagens/Odin.png");
+        inimigo=new Inimigo();
         
-        jl1= new JLabel("<html><body><center>NOME<br><center>TIPO<br><center>NIVEL<br><center>PV: VIDA<br&gtcom HTML!</body></html>",JLabel.CENTER);
+        this.jogador=jogador;
+        
+        parser=new JSONParser();
+        
+        inimigo.setNome(nomeAdversario);
+        
+        manipulaJSON();
+        
+        bot.setInimigo(inimigo);
+        
+        ImageIcon enemi = new ImageIcon(bot.getInimigo().getCaminhoIcone());
+        
+        ImageIcon heroi = new ImageIcon(jogador.getDeus().getCaminhoIcone());
+        
+        jl1= new JLabel("<html><body><center>Nome: "+bot.getInimigo().getNome()+"<br><center>TIPO<br><center>Nivel: "+bot.getInimigo().getNivel()+"<br><center>Vida Restante: "+ bot.getInimigo().getVidaAtual()+"<br&gtcom HTML!</body></html>",JLabel.CENTER);
         jl1.setFont(new Font("Georgia", Font.BOLD, 10));
-        
-        jl2=new JLabel ("<html><body><center>NOME<br><center>TIPO<br><center>NIVEL<br><center>PV: VIDA<br&gtcom HTML!</body></html>",JLabel.CENTER);
+        jl1.setOpaque(true);
+        jl1.setBackground(Color.WHITE);
+                
+        jl2=new JLabel ("<html><body><center>NOME: "+jogador.getDeus().getNome()+"<br><center>TIPO<br><center>Nivel: "+jogador.getDeus().getNivel()+"<br><center>Vida Restante: "+ jogador.getDeus().getVidaAtual()+"<br&gtcom HTML!</body></html>",JLabel.CENTER);
         jl2.setFont(new Font("Georgia", Font.BOLD, 10));
+        jl2.setOpaque(true);
+        jl2.setBackground(Color.WHITE);
+
         
         separacao = new JLabel("");
         
         imagemInimigo = new JLabel("");
-        imagemInimigo.setIcon(inimigo);
+        imagemInimigo.setIcon(enemi);
 
         imagemPersonagem = new JLabel("");
         imagemPersonagem.setIcon(heroi);
 
-        H1inimigo = new JButton("");
-        H2inimigo = new JButton("");
-        H3inimigo = new JButton("");
-        H4inimigo = new JButton("");
+        H1inimigo = new JButton(bot.getInimigo().getHabilidades()[0].getNome());
+        H2inimigo = new JButton(bot.getInimigo().getHabilidades()[1].getNome());
+        H3inimigo = new JButton(bot.getInimigo().getHabilidades()[2].getNome());
+        H4inimigo = new JButton(bot.getInimigo().getHabilidades()[3].getNome());
         
-        H1personagem = new JButton("");
-        H2personagem = new JButton("");
-        H3personagem = new JButton("");
-        H4personagem = new JButton("");
+        H1inimigo.setEnabled(false);
+        H2inimigo.setEnabled(false);
+        H3inimigo.setEnabled(false);
+        H4inimigo.setEnabled(false);
+        
+        H1personagem = new JButton(jogador.getDeus().getHabilidades()[0].getNome());
+        H2personagem = new JButton(jogador.getDeus().getHabilidades()[1].getNome());
+        H3personagem = new JButton(jogador.getDeus().getHabilidades()[2].getNome());
+        H4personagem = new JButton(jogador.getDeus().getHabilidades()[3].getNome());
 
         Consumivel = new JButton("Elixir");
 
@@ -74,10 +177,19 @@ public class InterfaceBatalha {
         janela.add(painel);
         janela.setVisible(true);
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
 
        
 }
      private void posicionaComponentes() {
+         
+         ImagemFundo tela = new ImagemFundo();
+        GridBagLayout layout = new GridBagLayout();
+        tela.setLayout(layout);
+
+        this.painel = new JPanel();
+        this.painel = tela;
+         
          
          H1inimigo.setPreferredSize(new Dimension(81,45));
          H2inimigo.setPreferredSize(new Dimension(81,45));
@@ -97,10 +209,6 @@ public class InterfaceBatalha {
          jl2.setPreferredSize(new Dimension(150, 60));
          //separacao.setPreferredSize(new Dimension(1, 80));
          
-         painel = new JPanel();
-        painel.setBackground(Color.white);
-        GridBagLayout layout = new GridBagLayout();
-        painel.setLayout(layout);
         GridBagConstraints pos = new GridBagConstraints();
         
         GridBagConstraints  H1inimigo_= new GridBagConstraints();

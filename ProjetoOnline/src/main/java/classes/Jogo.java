@@ -19,10 +19,6 @@ public class Jogo {
         //new MenuHabilidades(deus).criaJanela();
        // new Historia("Ola").criaJanela();
         //new EscolhadePersonagens().criaJanela();
-        //new InterfaceBatalha().criaJanela();
-        //Map<String, Deus> deuses=new HashMap<>();
-        //deuses=Armazem.getDeuses();
-        
-        
+
     }
 }

@@ -8,6 +8,7 @@ package classes;
 import interfaces.graficas.EscolhadePersonagens;
 import interfaces.graficas.Historia;
 import interfaces.graficas.InterfaceBatalha;
+import java.io.IOException;
 
 /**
  *
@@ -15,7 +16,7 @@ import interfaces.graficas.InterfaceBatalha;
  */
 public class Progressao {
     
-    public Progressao(Jogador jogador){
+    public Progressao(Jogador jogador) {
         
         int chave=jogador.getChaveDeProgresso();
         
@@ -30,7 +31,7 @@ public class Progressao {
                 Historia b = new Historia("Tudo começou quando ...",jogador);
                 break;
             case 3:
-                InterfaceBatalha c = new InterfaceBatalha();
+                InterfaceBatalha c = new InterfaceBatalha(jogador, "Rá");
                 break;
             case 4:
                 
