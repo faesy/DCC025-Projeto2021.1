@@ -22,6 +22,10 @@ public class Progressao {
         int chave=jogador.getChaveDeProgresso();
         
         switch (chave){
+            case -1:
+                System.out.println("Game Over");
+                System.exit(0);
+                break;
             case 0:
                 System.out.println("Tem Algo de Errado aqui kkk");
                 break;
@@ -32,7 +36,7 @@ public class Progressao {
                 Historia b = new Historia("Tudo começou quando ...",jogador);
                 break;
             case 3:
-                InterfaceBatalha c = new InterfaceBatalha(jogador, "Rá");
+                InterfaceBatalha c = new InterfaceBatalha(jogador, "Ra");
                 break;
             case 4:
                 TelaDeDescanso d = new TelaDeDescanso();

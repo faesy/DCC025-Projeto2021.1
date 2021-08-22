@@ -131,7 +131,7 @@ public class Deus {
        
     }
 
-    protected void reduzirVida(int dano) {
+    public void reduzirVida(int dano) {
         this.vidaAtual = this.vidaAtual - dano;
         if (this.vidaAtual <= 0) {
             morto = true;
@@ -145,7 +145,11 @@ public class Deus {
         }
     }
 
-    protected boolean verificaMorto() {
+    public void setVidaAtual(int vidaAtual) {
+        this.vidaAtual = vidaAtual;
+    }
+
+    public boolean verificaMorto() {
         if (this.morto) {
             return false;
         } else {

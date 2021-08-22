@@ -12,6 +12,7 @@ import classes.Deus;
 import classes.Habilidade;
 import classes.Inimigo;
 import classes.Jogador;
+import classes.Progressao;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -42,11 +43,12 @@ public class InterfaceBatalha implements BancoDados{
     private JFrame janela;
     private JPanel painel;
     private Jogador jogador;
+    private int acao=0;
     
     JSONObject bancoDados;
     JSONParser parser;
     
-    private Bot bot;
+    private Bot bot = new Bot();
     private Inimigo inimigo;
     
     private class ImagemFundo extends JPanel {
@@ -102,6 +104,68 @@ public class InterfaceBatalha implements BancoDados{
             Logger.getLogger(InterfaceBatalha.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+     
+     
+     public InterfaceBatalha(Jogador jogador, Bot bot){
+        
+        UIManager.put("Button.background", Color.black);
+        UIManager.put("Button.foreground", Color.white);
+
+        this.bot=bot;
+        
+        this.jogador=jogador;
+        
+        parser=new JSONParser();
+        
+        this.inimigo=bot.getInimigo();
+        
+        ImageIcon enemi = new ImageIcon(bot.getInimigo().getCaminhoIcone());
+        
+        ImageIcon heroi = new ImageIcon(jogador.getDeus().getCaminhoIcone());
+        
+        jl1= new JLabel("<html><body><center>Nome: "+bot.getInimigo().getNome()+"<br><center>TIPO<br><center>Nivel: "+bot.getInimigo().getNivel()+"<br><center>Vida Restante: "+ bot.getInimigo().getVidaAtual()+"<br&gtcom HTML!</body></html>",JLabel.CENTER);
+        jl1.setFont(new Font("Georgia", Font.BOLD, 10));
+        jl1.setOpaque(true);
+        jl1.setBackground(Color.WHITE);
+                
+        jl2=new JLabel ("<html><body><center>NOME: "+jogador.getDeus().getNome()+"<br><center>TIPO<br><center>Nivel: "+jogador.getDeus().getNivel()+"<br><center>Vida Restante: "+ jogador.getDeus().getVidaAtual()+"<br&gtcom HTML!</body></html>",JLabel.CENTER);
+        jl2.setFont(new Font("Georgia", Font.BOLD, 10));
+        jl2.setOpaque(true);
+        jl2.setBackground(Color.WHITE);
+
+        
+        separacao = new JLabel("");
+        
+        imagemInimigo = new JLabel("");
+        imagemInimigo.setIcon(enemi);
+
+        imagemPersonagem = new JLabel("");
+        imagemPersonagem.setIcon(heroi);
+
+        H1inimigo = new JButton(bot.getInimigo().getHabilidades()[0].getNome());
+        H2inimigo = new JButton(bot.getInimigo().getHabilidades()[1].getNome());
+        H3inimigo = new JButton(bot.getInimigo().getHabilidades()[2].getNome());
+        H4inimigo = new JButton(bot.getInimigo().getHabilidades()[3].getNome());
+        
+        H1inimigo.setEnabled(false);
+        H2inimigo.setEnabled(false);
+        H3inimigo.setEnabled(false);
+        H4inimigo.setEnabled(false);
+        
+        H1personagem = new JButton(jogador.getDeus().getHabilidades()[0].getNome());
+        H2personagem = new JButton(jogador.getDeus().getHabilidades()[1].getNome());
+        H3personagem = new JButton(jogador.getDeus().getHabilidades()[2].getNome());
+        H4personagem = new JButton(jogador.getDeus().getHabilidades()[3].getNome());
+
+        Consumivel = new JButton("Elixir");
+
+        ConfirmarTurno = new JButton("Confirmar Turno");
+        ConfirmarTurno.setFont(new Font("Georgia", Font.BOLD, 12));
+        
+        this.criaJanela();
+    }
+     
+     
     
     public InterfaceBatalha(Jogador jogador, String nomeAdversario){
         
@@ -178,7 +242,98 @@ public class InterfaceBatalha implements BancoDados{
         janela.setVisible(true);
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
+        H1personagem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                H1personagem.setBackground(Color.green);
+                H2personagem.setBackground(Color.black);
+                H3personagem.setBackground(Color.black);
+                H4personagem.setBackground(Color.black);
+                Consumivel.setBackground(Color.black);
 
+                acao=1;               
+            }
+        }); 
+        
+        H2personagem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                H1personagem.setBackground(Color.black);
+                H2personagem.setBackground(Color.green);
+                H3personagem.setBackground(Color.black);
+                H4personagem.setBackground(Color.black);
+                Consumivel.setBackground(Color.black);
+
+                acao=2;               
+            }
+        }); 
+        
+        H3personagem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                H1personagem.setBackground(Color.black);
+                H2personagem.setBackground(Color.black);
+                H3personagem.setBackground(Color.green);
+                H4personagem.setBackground(Color.black);
+                Consumivel.setBackground(Color.black);
+
+                acao=3;               
+            }
+        }); 
+        
+        H4personagem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                H1personagem.setBackground(Color.black);
+                H2personagem.setBackground(Color.black);
+                H3personagem.setBackground(Color.black);
+                H4personagem.setBackground(Color.green);
+                Consumivel.setBackground(Color.black);
+
+                acao=4;               
+            }
+        }); 
+        
+        Consumivel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                H1personagem.setBackground(Color.black);
+                H2personagem.setBackground(Color.black);
+                H3personagem.setBackground(Color.black);
+                H4personagem.setBackground(Color.black);
+                Consumivel.setBackground(Color.green);
+
+                acao=5;               
+            }
+        });
+        
+        ConfirmarTurno.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+             if(acao==0){
+                 
+             }else{
+                 
+                 janela.setVisible(false);
+                 bot.getInimigo().reduzirVida((int) jogador.acao(acao));
+                 jogador.getDeus().reduzirVida(bot.usaHabilidade());
+                 
+                 if(jogador.getDeus().verificaMorto()){
+                     jogador.setChaveDeProgresso(-1);//GameOver
+                     new Progressao(jogador);
+                 }else{
+                     if(bot.getInimigo().verificaMorto()){
+                         jogador.aumentaChaveDeProgresso();
+                         new Progressao(jogador);
+                     }else{
+                         InterfaceBatalha c = new InterfaceBatalha(jogador, bot);
+                     }
+                 }
+                 
+            } 
+             
+            }
+        }); 
        
 }
      private void posicionaComponentes() {

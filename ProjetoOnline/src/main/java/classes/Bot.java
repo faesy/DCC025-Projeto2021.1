@@ -31,9 +31,10 @@ public class Bot {
         return inimigo;
     }
 
-    private int usaHabilidade(int escolha) {
+    public int usaHabilidade() {
         //só uma base de começo, tem muitas modificações que talvez sejam implementadas no futuro.
         //while esta sendo utilizado para manter o bot utilizando suas habilidades até que elas acabem.
+        int escolha = (int) (1 + Math.random() * 4);
         while (escolha <= 4 & escolha >= 1) {
             if (inimigo.verificaCarga(escolha)) {
                 return inimigo.usarHabilidade(escolha);
@@ -44,7 +45,6 @@ public class Bot {
             } else if (inimigo.verificaCarga(escolha)) {
                 return inimigo.usarHabilidade(escolha);
             } else {
-                escolha = (int) (1 + Math.random() * 4);
             }
         }
         return 0;//exite para considerar a situação que todas cargas acabaram, assim mostra que ele não faz nada nesse caso.
