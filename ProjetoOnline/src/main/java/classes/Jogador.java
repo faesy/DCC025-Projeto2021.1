@@ -3,6 +3,7 @@ package classes;
 public class Jogador {
 
     private String nome;
+    private int ChaveDeProgresso=0;
     private String senha;
     private Deus deus;
     private Consumivel[] consumiveis;
@@ -10,8 +11,18 @@ public class Jogador {
     public void setDeus(Deus deus) {
         this.deus = deus;
     }
+
+    public int getChaveDeProgresso() {
+        return ChaveDeProgresso;
+    }
+
+    public void setChaveDeProgresso(int ChaveDeProgresso) {
+        this.ChaveDeProgresso = ChaveDeProgresso;
+    }
     
-    
+    public void aumentaChaveDeProgresso() {
+        ChaveDeProgresso=ChaveDeProgresso+1;
+    }
 
     public Jogador() {
         consumiveis = new Consumivel[2];
@@ -31,6 +42,10 @@ public class Jogador {
 
     public String getSenha() {
         return senha;
+    }
+
+    public Deus getDeus() {
+        return deus;
     }
     
     

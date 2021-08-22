@@ -1,12 +1,15 @@
 package interfaces.graficas;
 
 import classes.Jogador;
+import classes.Progressao;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,16 +17,22 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import tratamento.eventos.Proximo;
 
 public class Historia {
 
     String mensagem;
     String caminhoIcone;
     JPanel painel;
+    Jogador jogador;
+    JButton proximo;
 
     public Historia(String mensagem,Jogador jogador) {
+        this.jogador=jogador;
         this.mensagem = mensagem;
         this.caminhoIcone = "./src/main/java/imagens/Floresta.png";
+        
+        this.criaJanela();
     }
 
     public void criaJanela() {
@@ -35,6 +44,16 @@ public class Historia {
         janela.add(painel);
         janela.setVisible(true);
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        proximo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                janela.setVisible(false);
+                jogador.aumentaChaveDeProgresso();
+                new Progressao(jogador);
+            }
+        });
+        
     }
 
     private void posicionaComponentes() {
@@ -60,7 +79,7 @@ public class Historia {
         painelAux.add(texto, pos);
         painel.add(painelAux, BorderLayout.WEST);
 
-        JButton proximo = new JButton("Próximo");
+        proximo = new JButton("Próximo");
         pos.gridx = 1;
         pos.gridy = 0;
         pos.insets = new Insets(0, 0, -70, 30);

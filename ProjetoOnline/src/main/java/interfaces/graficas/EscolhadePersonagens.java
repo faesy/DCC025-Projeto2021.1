@@ -12,6 +12,7 @@ import classes.BancoDados;
 import static classes.BancoDados.CAMINHO_BANCO_DADOS;
 import classes.Deus;
 import classes.Habilidade;
+import classes.Progressao;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -161,7 +162,8 @@ public class EscolhadePersonagens implements BancoDados{
          confirmarzeus.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Historia("Ola",jogador).criaJanela();
+                jogador.aumentaChaveDeProgresso();
+                new Progressao(jogador);
                 janela.setVisible(false);
             }
         });
@@ -169,7 +171,8 @@ public class EscolhadePersonagens implements BancoDados{
          confirmarra.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Historia("Ola",jogador).criaJanela();
+                jogador.aumentaChaveDeProgresso();
+                new Progressao(jogador);
                 janela.setVisible(false);
             }
         });
@@ -177,7 +180,8 @@ public class EscolhadePersonagens implements BancoDados{
          confirmarskadi.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new Historia("Ola",jogador).criaJanela();
+                jogador.aumentaChaveDeProgresso();
+                new Progressao(jogador);
                 janela.setVisible(false);
             }
         });

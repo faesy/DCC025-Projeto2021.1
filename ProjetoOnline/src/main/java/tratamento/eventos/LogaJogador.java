@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import classes.BancoDados;
 import classes.Jogador;
+import classes.Progressao;
 import interfaces.graficas.EscolhadePersonagens;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -56,7 +57,8 @@ public class LogaJogador implements ActionListener, BancoDados {
                     existe = true;
                     JOptionPane.showMessageDialog(null, "Login realizado com sucesso.", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
                     login.janela.setVisible(false);
-                    EscolhadePersonagens a =new EscolhadePersonagens(jogador);
+                    jogador.aumentaChaveDeProgresso();
+                    new Progressao(jogador);
                     
                 }
             }
