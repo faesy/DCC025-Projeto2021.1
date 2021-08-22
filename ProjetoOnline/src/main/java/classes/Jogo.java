@@ -5,6 +5,8 @@ import interfaces.graficas.Login;
 import interfaces.graficas.MenuHabilidades;
 import interfaces.graficas.EscolhadePersonagens;
 import interfaces.graficas.InterfaceBatalha;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Jogo {
 
@@ -15,8 +17,8 @@ public class Jogo {
         //teste
         //Deus deus = new Deus();
         //new MenuHabilidades(deus).criaJanela();
-        //new Historia("Ola").criaJanela();
+       // new Historia("Ola").criaJanela();
         //new EscolhadePersonagens().criaJanela();
-//        new InterfaceBatalha().criaJanela();
+
     }
 }

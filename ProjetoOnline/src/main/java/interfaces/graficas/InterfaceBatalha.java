@@ -61,6 +61,8 @@ public class InterfaceBatalha {
 
         ConfirmarTurno = new JButton("Confirmar Turno");
         ConfirmarTurno.setFont(new Font("Georgia", Font.BOLD, 12));
+        
+        this.criaJanela();
     }
 
      public void criaJanela() {

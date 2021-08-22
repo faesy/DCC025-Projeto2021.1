@@ -18,7 +18,7 @@ package com.mycompany.projetoonline;
  */
 public class Deus {
 
-    //Atributos da classe Deus
+
     protected int vidaBase;
     protected int vidaAtual;
     protected int vidaMax;
@@ -32,6 +32,7 @@ public class Deus {
     protected boolean morto = false;
     protected int carga[] = new int[4];
     protected static int qtddDeuses;
+
 
     //Bloco estático para inicializar a variável qtddDeuses
     static {

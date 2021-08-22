@@ -3,6 +3,7 @@ package interfaces.graficas;
 import classes.BancoDados;
 import static classes.BancoDados.CAMINHO_BANCO_DADOS;
 import classes.Deus;
+import classes.Jogador;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -29,6 +30,7 @@ import tratamento.eventos.SalvaHabilidadeEscolhida;
 public class MenuHabilidades implements BancoDados {
 
     private Deus deus;
+    private Jogador jogador;
     private JPanel painel;
     private JSONObject bancoDados;
     private JSONParser parser;
@@ -36,8 +38,9 @@ public class MenuHabilidades implements BancoDados {
     private JComboBox[] listaHabilidades;
     private JButton proximo;
 
-    public MenuHabilidades(Deus deus) {
-        this.deus = deus;
+    public MenuHabilidades(Jogador jogador) {
+        this.jogador=jogador;
+        this.deus = jogador.getDeus();
         parser = new JSONParser();
         manipulaJSON();
         listaHabilidades = new JComboBox[4];
@@ -103,7 +106,7 @@ public class MenuHabilidades implements BancoDados {
         painel.add(listaHabilidades[3], pos);
 
         proximo = new JButton("Próximo");
-        proximo.addActionListener(new Proximo());
+        proximo.addActionListener(new Proximo(this.jogador));
         pos.insets = new Insets(400, 0, 0, -650);
         painel.add(proximo, pos);
 

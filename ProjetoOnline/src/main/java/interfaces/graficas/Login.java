@@ -1,5 +1,6 @@
 package interfaces.graficas;
 
+import classes.Jogador;
 import java.awt.*;
 import javax.swing.*;
 import tratamento.eventos.CadastraJogador;
@@ -14,6 +15,7 @@ public class Login {
     final private JTextField tfLogin;
     final private JPasswordField tfSenha;
     final private JButton logar, cadastrar, configuracoes;
+    private static Jogador Jogadoratual;
     public JFrame janela;
 
     private ImagemFundo posicionaComponentes() {
@@ -67,6 +69,7 @@ public class Login {
 
         return painel;
     }
+    
 
     public Login() {
 
