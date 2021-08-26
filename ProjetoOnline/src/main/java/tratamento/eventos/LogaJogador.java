@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import classes.BancoDados;
+import classes.EntrarAposSalvar;
 import classes.Jogador;
 import classes.Jogo;
 import classes.Progressao;
@@ -59,8 +60,14 @@ public class LogaJogador implements ActionListener, BancoDados {
                     jogador.setChaveProgresso(Integer.parseInt(jogadorAux.get("Chave de Progresso").toString()));
                     JOptionPane.showMessageDialog(null, "Login realizado com sucesso.", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
                     login.janela.setVisible(false);
+                    if(this.jogador.getChaveProgresso()==0)
+                    {
                     new Progressao(jogador);
                     login.janela.setVisible(false);
+                    }
+                    else {
+                        new EntrarAposSalvar(jogador);
+                    }
                 }
             }
             if (existe == false) {

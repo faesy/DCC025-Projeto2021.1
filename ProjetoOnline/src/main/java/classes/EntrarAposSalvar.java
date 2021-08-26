@@ -29,15 +29,18 @@ public class EntrarAposSalvar implements BancoDados{
     private Deus deus=new Deus();
     
     public EntrarAposSalvar(Jogador jogador){
+        parser = new JSONParser();
         this.jogador=jogador;
         
         manipulaJSON();
         
-        this.deus=this.jogador.getDeus();
+        this.deus.funcaoPoder();
+        
+        this.deus.funcaoVidaMax();
+        
+        this.jogador.setDeus(deus);
         
         JOptionPane.showMessageDialog(null, "Por favor selecione novamente suas Habilidades e seus Consumiveis ", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
-        
-        new MenuHabilidades(jogador).criaJanela();
         
         new Progressao(jogador);
     }
