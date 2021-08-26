@@ -45,6 +45,7 @@ public class Bot {
             } else if (inimigo.verificaCarga(escolha)) {
                 return inimigo.usarHabilidade(escolha);
             } else {
+                escolha = (int) (1 + Math.random() * 4);
             }
         }
         return 0;//exite para considerar a situação que todas cargas acabaram, assim mostra que ele não faz nada nesse caso.

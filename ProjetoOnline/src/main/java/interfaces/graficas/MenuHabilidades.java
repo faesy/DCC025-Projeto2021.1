@@ -24,6 +24,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
+import javax.swing.JTextArea;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -42,7 +43,8 @@ public class MenuHabilidades implements BancoDados {
     private JComboBox[] listaHabilidades;
     private JButton proximo;
     private JLabel titulo;
-    private JLabel habilidadesInfo;
+//    private JLabel habilidadesInfo;
+    private JTextArea habilidadesInfo;
     private JFrame janela;
 
     public MenuHabilidades(Jogador jogador) {
@@ -54,13 +56,17 @@ public class MenuHabilidades implements BancoDados {
         listaHabilidades = new JComboBox[4];
         for (int i = 0; i < 4; i++) {
             listaHabilidades[i] = new JComboBox(nomeHabilidades);
+            listaHabilidades[i].setBackground(new Color(222, 217, 240));
         }
-        habilidadesInfo = new JLabel("");
+
+        habilidadesInfo = new JTextArea(4, 10);
+        habilidadesInfo.setBackground(new Color(222, 217, 240));
+        habilidadesInfo.setEditable(false);
         habilidadesInfo.setFont(new Font("Georgia", Font.BOLD, 12));
-        habilidadesInfo.setBorder(BorderFactory.createLineBorder(Color.black));
+        habilidadesInfo.setBorder(BorderFactory.createLineBorder(Color.GRAY));
         habilidadesInfo.setPreferredSize(new Dimension(180, 150));
         titulo = new JLabel("Selecione as Habilidades Desejadas", JLabel.CENTER);
-        titulo.setFont(new Font("Georgia", Font.BOLD, 20));
+        titulo.setFont(new Font("Georgia", Font.BOLD, 22));
         proximo = new JButton("Próximo");
         proximo.addActionListener(new ActionListener() {
 
@@ -101,37 +107,37 @@ public class MenuHabilidades implements BancoDados {
         GridBagLayout layout = new GridBagLayout();
         JPanel painelAux = new JPanel();
         painelAux.setBackground(Color.WHITE);
-        painelAux.setPreferredSize(new Dimension(250, 250));
+        painelAux.setPreferredSize(new Dimension(450, 450));
         painelAux.setLayout(layout);
 
         GridBagConstraints pos = new GridBagConstraints();
         pos.gridx = 0;
         pos.gridy = 0;
-        pos.insets = new Insets(5, 5, 5, 10);
+        pos.insets = new Insets(50, 5, 5, 10);
         listaHabilidades[0].addItemListener(new SalvaHabilidadeEscolhida(this, 0));
         painelAux.add(listaHabilidades[0], pos);
 
         pos.gridx = 0;
         pos.gridy = 1;
-        pos.insets = new Insets(5, 5, 5, 10);
+        pos.insets = new Insets(5, 5, -10, 10);
         listaHabilidades[1].addItemListener(new SalvaHabilidadeEscolhida(this, 1));
         painelAux.add(listaHabilidades[1], pos);
 
         pos.gridx = 0;
         pos.gridy = 2;
-        pos.insets = new Insets(5, 5, 5, 10);
+        pos.insets = new Insets(5, 5, -60, 10);
         listaHabilidades[2].addItemListener(new SalvaHabilidadeEscolhida(this, 2));
         painelAux.add(listaHabilidades[2], pos);
 
         pos.gridx = 0;
         pos.gridy = 3;
-        pos.insets = new Insets(5, 5, 5, 10);
+        pos.insets = new Insets(5, 5, -135, 10);
         listaHabilidades[3].addItemListener(new SalvaHabilidadeEscolhida(this, 3));
         painelAux.add(listaHabilidades[3], pos);
 
         pos.gridx = 0;
         pos.gridy = 4;
-        pos.insets = new Insets(5, 5, 5, 5);
+        pos.insets = new Insets(5, 5, -250, 5);
         painelAux.add(proximo, pos);
 
         painel.add(painelAux, BorderLayout.EAST);
@@ -145,6 +151,15 @@ public class MenuHabilidades implements BancoDados {
         pos.insets = new Insets(-10, 20, 25, 0);
         painelAux2.add(habilidadesInfo, pos);
         painel.add(painelAux2, BorderLayout.WEST);
+
+        GridBagConstraints posInfo = new GridBagConstraints();
+        posInfo.gridx = 1;
+        posInfo.gridy = 0;
+        //posInfo.weightx =  0;
+        //posInfo.gridheight = 2;
+        posInfo.insets = new Insets(0, 20, -160, 0);
+        painelAux.add(habilidadesInfo, posInfo);
+        painel.add(painelAux, BorderLayout.SOUTH);
 
     }
 
@@ -179,7 +194,8 @@ public class MenuHabilidades implements BancoDados {
         return proximo;
     }
 
-    public JLabel getHabilidadeInfo() {
+    public JTextArea getHabilidadeInfo() {
+
         return habilidadesInfo;
     }
 

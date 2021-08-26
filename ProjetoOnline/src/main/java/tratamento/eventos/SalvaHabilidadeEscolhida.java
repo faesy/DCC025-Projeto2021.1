@@ -3,6 +3,7 @@ package tratamento.eventos;
 import classes.BancoDados;
 import static classes.BancoDados.CAMINHO_BANCO_DADOS;
 import interfaces.graficas.MenuHabilidades;
+import java.awt.Color;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.FileReader;
@@ -52,10 +53,10 @@ public class SalvaHabilidadeEscolhida implements ItemListener, BancoDados {
                         for (int j = 0; j < habilidadesArray.size(); j++) {
                             JSONObject habilidadeAux = (JSONObject) habilidadesArray.get(j);
                             if (habilidadeAux.get("Nome").equals(menuHabilidade.getListaHabilidades(indiceHabilidade).getSelectedItem())){ 
-                                menuHabilidade.getHabilidadeInfo().setText("<html><body>Nome: " + habilidadeAux.get("Nome").toString() + "<br>Descrição: "
+                                menuHabilidade.getHabilidadeInfo().setText("\n  Nome:  " + habilidadeAux.get("Nome").toString() + "\n  Descrição:  "
                                         + habilidadeAux.get("Descricao").toString()
-                                        + "<br>Carga: " + Integer.parseInt(habilidadeAux.get("Carga").toString())
-                                        + "<br>Dano: " + Integer.parseInt(habilidadeAux.get("Dano").toString()) + "<br&gtcom HTML!</body></html>"); 
+                                        + "\n  Carga:  " + Integer.parseInt(habilidadeAux.get("Carga").toString())
+                                        + "\n  Dano:  " + Integer.parseInt(habilidadeAux.get("Dano").toString())); 
                                 this.menuHabilidade.getJanela().repaint();
                                 this.menuHabilidade.getJanela().validate();
                                 dHabilidadesArray.set(indiceHabilidade, habilidadeAux);
@@ -68,7 +69,6 @@ public class SalvaHabilidadeEscolhida implements ItemListener, BancoDados {
                             }
                         }
                     }
-
                 }
             }
         } catch (IOException ex) {

@@ -11,6 +11,7 @@ public class Jogador {
 
     public void setDeus(Deus deus) {
         this.deus = deus;
+        
     }
 
     public int getChaveProgresso() {

@@ -37,7 +37,7 @@ import org.json.simple.parser.ParseException;
 public class EscolhadePersonagens implements BancoDados{
     
     final private ImageIcon zeus = new ImageIcon("./src/main/java/imagens/zeus.png");
-    final private ImageIcon ra = new ImageIcon("./src/main/java/imagens/rá.png");
+    final private ImageIcon ra = new ImageIcon("./src/main/java/imagens/ra.png");
     final private ImageIcon skadi = new ImageIcon("./src/main/java/imagens/Skadi.png");
     final private JLabel jl1, jl2, jl3,titulo,jl4;
     final private JButton selzeus, selra, selskadi, confirmarzeus,confirmarra,confirmarskadi;

@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import tratamento.eventos.ApagaConsumiveis;
 import tratamento.eventos.ApagaDeuses;
 import tratamento.eventos.ApagaHabilidades;
+import tratamento.eventos.FechaAdicionaHistoria;
 import tratamento.eventos.FechaInsereRemoveObjetos;
 import tratamento.eventos.InicializaBancoDados;
 
@@ -48,6 +49,13 @@ public class ConfiguracoesInternas {
         JMenuItem apagarHabilidades = new JMenuItem("Deletar Habilidades");
         apagarHabilidades.addActionListener(new ApagaHabilidades());
         bancoDados.add(apagarHabilidades);
+        
+        JMenuItem inserirHistoria = new JMenuItem("Adicionar ou Remover Histórias");
+        inserirHistoria.addActionListener(new AdicionaRemoveHistoria(this, inserirHistoria));
+        bancoDados.add(inserirHistoria);
+        JMenuItem fecharInserirHistoria = new JMenuItem("Fechar painel \"Adicionar ou Remover Histórias\"");
+        fecharInserirHistoria.addActionListener(new FechaAdicionaHistoria(this, inserirHistoria));
+        bancoDados.add(fecharInserirHistoria);
 
         return menuAdministrador;
     }

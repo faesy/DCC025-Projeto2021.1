@@ -60,6 +60,7 @@
                             "Nome": "Gelo",
                             "Dano": 20
                         }],
+
                     "Poder Base": 10,
                     "Diretorio": ".\\src\\main\\java\\imagens\\Skadi.png",
                     "Nome": "Skadi",
