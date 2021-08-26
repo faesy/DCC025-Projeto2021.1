@@ -23,7 +23,6 @@ public class Progressao {
         
         switch (chave){
             case -1:
-                System.out.println("Game Over");
                 System.exit(0);
                 break;
             case 0:

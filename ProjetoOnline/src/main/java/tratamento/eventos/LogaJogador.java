@@ -59,7 +59,6 @@ public class LogaJogador implements ActionListener, BancoDados {
                     jogador.setChaveProgresso(Integer.parseInt(jogadorAux.get("Chave de Progresso").toString()));
                     JOptionPane.showMessageDialog(null, "Login realizado com sucesso.", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
                     login.janela.setVisible(false);
-                    jogador.aumentaChaveDeProgresso();
                     new Progressao(jogador);
                     login.janela.setVisible(false);
                 }

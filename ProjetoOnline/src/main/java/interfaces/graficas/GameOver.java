@@ -5,6 +5,8 @@
  */
 package interfaces.graficas;
 
+import classes.Jogador;
+import classes.Progressao;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -12,6 +14,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -30,16 +34,40 @@ public class GameOver {
     private JPanel tela;
     private JFrame janela;
 
-    public GameOver() {
+    public GameOver(Jogador jogador) {
 
         UIManager.put("Button.background", Color.black);
         UIManager.put("Button.foreground", Color.white);
-        
+
         this.reiniciar = new JButton("Reiniciar");
         this.reiniciar.setPreferredSize(new Dimension(100, 50));
-        
+
         this.sair = new JButton("Sair");
         this.sair.setPreferredSize(new Dimension(100, 50));
+
+        this.reiniciar.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                janela.setVisible(false);
+                jogador.setChaveProgresso(0);
+                new Progressao(jogador);
+
+            }
+
+        });
+        this.sair.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                janela.setVisible(false);
+                jogador.setChaveProgresso(-1);
+                new Progressao(jogador);
+
+            }
+
+        });
+
         criaJanela();
     }
 

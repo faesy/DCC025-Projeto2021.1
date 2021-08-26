@@ -322,8 +322,7 @@ public class InterfaceBatalha implements BancoDados {
                     jogador.getDeus().reduzirVida(bot.usaHabilidade());
 
                     if (jogador.getDeus().verificaMorto()) {
-                        jogador.setChaveProgresso(-1);//GameOver
-                        new Progressao(jogador);
+                        new GameOver(jogador);                        
                     } else {
                         if (bot.getInimigo().verificaMorto()) {
                             jogador.aumentaChaveDeProgresso();
