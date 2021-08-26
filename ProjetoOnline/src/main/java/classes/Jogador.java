@@ -92,5 +92,7 @@ public class Jogador {
         return deus;
     }
 
+    public void retiraDeus() {
+        this.deus = null;
+    }
 }
-

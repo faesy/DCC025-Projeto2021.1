@@ -6,6 +6,7 @@ package interfaces.graficas;
 
 import classes.Jogador;
 import classes.Progressao;
+import classes.Salvar;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -92,7 +93,8 @@ public class TelaDeDescanso {
             
             @Override
             public void actionPerformed(ActionEvent e) {
-                jogador.setChaveProgresso(-2);// adicionar funcao salvar
+              janela.setVisible(false); 
+              new Salvar(jogador);
             }
         });
         

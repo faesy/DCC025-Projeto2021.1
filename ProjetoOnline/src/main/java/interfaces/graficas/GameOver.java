@@ -61,6 +61,8 @@ public class GameOver {
             @Override
             public void actionPerformed(ActionEvent e) {
                 janela.setVisible(false);
+                
+                Progressao.reiniciarProgresso(jogador);
                 jogador.setChaveProgresso(-1);
                 new Progressao(jogador);
 

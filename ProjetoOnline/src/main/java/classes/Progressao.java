@@ -16,20 +16,20 @@ import interfaces.graficas.TelaDeDescanso;
  * @author mathe
  */
 public class Progressao {
-    
+
     public Progressao(Jogador jogador) {
-        
-        int chave=jogador.getChaveProgresso();
-        
-        switch (chave){
+
+        int chave = jogador.getChaveProgresso();
+
+        switch (chave) {
             case -1:
                 System.exit(0);
                 break;
             case 0:
-                EscolhadePersonagens a =new EscolhadePersonagens(jogador);
+                EscolhadePersonagens a = new EscolhadePersonagens(jogador);
                 break;
             case 1:
-                Historia b = new Historia("Tudo começou quando ...",jogador);
+                Historia b = new Historia("Tudo começou quando ...", jogador);
                 break;
             case 2:
                 InterfaceBatalha c = new InterfaceBatalha(jogador, "Zeus");
@@ -38,7 +38,7 @@ public class Progressao {
                 TelaDeDescanso d = new TelaDeDescanso(jogador);
                 break;
             case 4:
-                Historia e = new Historia("Tudo começou quando ...",jogador);
+                Historia e = new Historia("Tudo começou quando ...", jogador);
                 break;
             case 5:
                 InterfaceBatalha f = new InterfaceBatalha(jogador, "Zeus");
@@ -47,7 +47,7 @@ public class Progressao {
                 TelaDeDescanso g = new TelaDeDescanso(jogador);
                 break;
             case 7:
-                Historia h = new Historia("Tudo começou quando ...",jogador);
+                Historia h = new Historia("Tudo começou quando ...", jogador);
                 break;
             case 8:
                 //InterfaceBatalha i = new InterfaceBatalha();
@@ -56,9 +56,12 @@ public class Progressao {
                 TelaDeDescanso j = new TelaDeDescanso(jogador);
                 break;
 
+        }
     }
-    
 
-    
-}
+    public static void reiniciarProgresso(Jogador jogador) {
+        jogador.setChaveProgresso(0);
+        jogador.retiraDeus();
+        new Salvar(jogador);
+    }
 }

@@ -25,26 +25,21 @@ import org.json.simple.parser.ParseException;
  *
  * @author mathe
  */
-public class Salvar implements ActionListener, BancoDados {
+public class Salvar implements BancoDados {
 
     Jogador jogador;
     JSONObject bancoDados;
     JSONParser parser;
     Deus deus;
-    private InsereRemoveObjetos objeto;
 
-    public Salvar(Jogador jogador, InsereRemoveObjetos objeto) {
-        this.objeto = objeto;
+    public Salvar(Jogador jogador) {
+       
         parser = new JSONParser();
         this.jogador = jogador;
         deus = this.jogador.getDeus();
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
         manipulaJSON();
-
+        jogador.setChaveProgresso(-1);
+        new Progressao(jogador);
     }
 
     @Override
@@ -56,7 +51,7 @@ public class Salvar implements ActionListener, BancoDados {
             JSONArray jogadoresArray = (JSONArray) deuses.get("Jogadores");
             for (int i = 0; i < jogadoresArray.size(); i++) {
                 JSONObject jogadorAux = (JSONObject) jogadoresArray.get(i);
-                if (jogadorAux.get("Nome").equals(deus.getNome())) {
+                if (jogadorAux.get("Nome").equals(jogador.getNome())) {
                     
                 jogadorAux.put("Chave de Progresso", jogador.getChaveProgresso());
                 
@@ -81,4 +76,5 @@ public class Salvar implements ActionListener, BancoDados {
             Logger.getLogger(Salvar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
 }
