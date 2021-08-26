@@ -78,25 +78,24 @@ public class Deus {
 
     public void descansar() {
         this.vidaAtual = this.vidaMax;
-        this.funcaoLvlUp();
         int i;
         for (i = 0; i < 4; i++) {
             this.carga[i] = this.habilidades[i].carga;
         }
-        // tem que colocar para recuperar as cargas das poçoes aqui ainda
+        
     }
 
-    protected void funcaoPoder() {
+    public void funcaoPoder() {
         this.poder = (int) (this.poderBase * (Math.pow(1.1, this.nivel)));
     }
 
     public int usarHabilidade(int slotHabilidade) {
         if (slotHabilidade <= 0 || slotHabilidade > 4) {
             //habilidade invalida escolha um numero entre 1 e 4//
-            return -1;
+            return 0;
         }
-        if (verificaCarga(slotHabilidade)) {
-            return -1;
+        if (!verificaCarga(slotHabilidade)) {
+            return 0;
         }
         Habilidade h = habilidades[slotHabilidade - 1];
         this.carga[slotHabilidade - 1] = this.carga[slotHabilidade - 1] - 1;
@@ -112,11 +111,11 @@ public class Deus {
         }
     }
 
-    protected void funcaoVidaMax() {
+    public void funcaoVidaMax() {
         this.vidaMax = (int) (this.vidaBase * (Math.pow(1.2, this.nivel)));
     }
 
-    private void funcaoLvlUp() {
+    public void funcaoLvlUp() {
         this.nivel += 1;
 
         this.funcaoVidaMax();
@@ -143,7 +142,7 @@ public class Deus {
     }
 
     public boolean verificaMorto() {
-        if (this.morto) {
+        if (!this.morto) {
             return false;
         } else {
             return true;

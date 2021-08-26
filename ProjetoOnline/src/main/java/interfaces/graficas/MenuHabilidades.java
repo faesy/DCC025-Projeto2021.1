@@ -11,6 +11,8 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -21,6 +23,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -43,6 +46,7 @@ public class MenuHabilidades implements BancoDados {
     private JFrame janela;
 
     public MenuHabilidades(Jogador jogador) {
+        UIManager.put("Label.foreground", Color.black);
         this.jogador = jogador;
         this.deus = jogador.getDeus();
         parser = new JSONParser();
@@ -58,8 +62,16 @@ public class MenuHabilidades implements BancoDados {
         titulo = new JLabel("Selecione as Habilidades Desejadas", JLabel.CENTER);
         titulo.setFont(new Font("Georgia", Font.BOLD, 20));
         proximo = new JButton("Próximo");
-        //proximo.addActionListener(new Proximo());
-        
+        proximo.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                janela.setVisible(false);
+                new TelaDeDescanso(jogador);
+            }
+
+        });
+
     }
 
     public void criaJanela() {
@@ -78,7 +90,7 @@ public class MenuHabilidades implements BancoDados {
         painel = new JPanel();
         painel.setBackground(Color.WHITE);
         painel.setLayout(new BorderLayout());
-    
+
         painel.add(titulo, BorderLayout.NORTH);
 
         listaHabilidades[0].setPreferredSize(new Dimension(230, 30));
@@ -129,7 +141,7 @@ public class MenuHabilidades implements BancoDados {
         painelAux2.setLayout(layoutInfo);
         painelAux2.setBackground(Color.WHITE);
         painelAux2.setPreferredSize(new Dimension(200, 200));
- 
+
         pos.insets = new Insets(-10, 20, 25, 0);
         painelAux2.add(habilidadesInfo, pos);
         painel.add(painelAux2, BorderLayout.WEST);
@@ -162,18 +174,16 @@ public class MenuHabilidades implements BancoDados {
     public Deus getDeus() {
         return deus;
     }
-    
-    public JButton getProximo()
-    {
+
+    public JButton getProximo() {
         return proximo;
     }
-    
-    public JLabel getHabilidadeInfo()
-    {
+
+    public JLabel getHabilidadeInfo() {
         return habilidadesInfo;
     }
-    
-    public JFrame getJanela(){
+
+    public JFrame getJanela() {
         return janela;
     }
 }

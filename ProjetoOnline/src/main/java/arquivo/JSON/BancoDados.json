@@ -2,75 +2,80 @@
     "Banco de Dados": [{
             "Jogadores": [{
                     "Senha": "a",
-                    "Nome": "a",
-                    "Chave de Progresso": "0"
+                    "Chave de Progresso": "0",
+                    "Nome": "a"
                 }]
         }, {
             "Deuses": [{
-                    "Descricao": "Zeus",
-                    "Vida Base": 1,
+                    "Descricao": "Raio",
+                    "Vida Base": 100,
+                    "Tipo": "Grego",
                     "Habilidades": [{
-                            "Descricao": "raio",
-                            "Carga": 4,
-                            "Nome": "raio",
-                            "Dano": 2
+                            "Descricao": "Raio",
+                            "Carga": 10,
+                            "Nome": "Raio",
+                            "Dano": 10
                         }, {
-                            "Descricao": "raio",
-                            "Carga": 4,
-                            "Nome": "raio",
-                            "Dano": 2
+                            "Descricao": "Raio",
+                            "Carga": 10,
+                            "Nome": "Raio",
+                            "Dano": 10
                         }, {
-                            "Descricao": "raio",
-                            "Carga": 4,
-                            "Nome": "raio",
-                            "Dano": 2
+                            "Descricao": "Raio",
+                            "Carga": 10,
+                            "Nome": "Raio",
+                            "Dano": 10
                         }, {
-                            "Descricao": "raio",
-                            "Carga": 4,
-                            "Nome": "raio",
-                            "Dano": 2
+                            "Descricao": "Raio",
+                            "Carga": 10,
+                            "Nome": "Raio",
+                            "Dano": 10
                         }],
-                    "Poder Base": 1,
-                    "Diretorio": ".\/src\/main\/java\/imagens\/zeus.png",
+                    "Poder Base": 10,
+                    "Diretorio": ".\\src\\main\\java\\imagens\\zeus.png",
                     "Nome": "Zeus",
-                    "Nivel": 1,
-                    "Tipo": "Eletricidade"
+                    "Nivel": 1
                 }, {
-                    "Descricao": "ra",
-                    "Vida Base": 1,
+                    "Descricao": "Skadi",
+                    "Vida Base": 120,
+                    "Tipo": "Nordico",
                     "Habilidades": [{
-                            "Descricao": "raio",
-                            "Carga": 4,
-                            "Nome": "raio",
-                            "Dano": 2
+                            "Descricao": "Gelo",
+                            "Carga": 10,
+                            "Nome": "Gelo",
+                            "Dano": 20
                         }, {
-                            "Descricao": "raio",
-                            "Carga": 4,
-                            "Nome": "raio",
-                            "Dano": 2
+                            "Descricao": "Gelo",
+                            "Carga": 10,
+                            "Nome": "Gelo",
+                            "Dano": 20
                         }, {
-                            "Descricao": "raio",
-                            "Carga": 4,
-                            "Nome": "raio",
-                            "Dano": 2
+                            "Descricao": "Gelo",
+                            "Carga": 10,
+                            "Nome": "Gelo",
+                            "Dano": 20
                         }, {
-                            "Descricao": "raio",
-                            "Carga": 4,
-                            "Nome": "raio",
-                            "Dano": 2
+                            "Descricao": "Gelo",
+                            "Carga": 10,
+                            "Nome": "Gelo",
+                            "Dano": 20
                         }],
-                    "Poder Base": 1,
-                    "Diretorio": ".\/src\/main\/java\/imagens\/r�.png",
-                    "Nome": "Ra",
-                    "Nivel": 1,
-                    "Tipo": "Fogo"
+                    "Poder Base": 10,
+                    "Diretorio": ".\\src\\main\\java\\imagens\\Skadi.png",
+                    "Nome": "Skadi",
+                    "Nivel": 1
                 }]
         }, {
             "Habilidades": [{
-                    "Descricao": "raio",
-                    "Carga": 4,
-                    "Nome": "raio",
-                    "Dano": 2
+                    "Descricao": "Raio",
+                    "Carga": 10,
+                    "Nome": "Raio",
+                    "Dano": 10
+                }, {
+                    "Descricao": "Gelo",
+                    "Carga": 10,
+                    "Nome": "Gelo",
+                    "Dano": 20
                 }]
         }, {
             "Consumiveis": []
