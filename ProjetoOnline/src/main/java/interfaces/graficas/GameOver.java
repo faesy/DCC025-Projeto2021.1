@@ -7,6 +7,7 @@ package interfaces.graficas;
 
 import classes.Jogador;
 import classes.Progressao;
+import classes.ReiniciarProgresso;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -62,7 +63,7 @@ public class GameOver {
             public void actionPerformed(ActionEvent e) {
                 janela.setVisible(false);
                 
-                Progressao.reiniciarProgresso(jogador);
+                new ReiniciarProgresso(jogador);
                 jogador.setChaveProgresso(-1);
                 new Progressao(jogador);
 

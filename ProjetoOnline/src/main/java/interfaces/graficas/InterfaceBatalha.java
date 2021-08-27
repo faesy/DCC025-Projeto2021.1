@@ -176,9 +176,6 @@ public class InterfaceBatalha implements BancoDados {
         inimigo = new Inimigo();
 
         this.jogador = jogador;
-        this.jogador.getDeus().funcaoVidaMax();
-        this.jogador.getDeus().funcaoPoder();
-        this.jogador.getDeus().setVidaAtual(this.jogador.getDeus().getVidaMax());
 
         parser = new JSONParser();
 

@@ -29,6 +29,9 @@ public class Progressao {
                 EscolhadePersonagens a = new EscolhadePersonagens(jogador);
                 break;
             case 1:
+                jogador.getDeus().funcaoVidaMax();
+                jogador.getDeus().funcaoPoder();
+                jogador.getDeus().setVidaAtual(jogador.getDeus().getVidaMax());
                 Historia b = new Historia("Tudo começou quando ...", jogador);
                 break;
             case 2:
@@ -58,10 +61,5 @@ public class Progressao {
 
         }
     }
-
-    public static void reiniciarProgresso(Jogador jogador) {
-        jogador.setChaveProgresso(0);
-        jogador.retiraDeus();
-        new Salvar(jogador);
-    }
 }
+
