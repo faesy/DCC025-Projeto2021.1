@@ -2,16 +2,20 @@
     "Banco de Dados": [{
             "Jogadores": [{
                     "Senha": "a",
-                    "Chave de Progresso": 3,
+                    "Chave de Progresso": 6,
                     "Deus Escolhido": "Skadi",
                     "Nome": "a",
-                    "Nivel": 2
+                    "Nivel": 3
                 }, {
                     "Senha": "b",
                     "Chave de Progresso": 6,
                     "Deus Escolhido": "Skadi",
                     "Nome": "b",
                     "Nivel": 3
+                }, {
+                    "Senha": "g",
+                    "Chave de Progresso": 0,
+                    "Nome": "g"
                 }]
         }, {
             "Deuses": [{
@@ -86,7 +90,12 @@
                     "Dano": 20
                 }]
         }, {
-            "Consumiveis": []
+            "Consumiveis": [{
+                    "Descricao": "Vida Menor",
+                    "Carga": 2,
+                    "Efeito": "Cura",
+                    "Nome": "Vida Menor"
+                }]
         }, {
             "Chave de Seguranca": "123456789**"
         }]
