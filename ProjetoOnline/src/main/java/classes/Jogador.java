@@ -7,8 +7,18 @@ public class Jogador {
     private String senha;
     private Deus deus;
     private Consumivel consumivel;
+    private Consumivel[] consumiveis;
     private int carga;
 
+    public Consumivel[] getConsumiveis() {
+        return consumiveis;
+    }
+
+    public void setConsumiveis(Consumivel[] consumiveis) {
+        this.consumiveis = consumiveis;
+    }
+
+    
     public void setDeus(Deus deus) {
         this.deus = deus;
     }

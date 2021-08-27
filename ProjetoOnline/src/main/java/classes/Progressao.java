@@ -58,8 +58,35 @@ public class Progressao {
             case 9:
                 TelaDeDescanso j = new TelaDeDescanso(jogador);
                 break;
+                
+           /* case 10:
+                Historia e = new Historia("Tudo começou quando ...", jogador);
+                break;
+            case 11:
+                InterfaceBatalha f = new InterfaceBatalha(jogador, "Zeus");
+                break;
+            case 12:
+                TelaDeDescanso g = new TelaDeDescanso(jogador);
+                break;
+            case 13:
+                Historia e = new Historia("Tudo começou quando ...", jogador);
+                break;
+            case 14:
+                InterfaceBatalha f = new InterfaceBatalha(jogador, "Zeus");
+                break;
+            case 15:
+                TelaDeDescanso g = new TelaDeDescanso(jogador);
+                break;
+            case 16:
+                Historia e = new Historia("Tudo começou quando ...", jogador);
+                break;
+            case 17:
+                InterfaceBatalha f = new InterfaceBatalha(jogador, "Zeus");
+                break;
+            case 18:
+                TelaDeDescanso g = new TelaDeDescanso(jogador);
+                break;*/
 
         }
     }
 }
-

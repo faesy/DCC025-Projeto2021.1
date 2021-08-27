@@ -26,7 +26,7 @@ public class PegaConsumivelBancoDados implements BancoDados{
     JSONObject bancoDados;
     JSONParser parser;
 
-    public Consumivel PegaConsumivelBancoDados(String nome){
+    public Consumivel pegaOConsumivelBancoDados(String nome){
         this.consumivel.setNome(nome);
         parser = new JSONParser();
         
