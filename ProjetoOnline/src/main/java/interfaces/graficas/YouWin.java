@@ -7,6 +7,7 @@ package interfaces.graficas;
 
 import classes.Jogador;
 import classes.Progressao;
+import classes.ReiniciarProgresso;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -50,6 +51,7 @@ public class YouWin {
             @Override
             public void actionPerformed(ActionEvent e) {
                 janela.setVisible(false);
+                new ReiniciarProgresso(jogador);
                 jogador.setChaveProgresso(0);
                 new Progressao(jogador);
 
@@ -62,7 +64,7 @@ public class YouWin {
             public void actionPerformed(ActionEvent e) {
                 janela.setVisible(false);
                 
-                Progressao.reiniciarProgresso(jogador);
+                new ReiniciarProgresso(jogador);
                 jogador.setChaveProgresso(-1);
                 new Progressao(jogador);
 
