@@ -2,6 +2,7 @@ package interfaces.graficas;
 
 import classes.BancoDados;
 import static classes.BancoDados.CAMINHO_BANCO_DADOS;
+import classes.Consumivel;
 import classes.Deus;
 import java.awt.BorderLayout;
 import classes.Jogador;
@@ -15,6 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
@@ -46,6 +48,7 @@ public class MenuHabilidades implements BancoDados {
 //    private JLabel habilidadesInfo;
     private JTextArea habilidadesInfo;
     private JFrame janela;
+    String[] nomeElixir;
 
     public MenuHabilidades(Jogador jogador) {
         UIManager.put("Label.foreground", Color.black);
@@ -53,12 +56,22 @@ public class MenuHabilidades implements BancoDados {
         this.deus = jogador.getDeus();
         parser = new JSONParser();
         manipulaJSON();
-        listaHabilidades = new JComboBox[4];
+        listaHabilidades = new JComboBox[5];
         for (int i = 0; i < 4; i++) {
             listaHabilidades[i] = new JComboBox(nomeHabilidades);
             listaHabilidades[i].setBackground(new Color(222, 217, 240));
         }
-
+        Consumivel [] consumiveis = jogador.getConsumiveis();
+        this.nomeElixir = new String [consumiveis.length + 1];
+        for (int i = 0; i < consumiveis.length + 1; i++) {
+            if(i!=0)
+                this.nomeElixir[i] = consumiveis[i].getNome();
+            else 
+                this.nomeElixir[i] = "Selecione o Consumível";
+        }
+        listaHabilidades[4] = new JComboBox(this.nomeElixir); 
+        listaHabilidades[4].setBackground(new Color(222, 217, 240));
+        
         habilidadesInfo = new JTextArea(4, 10);
         habilidadesInfo.setBackground(new Color(222, 217, 240));
         habilidadesInfo.setEditable(false);
@@ -103,6 +116,8 @@ public class MenuHabilidades implements BancoDados {
         listaHabilidades[1].setPreferredSize(new Dimension(230, 30));
         listaHabilidades[2].setPreferredSize(new Dimension(230, 30));
         listaHabilidades[3].setPreferredSize(new Dimension(230, 30));
+        listaHabilidades[4].setPreferredSize(new Dimension(230, 30));
+        
 
         GridBagLayout layout = new GridBagLayout();
         JPanel painelAux = new JPanel();
@@ -114,30 +129,36 @@ public class MenuHabilidades implements BancoDados {
         pos.gridx = 0;
         pos.gridy = 0;
         pos.insets = new Insets(50, 5, 5, 10);
-        listaHabilidades[0].addItemListener(new SalvaHabilidadeEscolhida(this, 0));
+        listaHabilidades[0].addItemListener(new SalvaHabilidadeEscolhida(this, 0,this.jogador));
         painelAux.add(listaHabilidades[0], pos);
 
         pos.gridx = 0;
         pos.gridy = 1;
         pos.insets = new Insets(5, 5, -10, 10);
-        listaHabilidades[1].addItemListener(new SalvaHabilidadeEscolhida(this, 1));
+        listaHabilidades[1].addItemListener(new SalvaHabilidadeEscolhida(this, 1,this.jogador));
         painelAux.add(listaHabilidades[1], pos);
 
         pos.gridx = 0;
         pos.gridy = 2;
         pos.insets = new Insets(5, 5, -60, 10);
-        listaHabilidades[2].addItemListener(new SalvaHabilidadeEscolhida(this, 2));
+        listaHabilidades[2].addItemListener(new SalvaHabilidadeEscolhida(this, 2,this.jogador));
         painelAux.add(listaHabilidades[2], pos);
 
         pos.gridx = 0;
         pos.gridy = 3;
         pos.insets = new Insets(5, 5, -135, 10);
-        listaHabilidades[3].addItemListener(new SalvaHabilidadeEscolhida(this, 3));
+        listaHabilidades[3].addItemListener(new SalvaHabilidadeEscolhida(this, 3,this.jogador));
         painelAux.add(listaHabilidades[3], pos);
-
+        
         pos.gridx = 0;
         pos.gridy = 4;
-        pos.insets = new Insets(5, 5, -250, 5);
+        pos.insets = new Insets(5, 5, -220, 10);
+        listaHabilidades[4].addItemListener(new SalvaHabilidadeEscolhida(this, 4,this.jogador));
+        painelAux.add(listaHabilidades[4], pos);
+
+        pos.gridx = 0;
+        pos.gridy = 5;
+        pos.insets = new Insets(5, 5, -250, -450);
         painelAux.add(proximo, pos);
 
         painel.add(painelAux, BorderLayout.EAST);
@@ -170,10 +191,14 @@ public class MenuHabilidades implements BancoDados {
             JSONArray bancoDadosArray = (JSONArray) bancoDados.get("Banco de Dados");
             JSONObject habilidades = (JSONObject) bancoDadosArray.get(2);
             JSONArray habilidadesArray = (JSONArray) habilidades.get("Habilidades");
-            nomeHabilidades = new String[habilidadesArray.size()];
-            for (int i = 0; i < habilidadesArray.size(); i++) {
-                JSONObject habilidadeAux = (JSONObject) habilidadesArray.get(i);
-                nomeHabilidades[i] = (String) habilidadeAux.get("Nome");
+            nomeHabilidades = new String[habilidadesArray.size() + 1];
+            for (int i = 0; i < habilidadesArray.size() + 1; i++) {
+                if(i != 0){
+                    JSONObject habilidadeAux = (JSONObject) habilidadesArray.get(i-1);
+                    nomeHabilidades[i] = (String) habilidadeAux.get("Nome");
+                }
+                else
+                    nomeHabilidades[i] = "-";
             }
         } catch (IOException ex) {
             Logger.getLogger(MenuHabilidades.class.getName()).log(Level.SEVERE, null, ex);

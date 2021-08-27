@@ -105,4 +105,12 @@ public class Jogador {
     public void retiraDeus() {
         this.deus = null;
     }
+
+    public int getCarga() {
+        return carga;
+    }
+
+    public void setCarga(int carga) {
+        this.carga = carga;
+    }
 }
