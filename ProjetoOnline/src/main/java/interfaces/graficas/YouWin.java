@@ -28,14 +28,14 @@ import javax.swing.UIManager;
  *
  * @author Usuario
  */
-public class GameOver {
+public class YouWin {
 
-    final private ImageIcon imagem = new ImageIcon("./src/main/java/imagens/GameOver.jpg");
+    final private ImageIcon imagem = new ImageIcon("./src/main/java/imagens/YouWin.jpg");
     final private JButton reiniciar, sair;
     private JPanel tela;
     private JFrame janela;
 
-    public GameOver(Jogador jogador) {
+    public YouWin(Jogador jogador) {
 
         UIManager.put("Button.background", Color.black);
         UIManager.put("Button.foreground", Color.white);
