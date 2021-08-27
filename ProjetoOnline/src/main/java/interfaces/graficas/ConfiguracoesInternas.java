@@ -53,6 +53,7 @@ public class ConfiguracoesInternas {
         JMenuItem inserirHistoria = new JMenuItem("Adicionar ou Remover Histórias");
         inserirHistoria.addActionListener(new AdicionaRemoveHistoria(this, inserirHistoria));
         bancoDados.add(inserirHistoria);
+        
         JMenuItem fecharInserirHistoria = new JMenuItem("Fechar painel \"Adicionar ou Remover Histórias\"");
         fecharInserirHistoria.addActionListener(new FechaAdicionaHistoria(this, inserirHistoria));
         bancoDados.add(fecharInserirHistoria);

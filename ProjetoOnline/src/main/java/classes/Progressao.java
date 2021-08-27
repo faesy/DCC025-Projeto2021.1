@@ -53,7 +53,7 @@ public class Progressao {
                 Historia h = new Historia("Tudo começou quando ...", jogador);
                 break;
             case 8:
-                //InterfaceBatalha i = new InterfaceBatalha();
+                InterfaceBatalha i = new InterfaceBatalha(jogador, "Zeus");
                 break;
             case 9:
                 TelaDeDescanso j = new TelaDeDescanso(jogador);
