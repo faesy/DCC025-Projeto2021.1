@@ -7,7 +7,7 @@ public class Consumivel {
     private String descricao;
     private int carga;
 
-    public Consumivel() {
+    public Consumivel(){
     }
 
     public String getNome() {
