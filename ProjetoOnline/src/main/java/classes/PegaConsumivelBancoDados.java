@@ -30,6 +30,8 @@ public class PegaConsumivelBancoDados implements BancoDados{
         this.consumivel.setNome(nome);
         parser = new JSONParser();
         
+        manipulaJSON();
+        
         return this.consumivel;
     }
     
@@ -39,21 +41,17 @@ public class PegaConsumivelBancoDados implements BancoDados{
         try {
             bancoDados = (JSONObject) parser.parse(new FileReader(CAMINHO_BANCO_DADOS));
             JSONArray bancoDadosArray = (JSONArray) bancoDados.get("Banco de Dados");
-            JSONObject deuses = (JSONObject) bancoDadosArray.get(1);
-            JSONArray deusesArray = (JSONArray) deuses.get("Deuses");
-            boolean existe = false;
-            for (int i = 0; i < deusesArray.size(); i++) {
-                JSONObject deusAux = (JSONObject) deusesArray.get(i);
-                if (deusAux.get("Nome").equals(deus.getNome())) {
-                    existe = true;
-//                    deus.setNome(deusAux.get("Nome").toString());
-//                    deus.setDescricao(deusAux.get("Descricao").toString());
-//                    deus.setPoderBase(Integer.parseInt(deusAux.get("Poder Base").toString()));
-//                    deus.setVidaBase(Integer.parseInt(deusAux.get("Vida Base").toString()));
-//                    deus.setNivel(Integer.parseInt(deusAux.get("Nivel").toString()));
-//                    deus.setCaminhoIcone(deusAux.get("Diretorio").toString());
-//                    deus.setTipo(deusAux.get("Tipo").toString());
+            JSONObject consumiveis = (JSONObject) bancoDadosArray.get(3);
+            JSONArray consumivelArray = (JSONArray) consumiveis.get("Consumiveis");
+            for (int i = 0; i < consumivelArray.size(); i++) {
+                JSONObject consumivelAux = (JSONObject) consumivelArray.get(i);
+                if (consumivelAux.get("Nome").equals(this.consumivel.getNome())) {
                     
+                 this.consumivel.setDescricao(consumivelAux.get("Descricao").toString());
+                 
+                 this.consumivel.setCarga(Integer.parseInt(consumivelAux.get("Carga").toString()));
+                 
+                 this.consumivel.setEfeito(consumivelAux.get("Efeito").toString());
 
                 }
             }    
@@ -63,10 +61,9 @@ public class PegaConsumivelBancoDados implements BancoDados{
             Logger.getLogger(PegaConsumivelBancoDados.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {
             Logger.getLogger(PegaConsumivelBancoDados.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        } 
+    
+    
+    
     }
-    
-    
-    
 }
