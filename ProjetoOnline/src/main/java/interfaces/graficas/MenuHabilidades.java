@@ -65,7 +65,7 @@ public class MenuHabilidades implements BancoDados {
         this.nomeElixir = new String [consumiveis.length + 1];
         for (int i = 0; i < consumiveis.length + 1; i++) {
             if(i!=0)
-                this.nomeElixir[i] = consumiveis[i].getNome();
+                this.nomeElixir[i] = consumiveis[i-1].getNome();
             else 
                 this.nomeElixir[i] = "Selecione o Consumível";
         }

@@ -27,34 +27,43 @@ public class AlteraConsumiveis {
         PegaConsumivelBancoDados g = new PegaConsumivelBancoDados();
 
         nomeElixires[0] = "Elixir Vida Menor";
-        nomeElixires[1] = "Elixir Vida ";
+        nomeElixires[1] = "Elixir Vida";
         nomeElixires[2] = "Elixir Vida Maior";
         nomeElixires[3] = "Elixir Veneno Menor";
-        nomeElixires[4] = "Elixir Veneno ";
+        nomeElixires[4] = "Elixir Veneno";
         nomeElixires[5] = "Elixir Veneno Maior";
         nomeElixires[6] = "Elixir Poder Menor";
-        nomeElixires[7] = "Elixir Poder ";
+        nomeElixires[7] = "Elixir Poder";
         nomeElixires[8] = "Elixir Poder Maior";
-        organizaArranjoConsumivel(nomeElixires, g);
+        organizaArranjoConsumivel(nomeElixires);
 
-        if (chave == 0) {
+        if (chave == 1) {
 
             if (this.tipo.equals("Nordico")) {
                 for (Consumivel elixir : elixires) {
-                    if (elixir.getNome().contains("Vida Menor")) {
+                    if (elixir.getNome().contains("Poder Menor")) {
                         jogador.setConsumivel(elixir);
+                        elixiresDoJogador = new Consumivel[1];
+                        elixiresDoJogador[0] = elixir;
+                        jogador.setConsumiveis(elixiresDoJogador);
                     }
                 }
             } else if (this.tipo.equals("Egipcio")) {
                 for (Consumivel elixir : elixires) {
                     if (elixir.getNome().contains("Veneno Menor")) {
                         jogador.setConsumivel(elixir);
+                        elixiresDoJogador = new Consumivel[1];
+                        elixiresDoJogador[0] = elixir;
+                        jogador.setConsumiveis(elixiresDoJogador);
                     }
                 }
             } else if (this.tipo.equals("Grego")) {
                 for (Consumivel elixir : elixires) {
-                    if (elixir.getNome().contains("Poder Menor")) {
+                    if (elixir.getNome().contains("Vida Menor")) {
                         jogador.setConsumivel(elixir);
+                        elixiresDoJogador = new Consumivel[1];
+                        elixiresDoJogador[0] = elixir;
+                        jogador.setConsumiveis(elixiresDoJogador);
                     }
                 }
             }
@@ -94,9 +103,13 @@ public class AlteraConsumiveis {
         }
     }
 
-    public void organizaArranjoConsumivel(String[] arranjoOrganizado, PegaConsumivelBancoDados c) {
-        for (int i = 0; i < arranjoOrganizado.length; i++) {
-            this.elixires[i] = c.pegaOConsumivelBancoDados(arranjoOrganizado[i]);
+    public void organizaArranjoConsumivel(String[] arranjoOrganizado) {
+        int i = 0;
+        this.elixires = new Consumivel[9];
+        for (String string : arranjoOrganizado) {
+            PegaConsumivelBancoDados g = new PegaConsumivelBancoDados();
+            this.elixires[i] = g.pegaOConsumivelBancoDados(string);
+            i++;
         }
     }
 //olha qual o deus do jogador (decide o tipo do elixir)(Cura=grego,veneno=egipcio,poder=nordico) 

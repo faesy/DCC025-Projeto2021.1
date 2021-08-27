@@ -32,12 +32,14 @@ public class Progressao {
                 jogador.getDeus().funcaoVidaMax();
                 jogador.getDeus().funcaoPoder();
                 jogador.getDeus().setVidaAtual(jogador.getDeus().getVidaMax());
+                new AlteraConsumiveis(jogador);
                 Historia b = new Historia("Tudo começou quando ...", jogador);
                 break;
             case 2:
                 InterfaceBatalha c = new InterfaceBatalha(jogador, "Zeus");
                 break;
             case 3:
+                new AlteraConsumiveis(jogador);
                 TelaDeDescanso d = new TelaDeDescanso(jogador);
                 break;
             case 4:
@@ -47,6 +49,7 @@ public class Progressao {
                 InterfaceBatalha f = new InterfaceBatalha(jogador, "Zeus");
                 break;
             case 6:
+                new AlteraConsumiveis(jogador);
                 TelaDeDescanso g = new TelaDeDescanso(jogador);
                 break;
             case 7:
@@ -56,6 +59,7 @@ public class Progressao {
                 InterfaceBatalha i = new InterfaceBatalha(jogador, "Zeus");
                 break;
             case 9:
+                new AlteraConsumiveis(jogador);
                 TelaDeDescanso j = new TelaDeDescanso(jogador);
                 break;
                 

@@ -18,7 +18,6 @@ public class Jogador {
         this.consumiveis = consumiveis;
     }
 
-    
     public void setDeus(Deus deus) {
         this.deus = deus;
     }
@@ -61,17 +60,24 @@ public class Jogador {
 
     public double usaConsumivel() {
         double efeito = Consumivel.efeitoPot(this.consumivel.getNome());
-        if (this.consumivel.getEfeito().equals("Cura")) {
-            deus.recuperarVida((int) (deus.getVidaMax() * efeito));
-            return 0;
-        }
-        if (this.consumivel.getEfeito().equals("Poder")) {
-            deus.poderMomentaneo(efeito);
-            return 0;
+        if (carga > 0) {
+            if (this.consumivel.getEfeito().equals("Cura")) {
+                deus.recuperarVida((int) (deus.getVidaMax() * efeito));
+                carga--;
+                return 0;
+            }
+            if (this.consumivel.getEfeito().equals("Poder")) {
+                deus.poderMomentaneo(efeito);
+                carga--;
+                return 0;
 
-        }
-        if (this.consumivel.getEfeito().equals("Veneno")) {
-            return efeito;
+            }
+            if (this.consumivel.getEfeito().equals("Veneno")) {
+                carga--;
+                return efeito;
+            }
+        }else{
+            return 0;
         }
         return 0;
     }
