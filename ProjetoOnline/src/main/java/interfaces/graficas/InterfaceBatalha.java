@@ -29,6 +29,10 @@ import org.json.simple.parser.ParseException;
 import tratamento.eventos.CadastraJogador;
 import tratamento.eventos.ChecaAcesso;
 import tratamento.eventos.LogaJogador;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
 
 /**
  *
@@ -209,20 +213,20 @@ public class InterfaceBatalha implements BancoDados {
         imagemPersonagem = new JLabel("");
         imagemPersonagem.setIcon(heroi);
 
-        H1inimigo = new JButton(bot.getInimigo().getHabilidades()[0].getNome());
-        H2inimigo = new JButton(bot.getInimigo().getHabilidades()[1].getNome());
-        H3inimigo = new JButton(bot.getInimigo().getHabilidades()[2].getNome());
-        H4inimigo = new JButton(bot.getInimigo().getHabilidades()[3].getNome());
+        H1inimigo = new JButton("<html><center><p style=\"width:60px\">"+bot.getInimigo().getHabilidades()[0].getNome()+"</p><center></html>");
+        H2inimigo = new JButton("<html><center><p style=\"width:60px\">"+bot.getInimigo().getHabilidades()[1].getNome()+"</p><center></html>");
+        H3inimigo = new JButton("<html><center><p style=\"width:60px\">"+bot.getInimigo().getHabilidades()[2].getNome()+"</p><center></html>");
+        H4inimigo = new JButton("<html><center><p style=\"width:60px\">"+bot.getInimigo().getHabilidades()[3].getNome()+"</p><center></html>");
 
         H1inimigo.setEnabled(false);
         H2inimigo.setEnabled(false);
         H3inimigo.setEnabled(false);
         H4inimigo.setEnabled(false);
 
-        H1personagem = new JButton(jogador.getDeus().getHabilidades()[0].getNome());
-        H2personagem = new JButton(jogador.getDeus().getHabilidades()[1].getNome());
-        H3personagem = new JButton(jogador.getDeus().getHabilidades()[2].getNome());
-        H4personagem = new JButton(jogador.getDeus().getHabilidades()[3].getNome());
+        H1personagem = new JButton("<html><center><p style=\"width:60px\">"+jogador.getDeus().getHabilidades()[0].getNome()+"</p><center></html>");
+        H2personagem = new JButton("<html><center><p style=\"width:60px\">"+jogador.getDeus().getHabilidades()[1].getNome()+"</p><center></html>");
+        H3personagem = new JButton("<html><center><p style=\"width:60px\">"+jogador.getDeus().getHabilidades()[2].getNome()+"</p><center></html>");
+        H4personagem = new JButton("<html><center><p style=\"width:60px\">"+jogador.getDeus().getHabilidades()[3].getNome()+"</p><center></html>");
 
         Consumivel = new JButton("Elixir");
 
@@ -339,6 +343,8 @@ public class InterfaceBatalha implements BancoDados {
         });
 
     }
+    
+    
 
     private void posicionaComponentes() {
 
@@ -349,16 +355,16 @@ public class InterfaceBatalha implements BancoDados {
         this.painel = new JPanel();
         this.painel = tela;
 
-        H1inimigo.setPreferredSize(new Dimension(81, 45));
-        H2inimigo.setPreferredSize(new Dimension(81, 45));
-        H3inimigo.setPreferredSize(new Dimension(81, 45));
-        H4inimigo.setPreferredSize(new Dimension(81, 45));
+        H1inimigo.setPreferredSize(new Dimension(110, 60));
+        H2inimigo.setPreferredSize(new Dimension(110, 60));
+        H3inimigo.setPreferredSize(new Dimension(110, 60));
+        H4inimigo.setPreferredSize(new Dimension(110, 60));
 
-        H1personagem.setPreferredSize(new Dimension(81, 45));
-        H2personagem.setPreferredSize(new Dimension(81, 45));
-        H3personagem.setPreferredSize(new Dimension(81, 45));
-        H4personagem.setPreferredSize(new Dimension(81, 45));
-
+        H1personagem.setPreferredSize(new Dimension(110, 60));
+        H2personagem.setPreferredSize(new Dimension(110, 60));
+        H3personagem.setPreferredSize(new Dimension(110, 60));
+        H4personagem.setPreferredSize(new Dimension(110, 60));
+        
         Consumivel.setPreferredSize(new Dimension(70, 30));
 
         ConfirmarTurno.setPreferredSize(new Dimension(150, 30));
@@ -464,7 +470,7 @@ public class InterfaceBatalha implements BancoDados {
         infPersonagem_.gridy = 4;
         infPersonagem_.gridx = 0;
         infPersonagem_.anchor = GridBagConstraints.LINE_START;
-        infPersonagem_.insets = new Insets(0, 0, 0, 0);
+        infPersonagem_.insets = new Insets(0, 25, 0, 0);
         painel.add(jl2, infPersonagem_);
 
         GridBagConstraints separacao_ = new GridBagConstraints();
