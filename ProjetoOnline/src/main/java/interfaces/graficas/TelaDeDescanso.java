@@ -47,7 +47,7 @@ public class TelaDeDescanso {
         this.descansar.setPreferredSize(new Dimension(100, 50));
         
         this.sairESalvar = new JButton("Sair e Salvar");
-        this.sairESalvar.setPreferredSize(new Dimension(100, 50));
+        this.sairESalvar.setPreferredSize(new Dimension(120, 50));
         
         UIManager.put("ProgressBar.background", Color.white);
         UIManager.put("ProgressBar.foreground", Color.green);

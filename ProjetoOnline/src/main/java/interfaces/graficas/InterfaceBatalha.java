@@ -146,20 +146,20 @@ public class InterfaceBatalha implements BancoDados {
         imagemPersonagem = new JLabel("");
         imagemPersonagem.setIcon(heroi);
 
-        H1inimigo = new JButton(bot.getInimigo().getHabilidades()[0].getNome());
-        H2inimigo = new JButton(bot.getInimigo().getHabilidades()[1].getNome());
-        H3inimigo = new JButton(bot.getInimigo().getHabilidades()[2].getNome());
-        H4inimigo = new JButton(bot.getInimigo().getHabilidades()[3].getNome());
+        H1inimigo = new JButton("<html><center><p style=\"width:60px\">"+bot.getInimigo().getHabilidades()[0].getNome()+"</p><center></html>");
+        H2inimigo = new JButton("<html><center><p style=\"width:60px\">"+bot.getInimigo().getHabilidades()[1].getNome()+"</p><center></html>");
+        H3inimigo = new JButton("<html><center><p style=\"width:60px\">"+bot.getInimigo().getHabilidades()[2].getNome()+"</p><center></html>");
+        H4inimigo = new JButton("<html><center><p style=\"width:60px\">"+bot.getInimigo().getHabilidades()[3].getNome()+"</p><center></html>");
 
         H1inimigo.setEnabled(false);
         H2inimigo.setEnabled(false);
         H3inimigo.setEnabled(false);
         H4inimigo.setEnabled(false);
 
-        H1personagem = new JButton(jogador.getDeus().getHabilidades()[0].getNome());
-        H2personagem = new JButton(jogador.getDeus().getHabilidades()[1].getNome());
-        H3personagem = new JButton(jogador.getDeus().getHabilidades()[2].getNome());
-        H4personagem = new JButton(jogador.getDeus().getHabilidades()[3].getNome());
+        H1personagem = new JButton("<html><center><p style=\"width:60px\">"+jogador.getDeus().getHabilidades()[0].getNome()+"</p><center></html>");
+        H2personagem = new JButton("<html><center><p style=\"width:60px\">"+jogador.getDeus().getHabilidades()[1].getNome()+"</p><center></html>");
+        H3personagem = new JButton("<html><center><p style=\"width:60px\">"+jogador.getDeus().getHabilidades()[2].getNome()+"</p><center></html>");
+        H4personagem = new JButton("<html><center><p style=\"width:60px\">"+jogador.getDeus().getHabilidades()[3].getNome()+"</p><center></html>");
 
         Consumivel = new JButton("Elixir");
 
