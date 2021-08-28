@@ -83,13 +83,13 @@ public class InterfaceBatalha implements BancoDados {
                     JSONArray habilidades = (JSONArray) deusAux.get("Habilidades");
 
                     Habilidade[] habilidade0 = new Habilidade[4];
-                    for (i = 0; i < habilidades.size(); i++) {
-                        JSONObject habilidadeAux = (JSONObject) habilidades.get(i);
-                        habilidade0[i] = new Habilidade();
-                        habilidade0[i].setNome(habilidadeAux.get("Nome").toString());
-                        habilidade0[i].setCarga(Integer.parseInt(habilidadeAux.get("Carga").toString()));
-                        habilidade0[i].setDescricao(habilidadeAux.get("Descricao").toString());
-                        habilidade0[i].setDano(Integer.parseInt(habilidadeAux.get("Dano").toString()));
+                    for (int j = 0; j < habilidades.size(); j++) {
+                        JSONObject habilidadeAux = (JSONObject) habilidades.get(j);
+                        habilidade0[j] = new Habilidade();
+                        habilidade0[j].setNome(habilidadeAux.get("Nome").toString());
+                        habilidade0[j].setCarga(Integer.parseInt(habilidadeAux.get("Carga").toString()));
+                        habilidade0[j].setDescricao(habilidadeAux.get("Descricao").toString());
+                        habilidade0[j].setDano(Integer.parseInt(habilidadeAux.get("Dano").toString()));
                     }
                     inimigo.setHabilidades(habilidade0);
                 }
@@ -315,7 +315,11 @@ public class InterfaceBatalha implements BancoDados {
                 } else {
 
                     janela.setVisible(false);
+                    if(acao == 5){
+                        bot.getInimigo().reduzirVida((int)(bot.getInimigo().getVidaMax()*jogador.acao(acao)));
+                    }else{
                     bot.getInimigo().reduzirVida((int) jogador.acao(acao));
+                    }
                     jogador.getDeus().reduzirVida(bot.usaHabilidade());
 
                     if (jogador.getDeus().verificaMorto()) {
