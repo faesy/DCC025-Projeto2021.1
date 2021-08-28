@@ -29,7 +29,7 @@ Thaís de Jesus Soares - 202065511B
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.mycompany.projetoonline.Jogo</mainClass>
+                            <mainClass>classes.Jogo</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
