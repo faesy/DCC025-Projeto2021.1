@@ -60,7 +60,7 @@ public class RemoveHistoria implements ActionListener, BancoDados{
                 }
             }
             if (existe == false) {
-                JOptionPane.showMessageDialog(null, "Não exite uma história com chave de recuperação " + this.chaveRecuperacao + " ", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Não existe uma história com chave de recuperação " + this.chaveRecuperacao + " ", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (IOException ex) {
             Logger.getLogger(InsereHistoria.class.getName()).log(Level.SEVERE, null, ex);
