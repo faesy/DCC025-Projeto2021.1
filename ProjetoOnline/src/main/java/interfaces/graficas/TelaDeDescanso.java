@@ -1,7 +1,10 @@
 /*
- * Falta conectar as Ações pra conseguir botar a barra de progresso pra representar a vida
- *
- */
+Hiero Henrique Barcelos Costa -202065136A 
+
+Matheus Cardoso Faesy - 202065065A 
+
+Thaís de Jesus Soares - 202065511B 
+*/
 package interfaces.graficas;
 
 import classes.Jogador;

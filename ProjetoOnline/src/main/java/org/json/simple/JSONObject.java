@@ -2,6 +2,13 @@
  * $Id: JSONObject.java,v 1.1 2006/04/15 14:10:48 platform Exp $
  * Created on 2006-4-10
  */
+/*
+Hiero Henrique Barcelos Costa -202065136A 
+
+Matheus Cardoso Faesy - 202065065A 
+
+Thaís de Jesus Soares - 202065511B 
+*/
 package org.json.simple;
 
 import java.io.IOException;

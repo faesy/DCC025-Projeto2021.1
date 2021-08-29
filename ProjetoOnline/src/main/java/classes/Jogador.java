@@ -1,3 +1,10 @@
+/*
+Hiero Henrique Barcelos Costa -202065136A 
+
+Matheus Cardoso Faesy - 202065065A 
+
+Thaís de Jesus Soares - 202065511B 
+*/
 package classes;
 
 public class Jogador {

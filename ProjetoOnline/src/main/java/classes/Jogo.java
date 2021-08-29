@@ -1,3 +1,10 @@
+/*
+Hiero Henrique Barcelos Costa -202065136A 
+
+Matheus Cardoso Faesy - 202065065A 
+
+Thaís de Jesus Soares - 202065511B 
+*/
 package classes;
 
 import interfaces.graficas.Login;
@@ -12,14 +19,5 @@ public class Jogo {
 
     public static void main(String[] args) {
         new Login().criaJanela();
-        //o menu de escolhas do deus retornaria o deus escolhido e esse seria passado como
-        //parametro para o menuHabilidades ou algo do tipo
-        //teste
-
-        //Deus deus = new Deus();
-        //new MenuHabilidades(deus).criaJanela();
-//         new Historia("Ola").criaJanela();
-
-        //new EscolhadePersonagens().criaJanela();
     }
 }
