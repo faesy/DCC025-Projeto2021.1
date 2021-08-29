@@ -122,13 +122,13 @@ public class InterfaceBatalha implements BancoDados {
         ImageIcon heroi = new ImageIcon(jogador.getDeus().getCaminhoIcone());
 
         UIManager.put("Label.foreground", Color.black);
-        jl1 = new JLabel("<html><body><center>Nome: " + bot.getInimigo().getNome() + "<br><center>" + this.bot.getInimigo().getTipo() + "<br><center>Nivel: " + bot.getInimigo().getNivel() + "<br><center>Vida Restante: " + bot.getInimigo().getVidaAtual() + "<br&gtcom HTML!</body></html>", JLabel.CENTER);
+        jl1 = new JLabel("<html><body><center>Nome: " + bot.getInimigo().getNome() + "<br><center>" + this.bot.getInimigo().getTipo() + "<br><center>Poder: " + bot.getInimigo().getPoder() + "<br><center>Vida Restante: " + bot.getInimigo().getVidaAtual() + "<br&gtcom HTML!</body></html>", JLabel.CENTER);
         jl1.setFont(new Font("Georgia", Font.BOLD, 10));
         jl1.setOpaque(true);
         jl1.setBackground(Color.WHITE);
         jl1.setForeground(Color.black);
 
-        jl2 = new JLabel("<html><body><center>Nome: " + jogador.getDeus().getNome() + "<br><center>" + jogador.getDeus().getTipo() + "<br><center>Nivel: " + jogador.getDeus().getNivel() + "<br><center>Vida Restante: " + jogador.getDeus().getVidaAtual() + "<br&gtcom HTML!</body></html>", JLabel.CENTER);
+        jl2 = new JLabel("<html><body><center>Nome: " + jogador.getDeus().getNome() + "<br><center>" + jogador.getDeus().getTipo() + "<br><center>Poder: " + jogador.getDeus().getPoder()+ "<br><center>Vida Restante: " + jogador.getDeus().getVidaAtual() + "<br&gtcom HTML!</body></html>", JLabel.CENTER);
         jl2.setFont(new Font("Georgia", Font.BOLD, 10));
         jl2.setOpaque(true);
         jl2.setBackground(Color.WHITE);
@@ -191,12 +191,12 @@ public class InterfaceBatalha implements BancoDados {
 
         ImageIcon heroi = new ImageIcon(jogador.getDeus().getCaminhoIcone());
 
-        jl1 = new JLabel("<html><body><center>Nome: " + bot.getInimigo().getNome() + "<br><center>" + this.bot.getInimigo().getTipo() + "<br><center>Nivel: " + bot.getInimigo().getNivel() + "<br><center>Vida Restante: " + bot.getInimigo().getVidaAtual() + "<br&gtcom HTML!</body></html>", JLabel.CENTER);
+        jl1 = new JLabel("<html><body><center>Nome: " + bot.getInimigo().getNome() + "<br><center>" + this.bot.getInimigo().getTipo() + "<br><center>Poder: " + bot.getInimigo().getPoder() + "<br><center>Vida Restante: " + bot.getInimigo().getVidaAtual() + "<br&gtcom HTML!</body></html>", JLabel.CENTER);
         jl1.setFont(new Font("Georgia", Font.BOLD, 10));
         jl1.setOpaque(true);
         jl1.setBackground(Color.WHITE);
 
-        jl2 = new JLabel("<html><body><center>Nome: " + jogador.getDeus().getNome() + "<br><center>" + jogador.getDeus().getTipo() + "<br><center>Nivel: " + jogador.getDeus().getNivel() + "<br><center>Vida Restante: " + jogador.getDeus().getVidaAtual() + "<br&gtcom HTML!</body></html>", JLabel.CENTER);
+        jl2 = new JLabel("<html><body><center>Nome: " + jogador.getDeus().getNome() + "<br><center>" + jogador.getDeus().getTipo() + "<br><center>Poder: " + jogador.getDeus().getPoder() + "<br><center>Vida Restante: " + jogador.getDeus().getVidaAtual() + "<br&gtcom HTML!</body></html>", JLabel.CENTER);
         jl2.setFont(new Font("Georgia", Font.BOLD, 10));
         jl2.setOpaque(true);
         jl2.setBackground(Color.WHITE);

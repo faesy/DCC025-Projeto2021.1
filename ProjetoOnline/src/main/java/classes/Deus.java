@@ -8,6 +8,10 @@ public class Deus {
     private Habilidade[] habilidades;
     private String caminhoIcone;
     private boolean morto = false;
+
+    public int getPoder() {
+        return poder;
+    }
     
     public int getVidaAtual() {
         return vidaAtual;
