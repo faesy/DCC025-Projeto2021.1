@@ -38,14 +38,14 @@ public class CadastraJogador implements ActionListener, BancoDados {
             boolean existe = false;
             for (int i = 0; i < jogadoresArray.size(); i++) {
                 JSONObject jogadorAux = (JSONObject) jogadoresArray.get(i);
-                if (jogadorAux.get("Nome").equals(jogador.getNome())) {
+                if (jogadorAux.get("Nome").equals(jogador.getNome().trim())) {
                     JOptionPane.showMessageDialog(null, "O nome de usuário digitado já existe.");
                     existe = true;
                 }
             }
             if (existe == false) {
                 JSONObject jogadorAux = new JSONObject();
-                jogadorAux.put("Nome", jogador.getNome());
+                jogadorAux.put("Nome", jogador.getNome().trim());
                 jogadorAux.put("Senha", jogador.getSenha());
                 jogadorAux.put("Chave de Progresso", jogador.getChaveProgresso());
                 jogadoresArray.add(jogadorAux);
@@ -70,7 +70,7 @@ public class CadastraJogador implements ActionListener, BancoDados {
             return;
         }
         jogador = new Jogador();
-        jogador.setNome(this.cadastro.getTfLogin().getText());
+        jogador.setNome(this.cadastro.getTfLogin().getText().trim());
         jogador.setSenha(new String(this.cadastro.getTfSenha().getPassword()));
         jogador.setChaveProgresso(0);
         
