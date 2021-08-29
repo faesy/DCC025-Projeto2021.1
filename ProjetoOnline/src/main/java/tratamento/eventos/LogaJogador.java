@@ -38,7 +38,7 @@ public class LogaJogador implements ActionListener, BancoDados {
             return;
         }
         jogador = new Jogador();
-        jogador.setNome(this.login.getTfLogin().getText());
+        jogador.setNome(this.login.getTfLogin().getText().trim());
         jogador.setSenha(new String(this.login.getTfSenha().getPassword()));
         manipulaJSON();
         this.login.getTfLogin().setText("");
@@ -55,10 +55,10 @@ public class LogaJogador implements ActionListener, BancoDados {
             boolean existe = false;
             for (int i = 0; i < jogadoresArray.size(); i++) {
                 JSONObject jogadorAux = (JSONObject) jogadoresArray.get(i);
-                if (jogadorAux.get("Nome").equals(jogador.getNome()) && jogadorAux.get("Senha").equals(jogador.getSenha())) {
+                if (jogadorAux.get("Nome").equals(jogador.getNome().trim()) && jogadorAux.get("Senha").equals(jogador.getSenha())) {
                     existe = true;
                     jogador.setChaveProgresso(Integer.parseInt(jogadorAux.get("Chave de Progresso").toString()));
-                    JOptionPane.showMessageDialog(null, "Login realizado com sucesso.", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
+                    //JOptionPane.showMessageDialog(null, "Login realizado com sucesso.", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
                     login.janela.setVisible(false);
                     if(this.jogador.getChaveProgresso()==0)
                     {
